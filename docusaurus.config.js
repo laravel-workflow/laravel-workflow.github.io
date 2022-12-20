@@ -56,6 +56,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: false,
+      },
       navbar: {
         title: 'Laravel Workflow',
         logo: {
@@ -112,7 +117,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Laravel Workflow. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Laravel Workflow.`,
       },
       prism: {
         theme: lightCodeTheme,
