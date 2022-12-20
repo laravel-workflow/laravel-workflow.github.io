@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Laravel Workflow',
-  tagline: 'Workflows as code',
+  tagline: 'Workflows as code.',
   url: 'https://laravel-workflow.github.io/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
