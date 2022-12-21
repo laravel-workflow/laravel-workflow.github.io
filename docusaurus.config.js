@@ -37,14 +37,14 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/laravel-workflow/laravel-workflow.github.io/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/laravel-workflow/laravel-workflow.github.io/blob/main/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/laravel-workflow/laravel-workflow.github.io/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/laravel-workflow/laravel-workflow.github.io/blob/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
