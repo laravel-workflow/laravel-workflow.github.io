@@ -89,6 +89,8 @@ class VerifyEmailWorkflow extends Workflow
 
 Take notice of the `yield` keywords. Because PHP (and most other languages) cannot save their execution state, coroutines rather than normal functions are used inside of workflows (but not activities). A coroutine will be called multiple times in order to execute to completion.
 
+![graph](https://miro.medium.com/max/1400/1*6eE2Gll61IbAAU85Md75OQ.webp)
+
 Even though this workflow will execute to completion effectively once, it will still be partially executed four different times. The results of activities are cached so that only failed activities will be called again. Successful activities get skipped.
 
 But notice that any code we write between these calls will be called multiple times. That’s why your code needs to be **deterministic** inside of workflow methods! If your code has four executions, each at different times, they must still all behave the same. There are no such limitations within activity methods.
