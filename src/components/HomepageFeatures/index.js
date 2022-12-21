@@ -8,7 +8,7 @@ const FeatureList = [
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-       Laravel Workflow uses simple and intuitive syntax, with clear conventions and a clean API.
+       Simple and intuitive syntax, with clear conventions and a clean API.
       </>
     ),
   },
@@ -26,7 +26,7 @@ const FeatureList = [
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Uses its queue system and database layer to store and manage workflow data and state.
+        Uses its queue system and ORM layer to store and manage workflow data and state.
       </>
     ),
   },
