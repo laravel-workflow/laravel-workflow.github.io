@@ -102,6 +102,10 @@ const config = {
             title: 'Community',
             items: [
               {
+                label: 'Gitter',
+                href: 'https://gitter.im/laravel-workflow/community',
+              },
+              {
                 label: 'Twitter',
                 href: 'https://twitter.com/laravelworkflow',
               },
