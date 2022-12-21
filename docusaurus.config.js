@@ -94,7 +94,7 @@ const config = {
               },
               {
                 label: 'Installation',
-                to: '/docs/install',
+                to: '/docs/intro',
               },
             ],
           },
