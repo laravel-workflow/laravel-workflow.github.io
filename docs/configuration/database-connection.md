@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Custom Database Connection
+# Database Connection
 
 Here is an overview of the steps needed to customize the database connection used for the stored workflow models. This is *only* required if you want to use a different database connection than the default connection you specified for your Laravel application.
 
