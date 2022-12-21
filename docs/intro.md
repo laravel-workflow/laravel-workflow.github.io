@@ -2,46 +2,38 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Introduction
 
-Let's discover **Docusaurus in less than 5 minutes**.
+## What is Laravel Workflow?
 
-## Getting Started
+Laravel Workflow is a durable workflow engine that allows developers to write long running persistent distributed workflows (orchestrations) in PHP powered by Laravel Queues. It provides a simple and intuitive way to define complex asynchronous processes, such as data pipelines and microservices, as a sequence of activities that run in parallel or in series.
 
-Get started by **creating a new site**.
+Laravel Workflow is built on top of Laravel, the popular PHP web framework, and uses its queue system and database layer to store and manage workflow data and state. It is designed to be scalable, reliable, and easy to use, with a focus on simplicity and maintainability.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+## Why use Laravel Workflow?
 
-### What you'll need
+There are several reasons why developers might choose to use Laravel Workflow for their workflow management needs:
 
-- [Node.js](https://nodejs.org/en/download/) version 16.14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+- Laravel Workflow is built on top of Laravel, which means it has access to all the features and capabilities of Laravel, such as Eloquent ORM, events, jobs, and more. This makes it a natural fit for Laravel developers and allows them to leverage their existing Laravel knowledge and skills.
 
-## Generate a new site
+- Laravel Workflow is designed to be simple and intuitive to use, with a clean and straightforward API and conventions. This makes it easy for developers to get started and quickly build complex workflows without having to spend a lot of time learning a new framework or language.
 
-Generate a new Docusaurus site using the **classic template**.
+- Laravel Workflow is highly scalable and reliable, thanks to its use of Laravel queues and the ability to run workflows on multiple workers. This means that it can handle large workloads and high traffic without sacrificing performance or stability.
 
-The classic template will automatically be added to your project after you run the command:
+- Laravel Workflow is open source and actively maintained, with a growing community of contributors and users. This means that developers can easily get help and support, share their experiences and knowledge, and contribute to the development of the framework.
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+Compared to the built-in queues, Laravel Workflow allows for more complex and dynamic control over the execution of jobs, such as branching and looping, and provides a way to monitor the progress and status of the workflow as a whole. Unlike job chaining and batching, which are designed to execute a fixed set of jobs in a predetermined sequence, Laravel Workflow also allows for more flexible and adaptable execution.
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+## Features and Benefits
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+Laravel Workflow offers a wide range of features and benefits that make it a powerful and flexible workflow management solution:
 
-## Start your site
+- Easy to define workflows: Laravel Workflow allows developers to define workflows as a sequence of activities that run in parallel or in series. This is done using a simple and intuitive syntax, with clear conventions and a clean API.
 
-Run the development server:
+- Easy to define activities: Laravel Workflow provides a base `Activity` class that developers can extend to define their own activities. This class provides methods for executing the activity, handling errors and retries, and communicating with the workflow.
 
-```bash
-cd my-website
-npm run start
-```
+- Scalable and reliable: Laravel Workflow uses Laravel queues and a database to store and manage workflow data and state. This allows it to scale horizontally and handle large workloads without sacrificing performance or reliability.
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+- Idempotent and deterministic: Laravel Workflow enforces determinism and idempotency in the workflow and activity classes. This means that workflows and activities always produce the same result, regardless of the number of times they are executed, and are not affected by external factors such as network delays or clock skews.
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+- Open source and community-driven: Laravel Workflow is an open source project, released under the MIT license. It is actively maintained and developed by a growing community of contributors and users, who share their experiences and knowledge and contribute to the development of the project.
