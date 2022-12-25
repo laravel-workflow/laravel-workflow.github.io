@@ -1,6 +1,6 @@
 ---
 slug: waterline-ui
-title: Waterline: Elegant UI for Laravel Workflows
+title: "Waterline: Elegant UI for Laravel Workflows"
 authors:
   name: Richard
   title: Core Team
