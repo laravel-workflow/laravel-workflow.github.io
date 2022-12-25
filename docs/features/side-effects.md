@@ -14,7 +14,7 @@ class MyWorkflow extends Workflow
 {
     public function execute()
     {
-        $seconds = yield WorkflowStub::sideEffect(static fn () => random_int(60, 120));
+        $seconds = yield WorkflowStub::sideEffect(fn () => random_int(60, 120));
 
         yield WorkflowStub::timer($seconds);
     }
