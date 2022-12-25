@@ -17,7 +17,7 @@ const FeatureList = [
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Fine-grained control over the execution of jobs. Monitor the progress and status of the workflow as a whole.
+        Fine-grained control over execution of jobs. Monitor progress and status of workflows as a whole.
       </>
     ),
   },
