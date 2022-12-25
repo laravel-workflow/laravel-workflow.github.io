@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>Laravel Workflow Blog</title>
-        <link>https://laravel-workflow.github.io/blog</link>
+        <link>https://laravel-workflow.com/blog</link>
         <description>Laravel Workflow Blog</description>
         <lastBuildDate>Sat, 29 Oct 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
@@ -10,7 +10,7 @@
         <language>en</language>
         <item>
             <title><![CDATA[Email Verifications Using Laravel Workflow]]></title>
-            <link>https://laravel-workflow.github.io/blog/email-verifications</link>
+            <link>https://laravel-workflow.com/blog/email-verifications</link>
             <guid>email-verifications</guid>
             <pubDate>Sat, 29 Oct 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[A typical registration process goes as follows:]]></description>
