@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunklaravel_workflow=self.webpackChunklaravel_workflow||[]).push([[6485],{769:a=>{a.exports=JSON.parse('{"label":"invalidation","permalink":"/blog/tags/invalidation","allTagsPath":"/blog/tags","count":1}')}}]);
