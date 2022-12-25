@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunklaravel_workflow=self.webpackChunklaravel_workflow||[]).push([[3494],{11:l=>{l.exports=JSON.parse('{"label":"horizon","permalink":"/blog/tags/horizon","allTagsPath":"/blog/tags","count":1}')}}]);
