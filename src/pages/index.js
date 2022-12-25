@@ -32,6 +32,9 @@ export default function Home() {
     <Layout
       title={`${siteConfig.title}`}
       description="Durable workflow engine that allows users to track job status and write long running persistent distributed workflows (orchestrations) in PHP powered by Laravel Queues.">
+      <Head>
+        <meta property="og:image" content="/img/docusaurus.png" />
+      </Head>
       <HomepageHeader />
       <main>
         <HomepageFeatures />
