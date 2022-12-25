@@ -8,11 +8,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Laravel Workflow',
   tagline: 'Workflows as code.',
-  url: 'https://laravel-workflow.github.io/',
+  url: 'https://laravel-workflow.com/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
+  ogImage: 'img/docusaurus.png',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
