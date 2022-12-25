@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunklaravel_workflow=self.webpackChunklaravel_workflow||[]).push([[5465],{3977:a=>{a.exports=JSON.parse('{"label":"batching","permalink":"/blog/tags/batching","allTagsPath":"/blog/tags","count":1}')}}]);
