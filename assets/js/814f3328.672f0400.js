@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunklaravel_workflow=self.webpackChunklaravel_workflow||[]).push([[2535],{5641:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Email Verifications Using Laravel Workflow","permalink":"/blog/email-verifications"}]}')}}]);

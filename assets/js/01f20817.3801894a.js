@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunklaravel_workflow=self.webpackChunklaravel_workflow||[]).push([[2021],{9088:a=>{a.exports=JSON.parse('{"label":"transcoding","permalink":"/blog/tags/transcoding","allTagsPath":"/blog/tags","count":1}')}}]);
