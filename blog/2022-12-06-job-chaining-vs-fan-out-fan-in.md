@@ -113,7 +113,7 @@ class MergePDFActivity extends Activity
 
 This is what the final PDF looks like…
 
-![merged PDF](https://miro.medium.com/max/1400/1*EC17EnAaRYHQATScO3MkEQ.webp)
+![merged PDF](https://miro.medium.com/max/1400/1*A3PKGEk8JptFIxB9IqCh6w.webp)
 
 Overall, using the fan-out/fan-in pattern in this way can significantly reduce the time it takes to create a PDF document, making the process more efficient and scalable.
 
