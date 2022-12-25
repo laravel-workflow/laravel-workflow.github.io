@@ -13,8 +13,6 @@ Many services like [Cloud Image](https://docs.cloudimage.io/go/cloudimage-docume
 
 However, it can be challenging if you want to automate this and also ensure that the image has been invalidated. This is because most invalidation APIs are asynchronous. When you request an image to be cleared from the cache, the API will return a response immediately. Then the actual process to clear the image from the cache runs in the background, sometimes taking up to 30 seconds before the image is updated. You could simply trust that the process works but it is also possible to be 100% sure with an automated workflow.
 
-> This article is part of a series on [Larvel Workflow](https://github.com/laravel-workflow/laravel-workflow), a durable workflow engine that allows users to write long running persistent distributed workflows (orchestrations) in PHP powered by Laravel Queues. Inspired by Temporal and Azure Durable Functions.
-
 The workflow we need to write is as follows:
 
 1.  Check the currently cached image’s timestamp via HEAD call

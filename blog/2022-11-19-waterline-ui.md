@@ -25,8 +25,6 @@ At the bottom are any exceptions thrown, including a stack trace and a snippet o
 
 If you’re familiar with Horizon then installing Waterline will be like déjà vu but the setup is simpler because Waterline doesn’t care about queues, only workflows.
 
-> This article is part of a series on [Larvel Workflow](https://github.com/laravel-workflow/laravel-workflow), a durable workflow engine that allows users to write long running persistent distributed workflows (orchestrations) in PHP powered by Laravel Queues. Inspired by Temporal and Azure Durable Functions.
-
 ## Installation
 
 You can find the official [documentation](https://github.com/laravel-workflow/waterline) here but setup is simple.
@@ -41,9 +39,9 @@ That’s it! Now you should be able to view the `/waterline` URL in your app. By
 
 ```php
 Gate::define('viewWaterline', function ($user) {  
-    return in\_array($user->email, \[  
+    return in_array($user->email, [  
         'admin@example.com',  
-    \]);  
+    ]);  
 });
 ```
 
