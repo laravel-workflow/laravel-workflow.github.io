@@ -26,7 +26,7 @@ const FeatureList = [
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Uses its queue system and ORM layer to store and manage workflow data and state.
+        Laravel's queue system and ORM layer store and manage workflow data and state.
       </>
     ),
   },
