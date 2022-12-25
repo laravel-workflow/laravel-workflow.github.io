@@ -30,8 +30,8 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={`${siteConfig.title}`}
+      description="Durable workflow engine that allows users to track job status and write long running persistent distributed workflows (orchestrations) in PHP powered by Laravel Queues.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
