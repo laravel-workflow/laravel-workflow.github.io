@@ -29,9 +29,9 @@ To query a workflow, call the method on the workflow instance. The query method 
 ```php
 use Workflow\WorkflowStub;
 
-$workflow = WorkflowStub::make(MyWorkflow::class);
+$workflow = WorkflowStub::load($workflowId);
 
-$state = $workflow->getState();
+$ready = $workflow->getReady();
 ```
 
 **Note:** Querying a workflow does not advance its execution, unlike signals.
