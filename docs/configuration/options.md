@@ -25,7 +25,7 @@ class MyActivity extends Activity
 
 ## Retries
 
-The `$tries` setting is used to control the number of retries a job or activity is attempted before it is considered failed. By default, the `$tries` value is set to 0 which means it will be retried forever. This can be overridden by setting the `$tries` property on the job or activity class.
+The `$tries` setting is used to control the number of retries a workflow or activity is attempted before it is considered failed. By default, the `$tries` value is set to 0 which means it will be retried forever. This can be overridden by setting the `$tries` property on the workflow or activity class.
 
 ## Timeout
 
