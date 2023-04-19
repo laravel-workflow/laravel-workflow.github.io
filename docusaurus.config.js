@@ -102,8 +102,8 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Gitter',
-                href: 'https://gitter.im/laravel-workflow/community',
+                label: 'Discord',
+                href: 'https://discord.gg/skYkutYA',
               },
               {
                 label: 'Twitter',
