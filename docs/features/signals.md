@@ -19,7 +19,7 @@ class MyWorkflow extends Workflow
     #[SignalMethod]
     public function setReady($ready)
     {
-        $this->ready = $ready
+        $this->ready = $ready;
     }
 }
 ```
