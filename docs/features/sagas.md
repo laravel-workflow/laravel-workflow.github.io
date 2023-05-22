@@ -13,7 +13,6 @@ Sagas are an established design pattern for managing complex, long-running opera
 
 ```php
 use Workflow\ActivityStub;
-use Workflow\ChildWorkflowStub;
 use Workflow\Workflow;
 
 class BookingSagaWorkflow extends Workflow
