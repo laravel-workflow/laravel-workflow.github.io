@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Workfow Status
+# Workflow Status
 
 You can monitor the status of the workflow by calling the `running()` method, which returns `true` if the workflow is still running and `false` if it has completed or failed. 
 
