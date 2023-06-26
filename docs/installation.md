@@ -22,7 +22,7 @@ Each queue driver has its own limitations and requirements. For example, the dat
 
 Laravel Workflow also requires a cache driver that supports locks. This is used to prevent race conditions and concurrency issues.
 
-> NOTE: The Amazon SQS queue driver in Laravel has a limitation of 15 minutes (900 seconds) for the maximum visibility timeout of a message. This means that if a workflow uses the `WorkflowStub::timer()` or `WorkflowStub::awaitWithTimeout()` method with a value greater than 900 seconds, it will not be able to hibernate for that long and the workflow will fail. This is a limitation of the SQS driver and not a limitation of Laravel Workflow itself. If you are using Laravel Workflow with the SQS driver then you should be aware of this limitation and avoid using values greater than 900 seconds. Alternatively, you can use a different queue driver that does not have this limitation, such as the Redis driver.
+> NOTE: The Amazon SQS queue driver in Laravel has a limitation of 15 minutes (900 seconds) for the maximum delay of a message. This means that if a workflow uses the `WorkflowStub::timer()` or `WorkflowStub::awaitWithTimeout()` method with a value greater than 900 seconds, it will not be able to hibernate for that long and the workflow will fail. This is a limitation of the SQS driver and not a limitation of Laravel Workflow itself. If you are using Laravel Workflow with the SQS driver then you should be aware of this limitation and avoid using values greater than 900 seconds. Alternatively, you can use a different queue driver that does not have this limitation, such as the Redis driver.
 
 ## Installing Laravel Workflow
 
