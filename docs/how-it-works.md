@@ -8,7 +8,7 @@ Laravel Workflow is a library that uses Laravel's queued jobs and event sourced 
 
 ## Queues
 
-Queued jobs are background processes that are scheduled to run at a later time. Laravel supports running queues via Amazon SQS, Redis, or even a relational database.
+Queued jobs are background processes that are scheduled to run at a later time. Laravel supports running queues via Amazon SQS, Redis, or even a relational database. Workflows and actvities are both queued jobs but each behaves a little differently. A workflow will be dispatched mutliple times during normal operation. A workflow runs, dispatches one or more activities and then exits again until the activities are completed. An activity will only execute once during normal operation, as it will only be retried in the case of an error.
 
 ## Event Sourcing
 
@@ -60,7 +60,7 @@ This sequence diagram shows how a Laravel Workflow progresses through a series o
 
 1. The workflow starts by calling the execute method, which saves the initial state of the workflow to the database.
 2. The first activity, TestActivity, is then started by calling its execute method. Once TestActivity has completed, it returns control to the workflow and the workflow saves the updated state to the database.
-3. At this point, the workflow enters the event sourcing replay loop. This is where it goes back to the database and looks at the event stream to rebuild the current state. This is necessary because the workflow may have been restarted or resumed from a previous state.
+3. At this point, the workflow enters the event sourcing replay loop. This is where it goes back to the database and looks at the event stream to rebuild the current state. This is necessary because the workflow is not a long running process. The workflow exits while any activities are running and then runs again after they are completed to continue to the next activties.
 4. Once the event stream has been replayed, the workflow continues to the next activity, TestOtherActivity, and starts it by calling its execute method. Again, once TestOtherActivity has completed, it returns control to the workflow and the workflow saves the updated state to the database.
 5. The workflow then enters the event sourcing replay loop again, rebuilding the current state from the event stream.
 6. Next, the workflow starts two parallel activities, TestParallelActivity and TestOtherParallelActivity. Both activities are started by calling their execute methods. Once they have completed, they return control to the workflow and the workflow saves the updated state to the database.
