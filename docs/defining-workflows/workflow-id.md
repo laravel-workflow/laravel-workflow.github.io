@@ -19,7 +19,6 @@ In addition, inside of an activity, `$this->workflowId()` returns the id of the 
 ```php
 use Illuminate\Support\Facades\Cache;
 use Workflow\Activity;
-use Workflow\Contracts\Workflow;
 
 class MyActivity extends Activity
 {
