@@ -10,7 +10,6 @@ To start a workflow, you must first create a workflow instance and then call the
 use Workflow\WorkflowStub;
 
 $workflow = WorkflowStub::make(MyWorkflow::class);
-$id = $workflow->id();
 $workflow->start();
 ```
 
