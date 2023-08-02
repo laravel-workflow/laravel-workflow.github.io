@@ -25,11 +25,15 @@ class MyActivity extends Activity
 
 ## Retries
 
-The `$tries` setting is used to control the number of retries a workflow or activity is attempted before it is considered failed. By default, the `$tries` value is set to 0 which means it will be retried forever. This can be overridden by setting the `$tries` property on the workflow or activity class.
+The `$tries` setting is used to control the number of retries an activity is attempted before it is considered failed. By default, the `$tries` value is set to 0 which means it will be retried forever. This can be overridden by setting the `$tries` property on the activity class.
 
 ## Timeout
 
-The `$timeout` setting is used to control the maximum number of seconds a workflow or activity is allowed to run before it is killed. By default, the `$timeout` value is set to 0 seconds which means it can run forever. This can be overridden by setting the `$timeout` property on the workflow or activity class.
+The `$timeout` setting is used to control the maximum number of seconds an activity is allowed to run before it is killed. By default, the `$timeout` value is set to 0 seconds which means it can run forever. This can be overridden by setting the `$timeout` property on the activity class.
+
+## Backoff
+
+The `backoff` method returns an array of integers corresponding to the current attempt. The default `backoff` method decays exponentially to 2 minutes. This can be overridden by implementing the `backoff` method on the activity class.
 
 ## Connection
 
@@ -38,7 +42,3 @@ The `$connection` setting is used to specify which queue connection the workflow
 ## Queue
 
 The `$queue` setting is used to specify which queue the workflow or activity should be added to. By default, the `$queue` value is not set which uses the default queue for the specified connection. This can be overridden by setting the `$queue` property on the workflow or activity class.
-
-## Backoff
-
-The `backoff` method returns an array of integers corresponding to the current attempt. The default `backoff` method decays exponentially to 2 minutes. This can be overridden by implementing the `backoff` method on the activity class.
