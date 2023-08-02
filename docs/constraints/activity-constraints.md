@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Activity Constraints
 
-Activities have none of the above constraints. However, because activities are retryable they should still be idempotent. If your activity creates a charge for a customer then retrying it should not create a duplicate charge.
+Activities have none of the prior constraints. However, because activities are retryable they should still be idempotent. If your activity creates a charge for a customer then retrying it should not create a duplicate charge.
 
 Many external APIs support passing an `Idempotency-Key`. See [Stripe](https://stripe.com/docs/api/idempotent_requests) for an example.
 
