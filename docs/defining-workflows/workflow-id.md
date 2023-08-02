@@ -4,7 +4,16 @@ sidebar_position: 5
 
 # Workflow ID
 
-Inside of an activity, `$this->workflowId()` returns the id of the current workflow. This can be useful for activities that need to store data about the workflow that is executing them. For example, an activity may use the workflow id to store information in a database or cache so that it can be accessed by other activities in the same workflow.
+When starting a workflow you can obtain the id like this.
+
+```php
+use Workflow\WorkflowStub;
+
+$workflow = WorkflowStub::make(MyWorkflow::class);
+$workflowId = $workflow->id();
+```
+
+In addition, inside of an activity, `$this->workflowId()` returns the id of the current workflow. This can be useful for activities that need to store data about the workflow that is executing them. For example, an activity may use the workflow id to store information in a database or cache so that it can be accessed by other activities in the same workflow.
 
 
 ```php
