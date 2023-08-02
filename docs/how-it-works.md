@@ -58,12 +58,12 @@ This sequence diagram shows how a Laravel Workflow progresses through a series o
 
 ![mermaid-diagram-2022-12-08-173913](https://user-images.githubusercontent.com/1130888/206589649-8fc0044d-8089-45a7-a30f-e1bcbb5115cd.png)
 
-1. The workflow starts by calling the execute method, which saves the initial state of the workflow to the database.
-2. The first activity, TestActivity, is then started by calling its execute method. Once TestActivity has completed, it returns control to the workflow and the workflow saves the updated state to the database.
-3. At this point, the workflow enters the event sourcing replay loop. This is where it goes back to the database and looks at the event stream to rebuild the current state. This is necessary because the workflow is not a long running process. The workflow exits while any activities are running and then runs again after they are completed to continue to the next activties.
-4. Once the event stream has been replayed, the workflow continues to the next activity, TestOtherActivity, and starts it by calling its execute method. Again, once TestOtherActivity has completed, it returns control to the workflow and the workflow saves the updated state to the database.
+1. The workflow starts by getting dispatched as a queued job.
+2. The first activity, TestActivity, is then dispatched as a queued job. The workflow job then exits. Once TestActivity has completed, it saves the result to the database and returns control to the workflow by dispatching it again.
+3. At this point, the workflow enters the event sourcing replay loop. This is where it goes back to the database and looks at the event stream to rebuild the current state. This is necessary because the workflow is not a long running process. The workflow exits while any activities are running and then is dispatched again after completion.
+4. Once the event stream has been replayed, the workflow continues to the next activity, TestOtherActivity, and starts it by dispatching it as a queued job. Again, once TestOtherActivity has completed, it saves the result to the database and returns control to the workflow by dispatching it as a queued job.
 5. The workflow then enters the event sourcing replay loop again, rebuilding the current state from the event stream.
-6. Next, the workflow starts two parallel activities, TestParallelActivity and TestOtherParallelActivity. Both activities are started by calling their execute methods. Once they have completed, they return control to the workflow and the workflow saves the updated state to the database.
+6. Next, the workflow starts two parallel activities, TestParallelActivity and TestOtherParallelActivity. Both activities are dispatched. Once they have completed, they save the results to the database and return control to the workflow.
 7. Finally, the workflow enters the event sourcing replay loop one last time to rebuild the current state from the event stream. This completes the execution of the workflow.
 
 ## Summary
@@ -71,4 +71,4 @@ The sequence diagram illustrates the workflow starting with the TestActivity and
 
 The need for determinism comes into play when the events are replayed. In order for the workflow to rebuild the correct state, the code for each activity must produce the same result when run multiple times with the same inputs. This means that activities should avoid using things like random numbers (unless using a side effect) or dates, as these will produce different results each time they are run.
 
-The need for idempotency comes into play when the workflow is resumed after a crash or other interruption. If an activity is not idempotent, it is possible for it to produce different results each time it is run. This could cause the workflow to become out of sync with the current state of the system. For example, if an activity charges a customer and is not idempotent, rerunning it after a crash could result in the customer being charged twice. To avoid this, activities should be designed to be idempotent.
+The need for idempotency comes into play when an API fails to return a response even though it has actually completed successfully. For example, if an activity charges a customer and is not idempotent, rerunning it after a a failed response could result in the customer being charged twice. To avoid this, activities should be designed to be idempotent.
