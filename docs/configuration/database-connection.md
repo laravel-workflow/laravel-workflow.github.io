@@ -93,18 +93,30 @@ php artisan vendor:publish --provider="Workflow\Providers\WorkflowServiceProvide
 
 In the `workflows.php` config file, update the model classes to use your own.
 
+```php
+'stored_workflow_model' => App\Models\StoredWorkflow::class,
+
+'stored_workflow_exception_model' => App\Models\StoredWorkflowException::class,
+
+'stored_workflow_log_model' => App\Models\StoredWorkflowLog::class,
+
+'stored_workflow_signal_model' => App\Models\StoredWorkflowSignal::class,
+
+'stored_workflow_timer_model' => App\Models\StoredWorkflowTimer::class,
 ```
-return [
 
-    'stored_workflow_model' => App\Models\StoredWorkflow::class,
+## Changing Base Model
 
-    'stored_workflow_exception_model' => App\Models\StoredWorkflowException::class,
+By default, the workflow models extend `Illuminate\Database\Eloquent\Model` but some packages like https://github.com/jenssegers/laravel-mongodb require you to extend their model, such as in this example, `Jenssegers\Mongodb\Eloquent\Model`.
 
-    'stored_workflow_log_model' => App\Models\StoredWorkflowLog::class,
+In the `workflows.php` config file, change this line.
 
-    'stored_workflow_signal_model' => App\Models\StoredWorkflowSignal::class,
+```php
+'base_model' => Illuminate\Database\Eloquent\Model::class,
+```
 
-    'stored_workflow_timer_model' => App\Models\StoredWorkflowTimer::class,
+It should now look like this.
 
-];
+```php
+'base_model' => Jenssegers\Mongodb\Eloquent\Model::class,
 ```
