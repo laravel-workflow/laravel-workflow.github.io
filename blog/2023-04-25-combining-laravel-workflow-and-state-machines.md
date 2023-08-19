@@ -45,14 +45,14 @@ Loan Application Workflow Example
 The following code demonstrates how to create a `LoanApplicationWorkflow` using Laravel Workflow and Finite:
 
 ```php
-use Finite\\StatefulInterface;  
-use Finite\\StateMachine\\StateMachine;  
-use Finite\\State\\State;  
-use Finite\\State\\StateInterface;  
-use Workflow\\Models\\StoredWorkflow;  
-use Workflow\\SignalMethod;  
-use Workflow\\WorkflowStub;  
-use Workflow\\Workflow;  
+use Finite\StatefulInterface;  
+use Finite\StateMachine\StateMachine;  
+use Finite\State\State;  
+use Finite\State\StateInterface;  
+use Workflow\Models\StoredWorkflow;  
+use Workflow\SignalMethod;  
+use Workflow\WorkflowStub;  
+use Workflow\Workflow;  
   
 class LoanApplicationWorkflow extends Workflow implements StatefulInterface  
 {  
@@ -69,19 +69,19 @@ class LoanApplicationWorkflow extends Workflow implements StatefulInterface
         return $this->state;  
     }  
   
-    #\[SignalMethod\]  
+    #[SignalMethod]  
     public function submit()  
     {  
         $this->stateMachine->apply('submit');  
     }  
   
-    #\[SignalMethod\]  
+    #[SignalMethod]  
     public function approve()  
     {  
         $this->stateMachine->apply('approve');  
     }  
   
-    #\[SignalMethod\]  
+    #[SignalMethod]  
     public function deny()  
     {  
         $this->stateMachine->apply('deny');  
@@ -102,11 +102,11 @@ class LoanApplicationWorkflow extends Workflow implements StatefulInterface
         return $this->stateMachine->getCurrentState()->getName() === 'denied';  
     }  
   
-    public function \_\_construct(  
+    public function __construct(  
         public StoredWorkflow $storedWorkflow,  
         ...$arguments  
     ) {  
-        parent::\_\_construct($storedWorkflow, $arguments);  
+        parent::__construct($storedWorkflow, $arguments);  
   
         $this->stateMachine = new StateMachine();  
   
