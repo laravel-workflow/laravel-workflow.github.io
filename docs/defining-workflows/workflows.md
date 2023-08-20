@@ -6,6 +6,12 @@ sidebar_position: 1
 
 In Laravel Workflow, workflows and activities are defined as classes that extend the base `Workflow` and `Activity` classes provided by the framework.
 
+You may use the make:workflow artisan command to generate a new workflow:
+
+```php
+php artisan make:workflow MyWorkflow
+```
+
 A workflow is a class that defines a sequence of activities that run in parallel, series or a mixture of both. It is defined by extending the `Workflow` class and implementing the `execute()` method.
 
 ```php
