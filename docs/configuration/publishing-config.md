@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-## Publishing Config
+# Publishing Config
 
 This will create a `workflows.php` configuration file in your `config` folder.
 
