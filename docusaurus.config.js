@@ -132,6 +132,10 @@ const config = {
         darkTheme: darkCodeTheme,
       },
       image: 'img/docusaurus.png',
+      algolia: {
+        apiKey: 'd7a6a0cd26e3867bf71977ed4ebdd782',
+        indexName: 'laravel-workflow',
+      },
     }),
 };
 
