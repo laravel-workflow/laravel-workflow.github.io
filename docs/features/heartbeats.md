@@ -7,6 +7,8 @@ sidebar_position: 9
 Heartbeats are signals sent at regular intervals to indicate that an activity is still running and hasn't frozen or crashed. They prevent the activity from being terminated due to timing out. This enables long-running activities to have a relatively low timeout. As long as the activity sends a heartbeat faster than the timeout duration, it will not be terminated.
 
 ```php
+use Workflow\Activity;
+
 class MyActivity extends Activity
 {
     public $timeout = 5;
