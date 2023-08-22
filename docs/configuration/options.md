@@ -11,10 +11,11 @@ use Workflow\Activity;
 
 class MyActivity extends Activity
 {
-    public $tries = 0;
-    public $timeout = 0;
     public $connection = 'default';
     public $queue = 'default';
+
+    public $tries = 0;
+    public $timeout = 0;
 
     public function backoff()
     {
@@ -22,6 +23,14 @@ class MyActivity extends Activity
     }
 }
 ```
+
+## Connection
+
+The `$connection` setting is used to specify which queue connection the workflow or activity should be sent to. By default, the `$connection` value is not set which will use the default connection. This can be overridden by setting the `$connection` property on the workflow or activity class.
+
+## Queue
+
+The `$queue` setting is used to specify which queue the workflow or activity should be added to. By default, the `$queue` value is not set which uses the default queue for the specified connection. This can be overridden by setting the `$queue` property on the workflow or activity class.
 
 ## Retries
 
@@ -34,11 +43,3 @@ The `$timeout` setting is used to control the maximum number of seconds an activ
 ## Backoff
 
 The `backoff` method returns an array of integers corresponding to the current attempt. The default `backoff` method decays exponentially to 2 minutes. This can be overridden by implementing the `backoff` method on the activity class.
-
-## Connection
-
-The `$connection` setting is used to specify which queue connection the workflow or activity should be sent to. By default, the `$connection` value is not set which will use the default connection. This can be overridden by setting the `$connection` property on the workflow or activity class.
-
-## Queue
-
-The `$queue` setting is used to specify which queue the workflow or activity should be added to. By default, the `$queue` value is not set which uses the default queue for the specified connection. This can be overridden by setting the `$queue` property on the workflow or activity class.
