@@ -28,8 +28,7 @@ class MyWorkflow extends Workflow
 {
     public function execute($name)
     {
-        $result = yield ActivityStub::make(MyActivity::class, $name);
-        return $result;
+        return yield ActivityStub::make(MyActivity::class, $name);
     }
 }
 ```
@@ -48,4 +47,4 @@ class MyActivity extends Activity
 }
 ```
 
-In general, you should only pass small amounts of data in this manner. Rather than passing large amounts of data, you should write the data to the cache or file system. Pass the key or file path to the workflow and activities. Then activties can use the cache or file system to read the data. Also, simple arrays are prefered over typed objects because they use less data and are easy to read when debugging.
+In general, you should only pass small amounts of data in this manner. Rather than passing large amounts of data, you should write the data to the database, cache or file system. Then pass the key or file path to the workflow and activities. The activties can then use the key or file path to read the data.
