@@ -70,7 +70,7 @@ class MyWorkflow extends Workflow
 When an Eloquent model is passed to a workflow or activity, only its `ModelIdentifier` is serialized. This reduces the size of the payload, ensuring that your workflows remain efficient and performant.
 
 ```
-{
+object(ModelIdentifier) {
     id: 42,
     class: "App\Models\User",
     relations: [],
