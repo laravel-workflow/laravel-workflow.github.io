@@ -48,3 +48,34 @@ class MyActivity extends Activity
 ```
 
 In general, you should only pass small amounts of data in this manner. Rather than passing large amounts of data, you should write the data to the database, cache or file system. Then pass the key or file path to the workflow and activities. The activties can then use the key or file path to read the data.
+
+## Models
+
+Passing in models works similarly to `SerializesModels`.
+
+```php
+use App\Models\User;
+use Workflow\ActivityStub;
+use Workflow\Workflow;
+
+class MyWorkflow extends Workflow
+{
+    public function execute(User $user)
+    {
+        return yield ActivityStub::make(MyActivity::class, $user->name);
+    }
+}
+```
+
+When an Eloquent model is passed to a workflow or activity, only its `ModelIdentifier` is serialized. This reduces the size of the payload, ensuring that your workflows remain efficient and performant.
+
+```
+{
+    id: 42,
+    class: "App\Models\User",
+    relations: [],
+    connection: "mysql"
+}
+```
+
+When the workflow or activity runs, it will retrieve the complete model instance, including any loaded relationships, from the database. If you wish to prevent extra database calls during the execution of a workflow or activity, consider converting the model to an array before passing it.
