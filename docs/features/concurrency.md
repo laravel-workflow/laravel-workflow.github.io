@@ -64,9 +64,11 @@ class MyWorkflow extends Workflow
     {
         return [
             yield ActivityStub::make(MyActivity1::class),
-            yield ActivityStub::make(MyActivity2::class),
-            yield ActivityStub::make(MyActivity3::class),
             yield ActivityStub::all([
+                 ActivityStub::async(fn () => [
+                    yield ActivityStub::make(MyActivity2::class),
+                    yield ActivityStub::make(MyActivity3::class),
+                ]),
                 ActivityStub::make(MyActivity4::class),
                 ActivityStub::make(MyActivity5::class),
             ]),
@@ -76,4 +78,6 @@ class MyWorkflow extends Workflow
 }
 ```
 
-Activities 1, 2 and 3 will execute in series, waiting for each to complete one after another before continuing. Then activities 4 and 5 will execute together in parallel and only when they both complete will execution continue. Finally, activity 6 executes last after all others have completed.
+![workflow](https://mermaid.ink/img/pako:eNp9kctugzAQRX8lmjUBbPOyK1WqlC6zalcVGwcbsAQYwRCVRvx7DZUS0UW88txzNc8bFFZpEFANsq8Pn6eXvDsczvNbgeZqcCbH4-sjos9g9AzGe0h3kO0h28FkD6NnMP4PwYNWD600yo14W805YK1bnYNwX6VLOTWYQ94tziontB9zV4DAYdIeTL2SqE9GuuW0IErZjHf1XRm0w11srFTahTfAud_2aUZ0KQvblaZa9WlonFwj9qMIghX7lcF6uviFbYPRqFoOWF95EiQ0ySRlOkmZjBlTxYXwrKQRKVUaEiphWTzoZfdl7aMrvfVz_jvmdtPNs1b-BhH7PORxxBNGGM1SHnkwg0iZHxFOU-YKxoxy6vL-bEmJH26POBxymvFk-QWh37PQ?type=png)
+
+Activity 1 will execute and complete before any other activities run. Activities 2 and 3 will execute in series, waiting for each to complete one after another before continuing. At the same time, activities 4 and 5 will execute together in parallel and only when they all complete will execution continue. Finally, activity 6 executes last after all others have completed.
