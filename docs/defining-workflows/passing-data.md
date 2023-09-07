@@ -79,3 +79,22 @@ object(ModelIdentifier) {
 ```
 
 When the workflow or activity runs, it will retrieve the complete model instance, including any loaded relationships, from the database. If you wish to prevent extra database calls during the execution of a workflow or activity, consider converting the model to an array before passing it.
+
+## Dependency Injection
+
+In addition to passing data, you are able to type-hint dependencies on the workflow or activity `execute()` methods. The Laravel service container will automatically inject those dependencies.
+
+```php
+use Illuminate\Contracts\Foundation\Application;
+use Workflow\Workflow;
+
+class MyWorkflow extends Workflow
+{
+    public function execute(Application $app)
+    {
+        if ($app->runningInConsole()) {
+            // ...
+        }
+    }
+}
+```
