@@ -46,4 +46,4 @@ php artisan migrate
 
 ## Running Workers
 
-Laravel Workflow uses queues to run workflows and activities in the background. You will need to either run the `queue:work` [command](https://laravel.com/docs/10.x/queues#the-queue-work-command) or use [Horizon](https://laravel.com/docs/10.x/horizon) to run your queue workers. Without a queue worker, workflows and activities will not be processed.
+Laravel Workflow uses queues to run workflows and activities in the background. You will need to either run the `queue:work` [command](https://laravel.com/docs/10.x/queues#the-queue-work-command) or use [Horizon](https://laravel.com/docs/10.x/horizon) to run your queue workers. Without a queue worker, workflows and activities will not be processed. You cannot use the sync driver with queue workers.
