@@ -43,7 +43,7 @@ In the `workflows.php` config file you can update the model classes to use your 
 
 ## Changing Base Model
 
-By default, the workflow models extend `Illuminate\Database\Eloquent\Model` but some packages like https://github.com/jenssegers/laravel-mongodb require you to extend their model, such as in this example, `Jenssegers\Mongodb\Eloquent\Model`.
+By default, the workflow models extend `Illuminate\Database\Eloquent\Model` but some packages like https://github.com/mongodb/laravel-mongodb require you to extend their model, such as in this example, `MongoDB\Laravel\Eloquent\Model`.
 
 This can be changed by updating the `base_model` setting.
 
@@ -54,5 +54,5 @@ This can be changed by updating the `base_model` setting.
 It should now look like this.
 
 ```php
-'base_model' => Jenssegers\Mongodb\Eloquent\Model::class,
+'base_model' => MongoDB\Laravel\Eloquent\Model::class,
 ```
