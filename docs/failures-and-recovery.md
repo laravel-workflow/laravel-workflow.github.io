@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# Exceptions and Recovery
+# Failures and Recovery
 
 ## Handling Exceptions
 
