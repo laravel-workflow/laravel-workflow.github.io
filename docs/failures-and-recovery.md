@@ -49,7 +49,7 @@ There are two types of errors that can occur in a activity: recoverable errors a
 
 ## Recovery Process
 
-The general process to fix a failing workflow is:
+The general process to fix a failing activity is:
 
 1. Check the logs for the activity that is failing and look for any errors or exceptions that are being thrown.
 2. Identify the source of the error and fix it in the code.
