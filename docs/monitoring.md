@@ -33,3 +33,15 @@ Refer to https://github.com/laravel-workflow/waterline for installation and conf
 ### Notifications View
 
 ![notifications view](https://github.com/laravel-workflow/laravel-workflow.github.io/assets/1130888/bb3707a1-c1df-4d5c-804a-5299bd357877)
+
+### Configuration
+
+[Publish the configuration file](https://laravel-workflow.com/docs/configuration/publishing-config) and then update your .env with the following settings:
+
+```
+WORKFLOW_MONITOR=true
+WORKFLOW_MONITOR_URL=https://api.taskvalve.com
+WORKFLOW_MONITOR_API_KEY=[YOUR_API_KEY_GOES_HERE]
+```
+
+Laravel Workflow will now report workflows and activities to TaskValve and you can view them via their [website](https://taskvalve.com/pricing).
