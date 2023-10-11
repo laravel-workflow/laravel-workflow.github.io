@@ -8,7 +8,7 @@ In Laravel Workflow, events are dispatched at various stages of workflow and act
 
 ## Workflow Events
 
-### Workflow\Events\WorkflowStarted
+### WorkflowStarted
 
 Triggered when a workflow starts its execution.
 
@@ -18,7 +18,7 @@ Attributes:
 - `arguments`: Arguments passed to the workflow.
 - `timestamp`: Timestamp of when the workflow started.
 
-### Workflow\Events\WorkflowCompleted
+### WorkflowCompleted
 
 Triggered when a workflow successfully completes.
 
@@ -27,7 +27,7 @@ Attributes:
 - `output`: The result returned by the workflow.
 - `timestamp`: Timestamp of when the workflow completed.
 
-### Workflow\Events\WorkflowFailed
+### WorkflowFailed
 
 Triggered when a workflow fails during its execution.
 
@@ -38,7 +38,7 @@ Attributes:
 
 ## Activity Events
 
-### Workflow\Events\ActivityStarted
+### ActivityStarted
 
 Triggered when an activity starts its execution.
 
@@ -50,7 +50,7 @@ Attributes:
 - `arguments`: Arguments passed to the activity.
 - `timestamp`: Timestamp of when the activity started.
 
-### Workflow\Events\ActivityCompleted
+### ActivityCompleted
 
 Triggered when an activity successfully completes.
 
@@ -59,7 +59,7 @@ Attributes:
 - `output`: The result returned by the activity.
 - `timestamp`: Timestamp of when the activity completed.
 
-### Workflow\Events\ActivityFailed
+### ActivityFailed
 
 Triggered when an activity fails during execution.
 
@@ -89,5 +89,3 @@ Workflow\Events\ActivityStarted
 Workflow\Events\ActivityCompleted
 Workflow\Events\WorkflowCompleted
 ```
-
-
