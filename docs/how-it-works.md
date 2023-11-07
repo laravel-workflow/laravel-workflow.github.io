@@ -8,7 +8,7 @@ Laravel Workflow is a library that uses Laravel's queued jobs and event sourced 
 
 ## Queues
 
-Queued jobs are background processes that are scheduled to run at a later time. Laravel supports running queues via Amazon SQS, Redis, or even a relational database. Workflows and actvities are both queued jobs but each behaves a little differently. A workflow will be dispatched mutliple times during normal operation. A workflow runs, dispatches one or more activities and then exits again until the activities are completed. An activity will only execute once during normal operation, as it will only be retried in the case of an error.
+Queued jobs are background processes that are scheduled to run at a later time. Laravel supports running queues via Amazon SQS, Redis, or even a relational database. Workflows and activities are both queued jobs but each behaves a little differently. A workflow will be dispatched mutliple times during normal operation. A workflow runs, dispatches one or more activities and then exits again until the activities are completed. An activity will only execute once during normal operation, as it will only be retried in the case of an error.
 
 ## Event Sourcing
 
