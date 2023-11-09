@@ -26,7 +26,7 @@ class MyWorkflow extends Workflow
 The above workflow can be tested by first calling `WorkflowStub::fake()` and then mocking the activity.
 
 ```
-public function testWorkflow(): void
+public function testWorkflow()
 {
     WorkflowStub::fake();
 
@@ -42,7 +42,7 @@ public function testWorkflow(): void
 You can also provide a callback instead of a result value to ` WorkflowStub::mock()`.
 
 ```
-public function testWorkflow(): void
+public function testWorkflow()
 {
     WorkflowStub::fake();
 
@@ -84,7 +84,7 @@ class MyTimerWorkflow extends Workflow
 The above workflow waits 60 seconds before executing the activity. Using `$this->travel()` and `$workflow->resume()` allows us to skip this waiting period.
 
 ```
-public function testTimeTravelWorkflow(): void
+public function testTimeTravelWorkflow()
 {
     WorkflowStub::fake();
 
