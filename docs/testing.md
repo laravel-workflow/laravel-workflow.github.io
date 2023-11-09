@@ -61,7 +61,7 @@ The workflow `$context` along with any arguments for the current activity will a
 
 ## Skipping Time
 
-By manipulating the system time with `Carbon::setTestNow()`, you can simulate time-dependent workflows. This strategy allows you to test timeouts, delays, and other time-sensitive logic within your workflows.
+By manipulating the system time with `$this->travel()` or `$this->travelTo()`, you can simulate time-dependent workflows. This strategy allows you to test timeouts, delays, and other time-sensitive logic within your workflows.
 
 ```
 use Workflow\ActivityStub;
@@ -93,7 +93,7 @@ public function testTimeTravelWorkflow(): void
     $workflow = WorkflowStub::make(MyTimerWorkflow::class);
     $workflow->start();
 
-    $this->travel(300)->seconds();
+    $this->travel(120)->seconds();
 
     $workflow->resume();
 
