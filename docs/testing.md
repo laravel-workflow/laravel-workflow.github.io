@@ -88,7 +88,7 @@ public function testTimeTravelWorkflow(): void
 {
     WorkflowStub::fake();
 
-    WorkflowStub::mock(MyActivity::class, 'activity');
+    WorkflowStub::mock(MyActivity::class, 'result');
 
     $workflow = WorkflowStub::make(MyTimerWorkflow::class);
     $workflow->start();
@@ -97,7 +97,7 @@ public function testTimeTravelWorkflow(): void
 
     $workflow->resume();
 
-    $this->assertSame($workflow->output(), 'activity');
+    $this->assertSame($workflow->output(), 'result');
 }
 ```
 
