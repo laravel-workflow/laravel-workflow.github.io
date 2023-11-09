@@ -81,29 +81,27 @@ class MyTimerWorkflow extends Workflow
 }
 ```
 
-The above workflow waits 60 seconds before executing the activity. Using `Carbon::setTestNow()` and `$workflow->resume()` allows us to skip this waiting period.
+The above workflow waits 60 seconds before executing the activity. Using `$this->travel()` and `$workflow->resume()` allows us to skip this waiting period.
 
 ```
 public function testTimeTravelWorkflow(): void
 {
-    $now = Carbon::now();
-    Carbon::setTestNow($now);
-
     WorkflowStub::fake();
 
-    WorkflowStub::mock(TestActivity::class, 'activity');
+    WorkflowStub::mock(MyActivity::class, 'activity');
 
     $workflow = WorkflowStub::make(MyTimerWorkflow::class);
     $workflow->start();
 
-    Carbon::setTestNow($now->copy()->addSeconds(300));
+    $this->travel(300)->seconds();
+
     $workflow->resume();
 
     $this->assertSame($workflow->output(), 'activity');
 }
 ```
 
-Remember to reset the `Carbon::setTestNow()` after each time travel test to avoid side effects on subsequent tests.
+The helpers `$this->travel()` and `$this->travelTo()` methods use `Carbon:setTestNow()` under the hood.
 
 ## Activities
 
