@@ -47,7 +47,7 @@ class MyActivity extends Activity
 }
 ```
 
-In general, you should only pass small amounts of data in this manner. Rather than passing large amounts of data, you should write the data to the database, cache or file system. Then pass the key or file path to the workflow and activities. The activties can then use the key or file path to read the data.
+In general, you should only pass small amounts of data in this manner. Rather than passing large amounts of data, you should write the data to the database, cache or file system. Then pass the key or file path to the workflow and activities. The activities can then use the key or file path to read the data.
 
 ## Models
 
