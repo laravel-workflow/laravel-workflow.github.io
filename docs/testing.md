@@ -110,7 +110,7 @@ Testing activities is similar to testing Laravel jobs. You manually create the a
 ```
 $workflow = WorkflowStub::make(MyWorkflow::class);
 
-$activity = new MyActivity(0, now()->toDateTimeString(), StoredWorkflow::findOrFail($workflow->id()), []);
+$activity = new MyActivity(0, now()->toDateTimeString(), StoredWorkflow::findOrFail($workflow->id()));
 
 $result = $activity->handle();
 ```
