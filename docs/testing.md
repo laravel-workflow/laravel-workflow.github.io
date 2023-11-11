@@ -6,7 +6,7 @@ sidebar_position: 7
 
 ## Workflows
 
-Using the `sync` driver for testing, you can execute workflows synchronously in your test environment and mock activities to define expected behaviors and outputs without running the actual implementations.
+You can execute workflows synchronously in your test environment and mock activities to define expected behaviors and outputs without running the actual implementations.
 
 ```
 use Workflow\ActivityStub;
