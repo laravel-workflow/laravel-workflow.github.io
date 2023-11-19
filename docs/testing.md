@@ -75,7 +75,7 @@ WorkflowStub::assertNothingDispatched();
 You may pass a closure to the `assertDispatched` or `assertNotDispatched` methods in order to assert that an activity or child workflow was dispatched that passes a given "truth test". The arguments for the activity or child workflow will be passed to the callback.
 
 ```
-WorkflowStub::assertDispatched(TestOtherActivity::class, static function ($string) {
+WorkflowStub::assertDispatched(TestOtherActivity::class, function ($string) {
     return $string === 'other';
 });
 ```
