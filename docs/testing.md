@@ -6,7 +6,7 @@ sidebar_position: 7
 
 ## Workflows
 
-You can execute workflows synchronously in your test environment and mock activities to define expected behaviors and outputs without running the actual implementations.
+You can execute workflows synchronously in your test environment and mock activities and child workflows to define expected behaviors and outputs without running the actual implementations.
 
 ```
 use Workflow\ActivityStub;
@@ -36,10 +36,14 @@ public function testWorkflow()
     $workflow->start();
 
     $this->assertSame($workflow->output(), 'result');
+
+    WorkflowStub::assertDispatched(MyActivity::class);
 }
 ```
 
 You can also provide a callback instead of a result value to ` WorkflowStub::mock()`.
+
+The workflow `$context` along with any arguments for the current activity will also be passed to the callback.
 
 ```
 public function testWorkflow()
@@ -57,7 +61,26 @@ public function testWorkflow()
 }
 ```
 
-The workflow `$context` along with any arguments for the current activity will also be passed to the callback.
+You can assert which activities or child workflows were dispatched by using the `assertDispatched`, `assertNotDispatched`, and `assertNothingDispatched` methods:
+
+```
+WorkflowStub::assertDispatched(MyActivity::class);
+
+// Assert the activity was dispatched twice...
+WorkflowStub::assertDispatched(MyActivity::class, 2);
+
+WorkflowStub::assertNotDispatched(MyActivity::class);
+
+WorkflowStub::assertNothingDispatched();
+```
+
+You may pass a closure to the `assertDispatched` or `assertNotDispatched` methods in order to assert that an activity or child workflow was dispatched that passes a given "truth test". The arguments for the activity or child workflow will be passed to the callback.
+
+```
+WorkflowStub::assertDispatched(TestOtherActivity::class, static function ($string) {
+    return $string === 'other';
+});
+```
 
 ## Skipping Time
 
