@@ -36,8 +36,6 @@ public function testWorkflow()
     $workflow->start();
 
     $this->assertSame($workflow->output(), 'result');
-
-    WorkflowStub::assertDispatched(MyActivity::class);
 }
 ```
 
