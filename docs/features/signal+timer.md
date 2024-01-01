@@ -24,7 +24,7 @@ class MyWorkflow extends Workflow
     public function execute()
     {
         // Wait for 5 minutes or $ready = true, whichever comes first
-        yield WorkflowStub::awaitWithTimeout(300, fn () => $this->ready);
+        $result = yield WorkflowStub::awaitWithTimeout('5 minutes', fn () => $this->ready);
     }
 }
 ```
