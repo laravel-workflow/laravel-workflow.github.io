@@ -24,7 +24,7 @@ class MyWorkflow extends Workflow
     public function execute()
     {
         // Wait for 5 minutes or $ready = true, whichever comes first
-        $result = yield WorkflowStub::awaitWithTimeout('5 minutes', fn () => $this->ready);
+        $result = yield WorkflowStub::awaitWithTimeout(300, fn () => $this->ready);
     }
 }
 ```
@@ -37,4 +37,4 @@ $workflow->setReady();
 
 Or, if the specified timeout is reached, the workflow will continue without the signal. The return value is `true` if the signal was received before the timeout, or `false` if the timeout was reached without receiving the signal.
 
-**Important:** The `awaitWithTimeout()` method should only be used in a workflow, and not in an activity.
+**Note:** You can also specify the time to wait as a string e.g. '5 minutes'.
