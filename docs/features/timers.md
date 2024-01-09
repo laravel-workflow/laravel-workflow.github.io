@@ -27,4 +27,6 @@ class MyWorkflow extends Workflow
 }
 ```
 
+You may also specify the time to wait as a string e.g. '5 seconds' or '30 minutes'.
+
 **Important:** When using timers, you should not use the `Carbon::now()` method to get the current time. Instead, you should use the `WorkflowStub::now()` method, which will return the current time as seen by the workflow system. This is important because the actual time may not match the time as seen by your application.
