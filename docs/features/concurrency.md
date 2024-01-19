@@ -65,7 +65,7 @@ class MyWorkflow extends Workflow
         return [
             yield ActivityStub::make(MyActivity1::class),
             yield ActivityStub::all([
-                 ActivityStub::async(fn () => [
+                ActivityStub::async(fn () => [
                     yield ActivityStub::make(MyActivity2::class),
                     yield ActivityStub::make(MyActivity3::class),
                 ]),
