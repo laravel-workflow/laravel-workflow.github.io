@@ -48,7 +48,7 @@ class MyWorkflow extends Workflow
 }
 ```
 
-The main difference between the serial example and the parallel execution example is the number of `yield` statements. In the serial example, there are 3 `yield` statements, one for each activity. This means that the workflow will pause and wait for each activity to complete before continuing to the next one. In the parallel example, there is only 1 `yield` statement, which wraps all of the activities in a call to ActivityStub::all(). This means that all of the activities will be executed in parallel, and the workflow will pause and wait for all of them to complete as a group before continuing.
+The main difference between the serial example and the parallel execution example is the number of `yield` statements. In the serial example, there are 3 `yield` statements, one for each activity. This means that the workflow will pause and wait for each activity to complete before continuing to the next one. In the parallel example, there is only 1 `yield` statement, which wraps all of the activities in a call to `ActivityStub::all()`. This means that all of the activities will be executed in parallel, and the workflow will pause and wait for all of them to complete as a group before continuing.
 
 ## Mix and Match
 
