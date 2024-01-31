@@ -55,7 +55,7 @@ Attributes:
 Triggered when an activity successfully completes.
 
 Attributes:
-- `workflowId`: Unique identifier for the workflow.
+- `workflowId`: The ID of the parent workflow.
 - `activityId`: Unique identifier for the activity.
 - `output`: The result returned by the activity.
 - `timestamp`: Timestamp of when the activity completed.
@@ -65,7 +65,7 @@ Attributes:
 Triggered when an activity fails during execution.
 
 Attributes:
-- `workflowId`: Unique identifier for the workflow.
+- `workflowId`: The ID of the parent workflow.
 - `activityId`: Unique identifier for the activity.
 - `output`: Error message or exception details.
 - `timestamp`: Timestamp of when the activity failed.
