@@ -8,7 +8,7 @@ Laravel Workflow provides the ability to suspend the execution of a workflow and
 
 To use timers, you can use the `WorkflowStub::timer($seconds)` method within your workflow. This method returns a `Promise` that will be resolved after the specified number of seconds have passed.
 
-Here is an example of using a timer in a workflow:
+Here is an example of using a timer:
 
 ```php
 use Workflow\WorkflowStub;
