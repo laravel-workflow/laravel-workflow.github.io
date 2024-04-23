@@ -63,4 +63,4 @@ Run the workflow and activity tests.
 php artisan test
 ```
 
-That's it! You can now create and test workflows.
+You can now create and test workflows.
