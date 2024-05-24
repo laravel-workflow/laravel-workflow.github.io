@@ -28,7 +28,9 @@ You can also control which workflows are pruned by extending the base workflow m
 ```php
 public function prunable(): Builder
 {
-    //
+    return static::where('status', 'completed')
+            ->where('created_at', '<=', now()->subMonth())
+            ->whereDoesntHave('parents');
 }
 ```
 
