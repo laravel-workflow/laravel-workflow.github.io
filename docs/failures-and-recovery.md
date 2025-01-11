@@ -41,11 +41,28 @@ class MyWorkflow extends Workflow
 }
 ```
 
+## Non-retryable Exceptions
+
+In certain cases, you may encounter exceptions that should not be retried. These are referred to as non-retryable exceptions. When an activity throws a non-retryable exception, the workflow will immediately mark the activity as failed and stop retrying.
+
+```php
+use Workflow\Activity;
+use Workflow\Exceptions\NonRetryableException;
+
+class MyNonRetryableActivity extends Activity
+{
+    public function execute()
+    {
+        throw new NonRetryableException('This is a non-retryable error');
+    }
+}
+```
+
 ## Failing Activities
 
 The default value for `$tries` is 0 which means to retry forever. This is because the retry policy includes a backoff function which increases the delay between each retry attempt. This gives you time to fix the error without creating too many attempts.
 
-There are two types of errors that can occur in a activity: recoverable errors and non-recoverable errors. Recoverable errors are temporary and can be resolved without intervention, such as a timeout or temporary network failure. Non-recoverable errors require manual intervention, such as a deployment or code change.
+There are two types of failures that can occur in a activity: recoverable failures and non-recoverable failures. Recoverable failures are temporary and can be resolved without intervention, such as a timeout or temporary network failure. Non-recoverable failures require manual intervention, such as a deployment or code change.
 
 ## Recovery Process
 
