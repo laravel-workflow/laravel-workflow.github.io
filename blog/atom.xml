@@ -54,7 +54,7 @@
         </author>
         <category label="ai" term="ai"/>
         <category label="image-moderation" term="image-moderation"/>
-        <category label="laravel-workflow" term="laravel-workflow"/>
+        <category label="workflow" term="workflow"/>
         <category label="automation" term="automation"/>
     </entry>
     <entry>
