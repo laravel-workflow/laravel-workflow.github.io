@@ -85,8 +85,8 @@ curl -X POST "https://example.com/webhooks/signal/order-workflow/1/mark-as-shipp
 The `$this->webhookUrl()` helper generates webhook URLs for starting workflows or sending signals.
 
 ```
-$activity->webhookUrl();
-$activity->webhookUrl('signalMethod');
+$this->webhookUrl();
+$this->webhookUrl('signalMethod');
 ```
 
 Parameters
