@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunklaravel_workflow=self.webpackChunklaravel_workflow||[]).push([[5880],{3210:s=>{s.exports=JSON.parse('{"label":"distributed-systems","permalink":"/blog/tags/distributed-systems","allTagsPath":"/blog/tags","count":1}')}}]);
