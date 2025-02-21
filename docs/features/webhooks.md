@@ -81,6 +81,37 @@ curl -X POST "https://example.com/webhooks/signal/order-workflow/1/mark-as-shipp
      -H "Content-Type: application/json"
 ```
 
+## Webhook URL Helper
+The `$this->webhookUrl()` helper generates webhook URLs for starting workflows or sending signals.
+
+```
+$activity->webhookUrl();
+$activity->webhookUrl('signalMethod');
+```
+
+Parameters
+- string $signalMethod = '' (optional)
+
+If empty, returns the URL for starting the workflow.
+
+If provided, returns the URL for sending a signal to an active workflow instance.
+
+```
+use Workflow\Activity;
+
+class ShipOrderActivity extends Activity
+{
+    public function execute(string $email, StoredWorkflow $storedWorkflow): void
+    {
+        $startUrl = $this->webhookUrl();
+        // $startUrl = '/webhooks/start/order-workflow';
+
+        $signalUrl = $this->webhookUrl('markAsShipped');
+        // $signalUrl = '/webhooks/signal/order-workflow/{workflowId}/mark-as-shipped';
+    }
+}
+```
+
 ## Webhook Authentication
 By default, webhooks don't require authentication but this can be configured in `config/workflows.php`.
 
