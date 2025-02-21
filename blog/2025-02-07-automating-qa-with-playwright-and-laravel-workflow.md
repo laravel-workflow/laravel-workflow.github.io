@@ -92,7 +92,9 @@ use Workflow\WorkflowStub;
 class Playwright extends Command
 {
     protected $signature = 'app:playwright';
+
     protected $description = 'Runs a playwright workflow';
+
     public function handle()
     {
         $workflow = WorkflowStub::make(CheckConsoleErrorsWorkflow::class);
@@ -116,8 +118,11 @@ class CheckConsoleErrorsWorkflow extends Workflow
     public function execute(string $url)
     {
         $result = yield ActivityStub::make(CheckConsoleErrorsActivity::class, $url);
+
         $mp4 = yield ActivityStub::make(ConvertVideoActivity::class, $result['video']);
-        return [            'errors' => $result['errors'],
+
+        return [
+            'errors' => $result['errors'],
             'mp4' => $mp4,
         ];
     }
@@ -139,6 +144,7 @@ class CheckConsoleErrorsActivity extends Activity
         $result = Process::run([
             'node', base_path('playwright-script.js'), $url
         ])->throw();
+
         return json_decode($result->output(), true);
     }
 }
@@ -159,10 +165,13 @@ class ConvertVideoActivity extends Activity
     public function execute(string $webm)
     {
         $mp4 = str_replace('.webm', '.mp4', $webm);
+
         Process::run([
             'ffmpeg', '-i', $webm, '-c:v', 'libx264', '-preset', 'fast', '-crf', '23', '-c:a', 'aac', '-b:a', '128k', $mp4
         ])->throw();
+
         unlink($webm);
+
         return $mp4;
     }
 }
