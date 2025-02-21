@@ -150,11 +150,11 @@ curl -X POST "https://example.com/webhooks/start/order-workflow" \
 By default, webhooks are accessible under `/webhooks`. You can customize the route path in `config/workflows.php`:
 
 ```php
-'webhooks_route' => 'api/webhooks',
+'webhooks_route' => 'workflows',
 ```
 
 After this change, webhooks will be accessible under:
 ```
-POST /api/webhooks/start/order-workflow
-POST /api/webhooks/signal/order-workflow/{workflowId}/mark-as-shipped
+POST /workflows/start/order-workflow
+POST /workflows/signal/order-workflow/{workflowId}/mark-as-shipped
 ```
