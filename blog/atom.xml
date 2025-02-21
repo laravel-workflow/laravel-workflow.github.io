@@ -19,7 +19,7 @@
             <uri>https://github.com/rmcdaniel</uri>
         </author>
         <category label="playwright" term="playwright"/>
-        <category label="laravel-workflow" term="laravel-workflow"/>
+        <category label="workflow" term="workflow"/>
         <category label="automation" term="automation"/>
         <category label="qa" term="qa"/>
         <category label="testing" term="testing"/>

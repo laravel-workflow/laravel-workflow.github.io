@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunklaravel_workflow=self.webpackChunklaravel_workflow||[]).push([[2477],{937:l=>{l.exports=JSON.parse('{"label":"laravel-workflow","permalink":"/blog/tags/laravel-workflow","allTagsPath":"/blog/tags","count":2}')}}]);
