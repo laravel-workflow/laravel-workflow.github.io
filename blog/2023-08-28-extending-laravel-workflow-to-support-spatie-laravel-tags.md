@@ -11,7 +11,7 @@ tags: [laravel, workflow, spatie, tags, automation]
 
 ![captionless image](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*4YFhkvL6nZ3ny4NjGe6sMQ.png)
 
-## One of the strengths of the Laravel ecosystem is its flexibility, thanks to a myriad of community-driven packages that enhance the framework’s capabilities. The `laravel-workflow` and `spatie/laravel-tags` packages are two such examples, and in this post, we'll integrate them together to make workflows taggable.
+One of the strengths of the Laravel ecosystem is its flexibility, thanks to a myriad of community-driven packages that enhance the framework’s capabilities. The `laravel-workflow` and `spatie/laravel-tags` packages are two such examples, and in this post, we'll integrate them together to make workflows taggable.
 
 ## Installation Instructions
 
