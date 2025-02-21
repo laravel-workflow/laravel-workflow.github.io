@@ -6,7 +6,7 @@ authors:
   title: Core Team
   url: https://github.com/rmcdaniel
   image_url: https://github.com/rmcdaniel.png
-tags: [playwright, laravel-workflow, automation, qa, testing]
+tags: [playwright, workflow, automation, qa, testing]
 ---
 
 ![captionless image](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*b6eXVs5J3aRNzYAiqnS9Vw.png)
