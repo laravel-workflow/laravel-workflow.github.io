@@ -6,7 +6,7 @@ authors:
   title: Core Team
   url: https://github.com/rmcdaniel
   image_url: https://github.com/rmcdaniel.png
-tags: [microservices, laravel-workflow, communication, distributed-systems]
+tags: [microservices, workflow, communication, distributed-systems]
 ---
 
 ![captionless image](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*nCy08NPtCpERqC09SVBFfg.jpeg)
