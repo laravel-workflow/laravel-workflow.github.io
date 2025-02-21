@@ -177,7 +177,7 @@ class ConvertVideoActivity extends Activity
 }
 ```
 
-## Try It Out in a GitHub Codespace 🚀
+## 🚀 Try It Out in a GitHub Codespace
 
 You don’t need to set up anything on your local machine. Everything is already configured in the **Laravel Workflow Sample App**.
 
@@ -207,7 +207,7 @@ That’s it! The workflow will execute, capture console errors, record a video, 
 
 By integrating Playwright with Laravel Workflow, we’ve automated frontend error detection and debugging. This setup allows teams to quickly identify and resolve issues, all while leveraging Laravel’s queue system to run tasks asynchronously.
 
-## 🔗 **Next Steps:**
+## 🔗 **Next Steps**
 
 *   Check out the [Laravel Workflow repo](https://github.com/laravel-workflow/laravel-workflow) on GitHub.
 *   Explore more workflows in the [sample app](https://github.com/laravel-workflow/sample-app).
