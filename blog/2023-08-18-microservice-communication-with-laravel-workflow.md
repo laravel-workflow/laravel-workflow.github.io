@@ -117,6 +117,7 @@ class CreateWorkflowsTable extends Migration
 ```php
 // app/Models/StoredWorkflow.php
 namespace App\Models;
+
 use Workflow\Models\StoredWorkflow as BaseStoredWorkflow;
 
 class StoredWorkflow extends BaseStoredWorkflow
@@ -155,6 +156,7 @@ class MyWorkflow extends Workflow
 {
     public $connection = 'shared';
     public $queue = 'workflow';
+
     public function execute($name)
     {
         yield ActivityStub::make(MyActivity::class, $name);
@@ -178,6 +180,7 @@ class MyActivity extends Activity
 {
     public $connection = 'shared';
     public $queue = 'activity';
+
     public function execute($name)
     {
         return "Hello, {$name}!";
