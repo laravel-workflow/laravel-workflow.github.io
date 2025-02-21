@@ -69,7 +69,7 @@
             <uri>https://github.com/rmcdaniel</uri>
         </author>
         <category label="microservices" term="microservices"/>
-        <category label="laravel-workflow" term="laravel-workflow"/>
+        <category label="workflow" term="workflow"/>
         <category label="communication" term="communication"/>
         <category label="distributed-systems" term="distributed-systems"/>
     </entry>
