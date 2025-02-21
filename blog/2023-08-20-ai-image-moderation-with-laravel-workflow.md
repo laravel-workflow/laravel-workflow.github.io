@@ -49,11 +49,14 @@ CLARIFAI_USER=username
 ### 3. Create a service at `app/Services/ClarifAI.php`.
 ```php
 namespace App\Services;
+
 use Illuminate\Support\Facades\Http;
+
 class ClarifAI
 {
     private $apiKey;
     private $apiUrl;
+
     public function __construct()
     {
         $app = config('services.clarifai.app');
@@ -62,12 +65,14 @@ class ClarifAI
         $this->apiKey = config('services.clarifai.api_key');
         $this->apiUrl = "https://api.clarifai.com/v2/users/{$user}/apps/{$app}/workflows/{$workflow}/results/";
     }
+
     public function checkImage(string $image): bool
     {
         $response = Http::withToken($this->apiKey, 'Key')
             ->post($this->apiUrl, ['inputs' => [
                 ['data' => ['image' => ['base64' => base64_encode($image)]]],
             ]]);
+
         return collect($response->json('results.0.outputs.0.data.concepts', []))
             ->filter(fn ($value) => $value['name'] === 'safe')
             ->map(fn ($value) => round((float) $value['value']) > 0)
@@ -80,6 +85,7 @@ class ClarifAI
 
 ```php
 namespace App\Workflows;
+
 use Workflow\ActivityStub;
 use Workflow\SignalMethod;
 use Workflow\WorkflowStub;
@@ -105,11 +111,14 @@ class ImageModerationWorkflow extends Workflow
     public function execute($imagePath)
     {
         $safe = yield from $this->check($imagePath);
+
         if (! $safe) {
             yield from $this->unsafe($imagePath);
             return 'unsafe';
         }
+
         yield from $this->moderate($imagePath);
+
         return $this->approved ? 'approved' : 'rejected';
     }
 
@@ -130,7 +139,9 @@ class ImageModerationWorkflow extends Workflow
     {
         while (true) {
             yield ActivityStub::make(NotifyImageModeratorActivity::class, $imagePath);
+
             $signaled = yield WorkflowStub::awaitWithTimeout('24 hours', fn () => $this->approved || $this->rejected);
+
             if ($signaled) break;
         }
     }
@@ -142,9 +153,11 @@ class ImageModerationWorkflow extends Workflow
 ### Automated Image Check
 ```php
 namespace App\Workflows;
+
 use App\Services\ClarifAI;
 use Illuminate\Support\Facades\Storage;
 use Workflow\Activity;
+
 class AutomatedImageCheckActivity extends Activity
 {
     public function execute($imagePath)
@@ -158,8 +171,10 @@ class AutomatedImageCheckActivity extends Activity
 ### Logging Unsafe Images
 ```php
 namespace App\Workflows;
+
 use Illuminate\Support\Facades\Log;
 use Workflow\Activity;
+
 class LogUnsafeImageActivity extends Activity
 {
     public function execute($imagePath)
@@ -172,8 +187,10 @@ class LogUnsafeImageActivity extends Activity
 ### Deleting Images
 ```php
 namespace App\Workflows;
+
 use Illuminate\Support\Facades\Storage;
 use Workflow\Activity;
+
 class DeleteImageActivity extends Activity
 {
     public function execute($imagePath)
