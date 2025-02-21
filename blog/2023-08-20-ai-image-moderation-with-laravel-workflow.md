@@ -6,7 +6,7 @@ authors:
   title: Core Team
   url: https://github.com/rmcdaniel
   image_url: https://github.com/rmcdaniel.png
-tags: [ai, image-moderation, laravel-workflow, automation]
+tags: [ai, image-moderation, workflow, automation]
 ---
 
 ![captionless image](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Sz-f9McEdB5UIlr55GOjyw.png)
