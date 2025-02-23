@@ -37,4 +37,4 @@ Additionally, when measuring elapsed time in workflows (e.g., tracking how long 
 $start = yield WorkflowStub::sideEffect(fn () => WorkflowStub::now());
 ```
 
-This ensures a checkpoint is created, preventing replay-related inconsistencies and guaranteeing accurate time calculations.
+This ensures an event log is created, preventing replay-related inconsistencies and guaranteeing accurate time calculations.
