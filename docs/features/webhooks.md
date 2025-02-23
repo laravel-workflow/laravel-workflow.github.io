@@ -101,7 +101,7 @@ use Workflow\Activity;
 
 class ShipOrderActivity extends Activity
 {
-    public function execute(string $email, StoredWorkflow $storedWorkflow): void
+    public function execute(string $email): void
     {
         $startUrl = $this->webhookUrl();
         // $startUrl = '/webhooks/start/order-workflow';
