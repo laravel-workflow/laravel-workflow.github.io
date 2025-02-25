@@ -31,7 +31,7 @@ You may also specify the time to wait as a string e.g. '5 seconds' or '30 minute
 
 **Important:** When using timers, do not use `Carbon::now()` to get the current time. Instead, use `WorkflowStub::now()`, which returns the current time as seen by the workflow system. This is crucial because the actual time may not match your application's system clock.
 
-Additionally, when measuring elapsed time in workflows (e.g., tracking how long an activity takes), always get your start time with:
+Additionally, when measuring elapsed time in workflows (e.g., tracking how long an activity takes), always get your start and end times with:
 
 ```php
 $start = yield WorkflowStub::sideEffect(fn () => WorkflowStub::now());
