@@ -6,62 +6,59 @@ sidebar_position: 7
 
 [This](https://github.com/laravel-workflow/sample-app) is a sample Laravel 12 application with example workflows that you can run inside a GitHub codespace.
 
-<br />
+### Step 1
+Create a codespace from the main branch of this repo.
 
-**Step 1**
+<img src="https://user-images.githubusercontent.com/1130888/233664377-f300ad50-5436-4bb8-b172-c52e12047264.png" alt="image" width="300">
 
-Create a codespace from the main branch of [this](https://github.com/laravel-workflow/sample-app) repo.
+### Step 2
+Once the codespace has been created, wait for the codespace to build. This should take between 5 to 10 minutes.
 
-<img src="https://user-images.githubusercontent.com/1130888/233664377-f300ad50-5436-4bb8-b172-c52e12047264.png" alt="image" width="300" />
 
-**Step 2**
+### Step 3
+Once it is done. You will see the editor and the terminal at the bottom.
 
-Wait for the codespace to build. This should take between 5 to 10 minutes. Once the codespace has been created. You will see the editor and the terminal at the bottom.
+<img src="https://user-images.githubusercontent.com/1130888/233665550-1a4f2098-2919-4108-ac9f-bef1a9f2f47c.png" alt="image" width="400">
 
-<img src="https://user-images.githubusercontent.com/1130888/233665550-1a4f2098-2919-4108-ac9f-bef1a9f2f47c.png" alt="image" width="400" />
-
-**Step 3**
-
-Run the migrations to create the necessary database tables.
+### Step 4
+Run composer install.
 
 ```bash
-php artisan migrate
+composer install
 ```
 
-**Step 4**
+### Step 5
+Run the init command to setup the app, install extra dependencies and run the migrations.
 
+```bash
+php artisan app:init
+```
+
+### Step 6
 Start the queue worker. This will enable the processing of workflows and activities.
 
 ```bash
 php artisan queue:work
 ```
 
-**Step 5**
-
+### Step 7
 Create a new terminal window.
 
-<img src="https://user-images.githubusercontent.com/1130888/233666917-029247c7-9e6c-46de-b304-27473fd34517.png" alt="image" width="200" />
+<img src="https://user-images.githubusercontent.com/1130888/233666917-029247c7-9e6c-46de-b304-27473fd34517.png" alt="image" width="200">
 
-**Step 6**
-
+### Step 8
 Start the example workflow inside the new terminal window.
 
 ```bash
 php artisan app:workflow
 ```
 
-**Step 7**
+### Step 9
+You can view the waterline dashboard at https://[your-codespace-name]-80.preview.app.github.dev/waterline/dashboard.
 
-You can view the waterline dashboard via the mapped port.
+<img src="https://user-images.githubusercontent.com/1130888/233669600-3340ada6-5f73-4602-8d82-a81a9d43f883.png" alt="image" width="600">
 
-<img src="https://user-images.githubusercontent.com/1130888/233668485-b988e336-0462-4bbc-bb77-78c73df363b4.png" alt="image" width="500" />
-
-Add `/waterline/dashboard` to the URL e.g. `https://[your-codespace-name]-80.preview.app.github.dev/waterline/dashboard`
-
-<img src="https://user-images.githubusercontent.com/1130888/233669600-3340ada6-5f73-4602-8d82-a81a9d43f883.png" alt="image" width="600" />
-
-**Step 8**
-
+### Step 10
 Run the workflow and activity tests.
 
 ```bash
