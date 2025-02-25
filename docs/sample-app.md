@@ -6,19 +6,19 @@ sidebar_position: 7
 
 [This](https://github.com/laravel-workflow/sample-app) is a sample Laravel 12 application with example workflows that you can run inside a GitHub codespace.
 
+
 ### Step 1
 Create a codespace from the main branch of this repo.
 
-<img src="https://user-images.githubusercontent.com/1130888/233664377-f300ad50-5436-4bb8-b172-c52e12047264.png" alt="image" width="300">
+![image](https://user-images.githubusercontent.com/1130888/233664377-f300ad50-5436-4bb8-b172-c52e12047264.png)
 
 ### Step 2
 Once the codespace has been created, wait for the codespace to build. This should take between 5 to 10 minutes.
 
-
 ### Step 3
 Once it is done. You will see the editor and the terminal at the bottom.
 
-<img src="https://user-images.githubusercontent.com/1130888/233665550-1a4f2098-2919-4108-ac9f-bef1a9f2f47c.png" alt="image" width="400">
+![image](https://user-images.githubusercontent.com/1130888/233665550-1a4f2098-2919-4108-ac9f-bef1a9f2f47c.png)
 
 ### Step 4
 Run composer install.
@@ -44,7 +44,7 @@ php artisan queue:work
 ### Step 7
 Create a new terminal window.
 
-<img src="https://user-images.githubusercontent.com/1130888/233666917-029247c7-9e6c-46de-b304-27473fd34517.png" alt="image" width="200">
+![image](https://user-images.githubusercontent.com/1130888/233666917-029247c7-9e6c-46de-b304-27473fd34517.png)
 
 ### Step 8
 Start the example workflow inside the new terminal window.
@@ -56,7 +56,7 @@ php artisan app:workflow
 ### Step 9
 You can view the waterline dashboard at https://[your-codespace-name]-80.preview.app.github.dev/waterline/dashboard.
 
-<img src="https://user-images.githubusercontent.com/1130888/233669600-3340ada6-5f73-4602-8d82-a81a9d43f883.png" alt="image" width="600">
+![image](https://user-images.githubusercontent.com/1130888/233669600-3340ada6-5f73-4602-8d82-a81a9d43f883.png)
 
 ### Step 10
 Run the workflow and activity tests.
