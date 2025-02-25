@@ -4,7 +4,7 @@ sidebar_position: 7
 
 # Sample App
 
-[This](https://github.com/laravel-workflow/sample-app) is a sample Laravel 11 application with example workflows that you can run inside a GitHub codespace.
+[This](https://github.com/laravel-workflow/sample-app) is a sample Laravel 12 application with example workflows that you can run inside a GitHub codespace.
 
 <br />
 
@@ -16,17 +16,11 @@ Create a codespace from the main branch of [this](https://github.com/laravel-wor
 
 **Step 2**
 
-Wait for the codespace to build. This should take between 5 to 10 minutes.
-
-<img src="https://user-images.githubusercontent.com/1130888/233664397-4ae156f3-f69b-406f-b6d4-4f9316684000.png" alt="image" width="500" />
-
-**Step 3**
-
-Once the codespace has been created. You will see the editor and the terminal at the bottom.
+Wait for the codespace to build. This should take between 5 to 10 minutes. Once the codespace has been created. You will see the editor and the terminal at the bottom.
 
 <img src="https://user-images.githubusercontent.com/1130888/233665550-1a4f2098-2919-4108-ac9f-bef1a9f2f47c.png" alt="image" width="400" />
 
-**Step 4**
+**Step 3**
 
 Run the migrations to create the necessary database tables.
 
@@ -34,7 +28,7 @@ Run the migrations to create the necessary database tables.
 php artisan migrate
 ```
 
-**Step 5**
+**Step 4**
 
 Start the queue worker. This will enable the processing of workflows and activities.
 
@@ -42,13 +36,13 @@ Start the queue worker. This will enable the processing of workflows and activit
 php artisan queue:work
 ```
 
-**Step 6**
+**Step 5**
 
 Create a new terminal window.
 
 <img src="https://user-images.githubusercontent.com/1130888/233666917-029247c7-9e6c-46de-b304-27473fd34517.png" alt="image" width="200" />
 
-**Step 7**
+**Step 6**
 
 Start the example workflow inside the new terminal window.
 
@@ -56,7 +50,7 @@ Start the example workflow inside the new terminal window.
 php artisan app:workflow
 ```
 
-**Step 8**
+**Step 7**
 
 You can view the waterline dashboard via the mapped port.
 
@@ -66,7 +60,7 @@ Add `/waterline/dashboard` to the URL e.g. `https://[your-codespace-name]-80.pre
 
 <img src="https://user-images.githubusercontent.com/1130888/233669600-3340ada6-5f73-4602-8d82-a81a9d43f883.png" alt="image" width="600" />
 
-**Step 9**
+**Step 8**
 
 Run the workflow and activity tests.
 
