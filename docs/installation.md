@@ -8,7 +8,7 @@ sidebar_position: 2
 
 Laravel Workflow requires the following to run:
 
-- PHP 8 or later
+- PHP 8.1 or later
 - Laravel 9 or later
 
 Laravel Workflow can be used with any queue driver that Laravel supports (except the `sync` driver), including:
