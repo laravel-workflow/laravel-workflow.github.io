@@ -125,7 +125,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} <a href="https://taskvalve.com">TaskValve</a>.`,
+        copyright: `Copyright © ${new Date().getFullYear()} <a href="https://laravel-workflow.com">Workflow</a>.`,
       },
       prism: {
         theme: lightCodeTheme,
