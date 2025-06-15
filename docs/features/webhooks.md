@@ -113,13 +113,14 @@ class ShipOrderActivity extends Activity
 ```
 
 ## Webhook Authentication
-By default, webhooks don't require authentication but this can be configured in `config/workflows.php`.
+By default, webhooks don't require authentication, but you can configure one of several strategies in `config/workflows.php`.
 
 ### Authentication Methods
 Laravel Workflow supports:
 1. No Authentication (none)
 2. Token-based Authentication (token)
 3. HMAC Signature Verification (signature)
+4. Custom Authentication (custom)
 
 ### Token Authentication
 For token authentication, webhooks require a valid API token in the request headers. The default header is `Authorization` but you can change this in the configuration settings.
@@ -145,6 +146,30 @@ curl -X POST "https://example.com/webhooks/start/order-workflow" \
      -H "X-Signature: $SIGNATURE" \
      -d "$BODY"
 ```
+
+### Custom Authentication
+To use a custom authenticator, create a class that implements the following interface:
+
+```php
+use Illuminate\Http\Request;
+
+interface WebhookAuthenticator {
+    public function validate(Request $request): Request;
+}
+```
+
+Then configure it in `config/workflows.php`:
+
+```php
+'webhook_auth' => [
+    'method' => 'custom',
+    'custom' => [
+        'class' => App\Your\CustomAuthenticator::class,
+    ],
+],
+```
+
+The `validate()` method should return the `Request` if valid, or call `abort(401)` if unauthorized.
 
 ## Configuring Webhook Routes
 By default, webhooks are accessible under `/webhooks`. You can customize the route path in `config/workflows.php`:
