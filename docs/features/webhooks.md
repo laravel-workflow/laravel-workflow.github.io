@@ -148,13 +148,24 @@ curl -X POST "https://example.com/webhooks/start/order-workflow" \
 ```
 
 ### Custom Authentication
-To use a custom authenticator, create a class that implements the following interface:
+To use a custom authenticator, create a class that implements the `WebhookAuthenticator` interface:
 
 ```php
 use Illuminate\Http\Request;
+use Workflow\Auth\WebhookAuthenticator;
 
-interface WebhookAuthenticator {
-    public function validate(Request $request): Request;
+class CustomAuthenticator implements WebhookAuthenticator
+{
+    public function validate(Request $request): Request
+    {
+        $allow = true;
+
+        if ($allow) {
+            return $request;
+        } else {
+            abort(401, 'Unauthorized');
+        }
+    }
 }
 ```
 
