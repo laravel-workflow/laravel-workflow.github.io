@@ -29,7 +29,7 @@ To trigger a signal on a workflow, call the method on the workflow instance. The
 ```php
 use Workflow\WorkflowStub;
 
-$workflow = WorkflowStub::make(MyWorkflow::class);
+$workflow = WorkflowStub::load($workflowId);
 
 $workflow->setReady(true);
 ```
