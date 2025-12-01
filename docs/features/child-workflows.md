@@ -21,6 +21,117 @@ class ParentWorkflow extends Workflow
 }
 ```
 
+## Signaling Child Workflows
+
+Parent workflows can signal their child workflows to coordinate behavior or pass data. To signal a child safely without corrupting the parent's execution context, use the `child()` or `children()` methods.
+
+### Getting a Child Handle
+
+The `child()` method returns a `ChildWorkflowHandle` for the most recently created child workflow:
+
+```php
+use Workflow\ChildWorkflowStub;
+use Workflow\Workflow;
+
+class ParentWorkflow extends Workflow
+{
+    public function execute()
+    {
+        $childPromise = ChildWorkflowStub::make(ChildWorkflow::class);
+        
+        $childHandle = $this->child();
+        
+        $childHandle->approve('approved');
+        
+        $result = yield $childPromise;
+        
+        return $result;
+    }
+}
+```
+
+### Multiple Children
+
+Use the `children()` method to get handles for all child workflows created by the parent:
+
+```php
+use Workflow\ChildWorkflowStub;
+use Workflow\Workflow;
+
+class ParentWorkflow extends Workflow
+{
+    public function execute()
+    {
+        $child1 = ChildWorkflowStub::make(ChildWorkflow::class, 'first');
+        $child2 = ChildWorkflowStub::make(ChildWorkflow::class, 'second');
+        $child3 = ChildWorkflowStub::make(ChildWorkflow::class, 'third');
+        
+        $childHandles = $this->children();
+        
+        foreach ($childHandles as $childHandle) {
+            $childHandle->approve('approved');
+        }
+        
+        $results = yield ChildWorkflowStub::all([$child1, $child2, $child3]);
+        
+        return $results;
+    }
+}
+```
+
+The `children()` method returns children in reverse chronological order (most recently created first).
+
+### Forwarding Signals to Children
+
+You can forward external signals to child workflows by combining signal methods with child handles:
+
+```php
+use Workflow\ChildWorkflowStub;
+use Workflow\SignalMethod;
+use Workflow\Workflow;
+use Workflow\WorkflowStub;
+
+class ParentWorkflow extends Workflow
+{
+    private bool $receivedApproval = false;
+    private ?string $approvalStatus = null;
+
+    #[SignalMethod]
+    public function approve(string $status): void
+    {
+        $this->receivedApproval = true;
+        $this->approvalStatus = $status;
+    }
+
+    public function execute()
+    {
+        $childPromise = ChildWorkflowStub::make(ChildWorkflow::class);
+        
+        $childHandle = $this->child();
+        
+        yield WorkflowStub::await(fn () => $this->receivedApproval);
+        
+        if ($childHandle && $this->approvalStatus) {
+            $childHandle->processApproval($this->approvalStatus);
+        }
+        
+        $result = yield $childPromise;
+        
+        return $result;
+    }
+}
+```
+
+Always call `$this->child()` or `$this->children()` in the `execute()` method. Never call these methods in signal methods or query methods, as this violates determinism during workflow replay.
+
+### Getting Child Workflow IDs
+
+You can access the underlying stored workflow ID using the `id()` method. This allows you to store the ID for external systems to signal the child directly.
+
+```php
+yield ActivityStub::make(StoreWorkflowIdActivity::class, $this->child()->id());
+```
+
 ## Async Activities
 
 Rather than creating a child workflow, you can pass a callback to `ActivityStub::async()` and it will be executed in the context of a separate workflow.
