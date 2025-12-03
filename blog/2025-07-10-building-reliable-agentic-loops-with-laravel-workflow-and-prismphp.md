@@ -166,7 +166,7 @@ It’s perfect for AI applications where accuracy, safety, and traceability are 
 
 ### Try It Now in Your Browser
 
-We’ve bundled this workflow into the official Laravel Workflow Sample App, which runs in GitHub Codespaces.
+We’ve bundled this workflow into the official Laravel Workflow [Sample App](https://github.com/laravel-workflow/sample-app), which runs in GitHub Codespaces.
 
 To launch it:
 1. Open the sample-app repo
