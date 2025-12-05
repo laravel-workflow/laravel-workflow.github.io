@@ -81,3 +81,19 @@ class MyWorkflow extends Workflow
 ![workflow](https://mermaid.ink/img/pako:eNp9kctugzAQRX8lmjUBbPOyK1WqlC6zalcVGwcbsAQYwRCVRvx7DZUS0UW88txzNc8bFFZpEFANsq8Pn6eXvDsczvNbgeZqcCbH4-sjos9g9AzGe0h3kO0h28FkD6NnMP4PwYNWD600yo14W805YK1bnYNwX6VLOTWYQ94tziontB9zV4DAYdIeTL2SqE9GuuW0IErZjHf1XRm0w11srFTahTfAud_2aUZ0KQvblaZa9WlonFwj9qMIghX7lcF6uviFbYPRqFoOWF95EiQ0ySRlOkmZjBlTxYXwrKQRKVUaEiphWTzoZfdl7aMrvfVz_jvmdtPNs1b-BhH7PORxxBNGGM1SHnkwg0iZHxFOU-YKxoxy6vL-bEmJH26POBxymvFk-QWh37PQ?type=png)
 
 Activity 1 will execute and complete before any other activities start. Activities 2 and 3 will execute in series, waiting for each to complete one after another before continuing. At the same time, activities 4 and 5 will execute together in parallel and only when they all complete will execution continue. Finally, activity 6 executes last after all others have completed.
+
+## Child Workflows in Parallel
+
+You can pass child workflows to `ActivityStub::all()` along with with other activities (but we also provide `ChildWorkflowStub::all()` if you prefer). Both of these are just thin wrappers for React Promise's `all()`. It works the same way as parallel activity execution, but for child workflows. It allows you to fan out multiple child workflows and wait for all of them to complete together.
+
+```php
+use Workflow\ChildWorkflowStub;
+
+$results = yield ChildWorkflowStub::all([
+    ChildWorkflowStub::make(ChildA::class),
+    ChildWorkflowStub::make(ChildB::class),
+    ChildWorkflowStub::make(ChildC::class),
+]);
+```
+
+This makes it easy to build hierarchical parallelism into your workflows.
