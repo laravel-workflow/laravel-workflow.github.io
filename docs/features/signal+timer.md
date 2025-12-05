@@ -37,4 +37,4 @@ $workflow->setReady();
 
 Or, if the specified timeout is reached, the workflow will continue without the signal. The return value is `true` if the signal was received before the timeout, or `false` if the timeout was reached without receiving the signal.
 
-You may also specify the time to wait as a string e.g. '30 seconds' or '5 minutes'.
+You may also specify the time to wait as a string e.g. '30 seconds', '5 minutes' or '2 weeks'.
