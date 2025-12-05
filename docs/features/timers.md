@@ -27,7 +27,7 @@ class MyWorkflow extends Workflow
 }
 ```
 
-You may also specify the time to wait as a string e.g. '5 seconds' or '30 minutes'.
+You may also specify the time to wait as a string e.g. '5 seconds', '30 minutes' or even '3 days'. Laravel Workflow can handle any duration.
 
 **Important:** When using timers, do not use `Carbon::now()` to get the current time. Instead, use `WorkflowStub::now()`, which returns the current time as seen by the workflow system. This is crucial because the actual time may not match your application's system clock.
 
