@@ -170,14 +170,15 @@ class ParentWorkflow extends Workflow
 }
 ```
 
-**Important:** When using query methods in the same workflow with child handles, you must first await for the child handle to be available in order to make it replay safe.
+**Important:** When using query methods in the same workflow with child handles, you must first await for the child handle to be available. Query methods like `$workflow->childId()` may return `null` if you query the parent workflow before the child workflow has started.
 
 Then you can interact with the child workflow directly.
 
 ```php
 $workflow = WorkflowStub::load($workflowId);
-$childWorkflow = WorkflowStub::load($workflow->childId());
-$childWorkflow->approve('approved');
+if ($childId = $workflow->childId()) {
+    WorkflowStub::load($childId)->process('approved');
+}
 ```
 
 ## Async Activities
