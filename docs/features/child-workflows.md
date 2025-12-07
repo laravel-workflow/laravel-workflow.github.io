@@ -37,13 +37,13 @@ class ParentWorkflow extends Workflow
 {
     public function execute()
     {
-        $childPromise = ChildWorkflowStub::make(ChildWorkflow::class);
+        $child = ChildWorkflowStub::make(ChildWorkflow::class);
 
         $childHandle = $this->child();
 
-        $childHandle->approve('approved');
+        $childHandle->process('approved');
 
-        $result = yield $childPromise;
+        $result = yield $child;
 
         return $result;
     }
@@ -69,7 +69,7 @@ class ParentWorkflow extends Workflow
         $childHandles = $this->children();
 
         foreach ($childHandles as $childHandle) {
-            $childHandle->approve('approved');
+            $childHandle->process('approved');
         }
 
         $results = yield ChildWorkflowStub::all([$child1, $child2, $child3]);
@@ -93,29 +93,27 @@ use Workflow\WorkflowStub;
 
 class ParentWorkflow extends Workflow
 {
-    private bool $receivedApproval = false;
+    private bool $processed = false;
     private ?string $approvalStatus = null;
 
     #[SignalMethod]
-    public function approve(string $status): void
+    public function process(string $status): void
     {
-        $this->receivedApproval = true;
+        $this->processed = true;
         $this->approvalStatus = $status;
     }
 
     public function execute()
     {
-        $childPromise = ChildWorkflowStub::make(ChildWorkflow::class);
+        $child = ChildWorkflowStub::make(ChildWorkflow::class);
 
         $childHandle = $this->child();
 
-        yield WorkflowStub::await(fn () => $this->receivedApproval);
+        yield WorkflowStub::await(fn () => $this->processed);
 
-        if ($childHandle && $this->approvalStatus) {
-            $childHandle->processApproval($this->approvalStatus);
-        }
+        $childHandle->process($this->approvalStatus);
 
-        $result = yield $childPromise;
+        $result = yield $child;
 
         return $result;
     }
