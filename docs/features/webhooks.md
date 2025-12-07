@@ -115,6 +115,8 @@ class ShipOrderActivity extends Activity
 ## Webhook Authentication
 By default, webhooks don't require authentication, but you can configure one of several strategies in `config/workflows.php`.
 
+**Important:** If webhook URLs are shared with external parties or exposed publicly, enable authentication (token or HMAC signature) to prevent unauthorized access.
+
 ### Authentication Methods
 Laravel Workflow supports:
 1. No Authentication (none)
