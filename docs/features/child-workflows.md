@@ -170,7 +170,7 @@ class ParentWorkflow extends Workflow
 }
 ```
 
-**Important:** When using query methods in the same workflow with child handles, you must first await for the child handle to be available. Query methods like `$workflow->childId()` may return `null` if you query the parent workflow before the child workflow has started.
+**Important:** When using query methods in the same workflow with child handles, you must first await for the child handle to be available. Query methods like `$workflow->childId()` may return `null` if you query the parent workflow before the child handle has finished being awaited.
 
 Then you can interact with the child workflow directly.
 
