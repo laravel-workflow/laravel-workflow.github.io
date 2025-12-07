@@ -16,7 +16,7 @@ class ParentWorkflow extends Workflow
 {
     public function execute()
     {
-        $childResult = yield ChildWorkflowStub::make(ChildWorkflow::class);
+        $result = yield ChildWorkflowStub::make(ChildWorkflow::class);
     }
 }
 ```
