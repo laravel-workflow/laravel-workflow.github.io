@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Timers
 
-Laravel Workflow provides the ability to suspend the execution of a workflow and resume at a later time. This can be useful for implementing delays, retry logic, or timeouts.
+Laravel Workflow provides the ability to suspend the execution of a workflow and resume at a later time. These are durable timers, meaning they survive restarts and failures while remaining consistent with workflow replay semantics. This can be useful for implementing delays, retry logic, or timeouts.
 
 To use timers, you can use the `WorkflowStub::timer($seconds)` method within your workflow. This method returns a `Promise` that will be resolved after the specified number of seconds have passed.
 
