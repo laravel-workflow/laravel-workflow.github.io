@@ -94,13 +94,13 @@ use Workflow\WorkflowStub;
 class ParentWorkflow extends Workflow
 {
     private bool $processed = false;
-    private ?string $approvalStatus = null;
+    private ?string $status = null;
 
     #[SignalMethod]
     public function process(string $status): void
     {
         $this->processed = true;
-        $this->approvalStatus = $status;
+        $this->status = $status;
     }
 
     public function execute()
@@ -111,7 +111,7 @@ class ParentWorkflow extends Workflow
 
         yield WorkflowStub::await(fn () => $this->processed);
 
-        $childHandle->process($this->approvalStatus);
+        $childHandle->process($this->status);
 
         $result = yield $child;
 
@@ -154,7 +154,7 @@ class ParentWorkflow extends Workflow
     private ?int $childId = null;
 
     #[QueryMethod]
-    public function getChildId(): ?int
+    public function childId(): ?int
     {
         return $this->childId;
     }
@@ -176,7 +176,7 @@ Then you can interact with the child workflow directly.
 
 ```php
 $workflow = WorkflowStub::load($workflowId);
-$childWorkflow = WorkflowStub::load($workflow->getChildId());
+$childWorkflow = WorkflowStub::load($workflow->childId());
 $childWorkflow->approve('approved');
 ```
 
