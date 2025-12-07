@@ -22,7 +22,7 @@ Each queue driver has its own [prerequisites](https://laravel.com/docs/12.x/queu
 
 Laravel Workflow also requires a cache driver that supports [locks](https://laravel.com/docs/12.x/cache#atomic-locks).
 
-> ✨ SQS Support: `WorkflowStub::timer()` or `WorkflowStub::awaitWithTimeout()` work with any duration, even when using the Amazon SQS queue driver. Laravel Workflow automatically handles SQS's delay limitation transparently.
+> ✨ SQS Support: `WorkflowStub::timer()` or `WorkflowStub::awaitWithTimeout()` work with any duration, even when using the SQS queue driver. Laravel Workflow automatically handles SQS's delay limitation transparently.
 
 ## Installing Laravel Workflow
 
