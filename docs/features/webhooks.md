@@ -85,16 +85,10 @@ curl -X POST "https://example.com/webhooks/signal/order-workflow/1/mark-as-shipp
 The `$this->webhookUrl()` helper generates webhook URLs for starting workflows or sending signals.
 
 ```
-$this->webhookUrl();
-$this->webhookUrl('signalMethod');
+public function webhookUrl(string $signalMethod = ''): string
 ```
 
-Parameters
-- string $signalMethod = '' (optional)
-
-If empty, returns the URL for starting the workflow.
-
-If provided, returns the URL for sending a signal to an active workflow instance.
+If `$signalMethod` is empty or omitted, `$this->webhookUrl()` returns the URL for starting the workflow. If `$signalMethod` is provided, `$this->webhookUrl()` returns the URL for sending a signal to an active workflow instance.
 
 ```
 use Workflow\Activity;
