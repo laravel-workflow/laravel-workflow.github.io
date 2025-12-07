@@ -122,7 +122,7 @@ class ParentWorkflow extends Workflow
 }
 ```
 
-Always call `$this->child()` or `$this->children()` in the `execute()` method. Never call these methods in signal methods or query methods, as this violates determinism during workflow replay.
+**Important:** Always call `$this->child()` or `$this->children()` in the `execute()` method. Never call these methods in signal methods or query methods, as this violates determinism during workflow replay.
 
 ### Getting Child Workflow IDs
 
@@ -172,7 +172,7 @@ class ParentWorkflow extends Workflow
 }
 ```
 
-NOTE: When using query methods in the same workflow with child handles, you must first await for the child handle to be available in order to make it replay safe.
+**Important:** When using query methods in the same workflow with child handles, you must first await for the child handle to be available in order to make it replay safe.
 
 Then you can interact with the child workflow directly.
 
