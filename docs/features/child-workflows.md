@@ -38,13 +38,13 @@ class ParentWorkflow extends Workflow
     public function execute()
     {
         $childPromise = ChildWorkflowStub::make(ChildWorkflow::class);
-        
+
         $childHandle = $this->child();
-        
+
         $childHandle->approve('approved');
-        
+
         $result = yield $childPromise;
-        
+
         return $result;
     }
 }
@@ -65,15 +65,15 @@ class ParentWorkflow extends Workflow
         $child1 = ChildWorkflowStub::make(ChildWorkflow::class, 'first');
         $child2 = ChildWorkflowStub::make(ChildWorkflow::class, 'second');
         $child3 = ChildWorkflowStub::make(ChildWorkflow::class, 'third');
-        
+
         $childHandles = $this->children();
-        
+
         foreach ($childHandles as $childHandle) {
             $childHandle->approve('approved');
         }
-        
+
         $results = yield ChildWorkflowStub::all([$child1, $child2, $child3]);
-        
+
         return $results;
     }
 }
@@ -106,17 +106,17 @@ class ParentWorkflow extends Workflow
     public function execute()
     {
         $childPromise = ChildWorkflowStub::make(ChildWorkflow::class);
-        
+
         $childHandle = $this->child();
-        
+
         yield WorkflowStub::await(fn () => $this->receivedApproval);
-        
+
         if ($childHandle && $this->approvalStatus) {
             $childHandle->processApproval($this->approvalStatus);
         }
-        
+
         $result = yield $childPromise;
-        
+
         return $result;
     }
 }
@@ -129,7 +129,57 @@ Always call `$this->child()` or `$this->children()` in the `execute()` method. N
 You can access the underlying stored workflow ID using the `id()` method. This allows you to store the ID for external systems to signal the child directly.
 
 ```php
-yield ActivityStub::make(StoreWorkflowIdActivity::class, $this->child()->id());
+use Workflow\ActivityStub;
+use Workflow\ChildWorkflowStub;
+use Workflow\Workflow;
+
+class ParentWorkflow extends Workflow
+{    
+    public function execute()
+    {
+        $child = ChildWorkflowStub::make(ChildWorkflow::class);
+        yield ActivityStub::make(StoreWorkflowIdActivity::class, $this->child()->id());
+        yield $child;
+    }
+}
+```
+
+or
+
+```php
+use Workflow\ChildWorkflowStub;
+use Workflow\QueryMethod;
+use Workflow\Workflow;
+
+class ParentWorkflow extends Workflow
+{
+    private ?int $childId = null;
+
+    #[QueryMethod]
+    public function getChildId(): ?int
+    {
+        return $this->childId;
+    }
+
+    public function execute()
+    {
+        $child = ChildWorkflowStub::make(ChildWorkflow::class);
+        $childHandle = $this->child();
+        yield WorkflowStub::await(fn () => !is_null($childHandle));
+        $this->childId = $childHandle->id();
+        yield $child;
+    }
+}
+```
+
+NOTE: When using query methods in the same workflow with child handles, you must first await for the child handle to be available in order to make it replay safe.
+
+Then you can interact with the child workflow directly.
+
+```php
+$workflow = WorkflowStub::load($workflowId);
+$childWorkflow = WorkflowStub::load($workflow->getChildId());
+$childWorkflow->approve('approved');
 ```
 
 ## Async Activities
