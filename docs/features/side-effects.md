@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # Side Effects
 
-A side effect is a closure containing non-deterministic code. The closure is only executed once and the result is saved. It will not execute again if the workflow is retried. Instead, it will return the saved result.
+A side effect is a closure containing non-deterministic code. The closure is only executed once and the result is saved. It will not execute again if the workflow is retried. Instead, it will return the saved result. This makes the workflow deterministic because replaying the workflow will always return the same stored value rather than re-running the non-deterministic code.
 
 ```php
 use Workflow\Workflow;
