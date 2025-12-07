@@ -75,6 +75,8 @@ class OrderWorkflow extends Workflow
 POST /webhooks/signal/order-workflow/{workflowId}/mark-as-shipped
 ```
 
+**Important:** The `{workflowId}` in signal webhook URLs is passed directly by the caller and is not validated for ownership. If your application requires that only authorized users can send signals to specific workflows, you should use signed URLs or implement authorization checks in a custom authenticator.
+
 ### Example Request
 ```bash
 curl -X POST "https://example.com/webhooks/signal/order-workflow/1/mark-as-shipped" \
