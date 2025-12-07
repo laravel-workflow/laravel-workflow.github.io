@@ -51,4 +51,4 @@ class MyWorkflow extends Workflow
 }
 ```
 
-**Important:** The `await()` method should only be used in a workflow, and not in an activity.
+**Note:** The `await()` method should only be used in a workflow, and not in an activity.
