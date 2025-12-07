@@ -15,6 +15,7 @@ These are the possible values returned by the `status()` method.
 ```
 WorkflowCreatedStatus
 WorkflowCompletedStatus
+WorkflowContinuedStatus
 WorkflowFailedStatus
 WorkflowPendingStatus
 WorkflowRunningStatus
@@ -23,4 +24,4 @@ WorkflowWaitingStatus
 
 This is the state machine for a workflow status.
 
-![mermaid-diagram-2022-12-09-115428](https://user-images.githubusercontent.com/1130888/206764849-32db239c-d98e-434a-8ee8-62454a1f0cc7.png)
+[![](https://mermaid.ink/img/pako:eNqVkstuwyAQRX_FmmVlR7Zrx4ZFN6m6rtpFpJYuUCEOigELQ1-W_70kVR9EdpWwYubOmasZGOBZMw4Yekstvxa0MVQmLzlRkT-PF09RklxFa212m1a_rgz3Veze17qeqK-iSTHAbrliQjXT2A0V7flUIAbY336nMndOqVmrQAzXoWXXcjvt9h-mrFDuXGx-sHlmTYWdHSwQT7SaZ46eC2JojGCArXE8BsmNpPsQhn1DAnbLJSeA_ZVRsyNA1OiZjqoHreU3ZrRrtoA3tO195Dr2-0l_ssYbc7PSTlnABTr0ADzAm49StEBZmWVpUeY1qvIihnefXi7qqkBVWZd5drmssmKM4eNgm3qlHD8BErAUGg?type=png)](https://mermaid.live/edit#pako:eNqVkstuwyAQRX_FmmVlR7Zrx4ZFN6m6rtpFpJYuUCEOigELQ1-W_70kVR9EdpWwYubOmasZGOBZMw4Yekstvxa0MVQmLzlRkT-PF09RklxFa212m1a_rgz3Veze17qeqK-iSTHAbrliQjXT2A0V7flUIAbY336nMndOqVmrQAzXoWXXcjvt9h-mrFDuXGx-sHlmTYWdHSwQT7SaZ46eC2JojGCArXE8BsmNpPsQhn1DAnbLJSeA_ZVRsyNA1OiZjqoHreU3ZrRrtoA3tO195Dr2-0l_ssYbc7PSTlnABTr0ADzAm49StEBZmWVpUeY1qvIihnefXi7qqkBVWZd5drmssmKM4eNgm3qlHD8BErAUGg)
