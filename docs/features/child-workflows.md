@@ -97,7 +97,7 @@ class ParentWorkflow extends Workflow
     private ?string $status = null;
 
     #[SignalMethod]
-    public function process(string $status): void
+    public function process(string $status)
     {
         $this->processed = true;
         $this->status = $status;
