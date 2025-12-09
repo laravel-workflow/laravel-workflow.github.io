@@ -142,7 +142,6 @@ class MyActivity extends Activity
 ```php
 // App: activity microservice
 
-use Workflow\ActivityStub;
 use Workflow\Workflow;
 
 class MyWorkflow extends Workflow
