@@ -23,11 +23,11 @@ class ParentWorkflow extends Workflow
 
 ## Signaling Child Workflows
 
-Parent workflows can signal their child workflows to coordinate behavior or pass data. To signal a child safely without corrupting the parent's execution context, use the `child()` or `children()` methods.
+Parent workflows can signal their child workflows to coordinate behavior or pass data. To signal a child safely without corrupting the parent's execution context, use the `$this->child()` or `$this->children()` methods.
 
 ### Getting a Child Handle
 
-The `child()` method returns a `ChildWorkflowHandle` for the most recently created child workflow:
+The `$this->child()` method returns a `ChildWorkflowHandle` for the most recently created child workflow:
 
 ```php
 use function Workflow\child;
@@ -52,7 +52,7 @@ class ParentWorkflow extends Workflow
 
 ### Multiple Children
 
-Use the `children()` method to get handles for all child workflows created by the parent:
+Use the `$this->children()` method to get handles for all child workflows created by the parent:
 
 ```php
 use function Workflow\{all, child};
@@ -79,7 +79,7 @@ class ParentWorkflow extends Workflow
 }
 ```
 
-The `children()` method returns children in reverse chronological order (most recently created first).
+The `$this->children()` method returns children in reverse chronological order (most recently created first).
 
 ### Forwarding Signals to Children
 
@@ -123,7 +123,7 @@ class ParentWorkflow extends Workflow
 
 ### Getting Child Workflow IDs
 
-You can access the underlying stored workflow ID using the `id()` method. This allows you to store the ID for external systems to signal the child directly.
+You can access the underlying stored workflow ID using the `id()` method on the child handle. This allows you to store the ID for external systems to signal the child directly.
 
 ```php
 use function Workflow\{activity, child};

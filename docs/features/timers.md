@@ -40,3 +40,21 @@ $start = yield sideEffect(fn () => WorkflowStub::now());
 ```
 
 This ensures an event log is created, preventing replay-related inconsistencies and guaranteeing accurate time calculations.
+
+## Time Helpers
+
+You can also use the following helper functions to create timers for specific units of time:
+
+- `seconds($value)`
+- `minutes($value)`
+- `hours($value)`
+- `days($value)`
+- `weeks($value)`
+- `months($value)`
+- `years($value)`
+
+```php
+use function Workflow\minutes;
+
+yield minutes(5);
+```
