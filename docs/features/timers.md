@@ -45,13 +45,13 @@ This ensures an event log is created, preventing replay-related inconsistencies 
 
 You can also use the following helper functions to create timers for specific units of time:
 
-- `seconds($value)`
-- `minutes($value)`
-- `hours($value)`
-- `days($value)`
-- `weeks($value)`
-- `months($value)`
-- `years($value)`
+- `seconds($seconds)`
+- `minutes($minutes)`
+- `hours($hours)`
+- `days($days)`
+- `weeks($weeks)`
+- `months($months)`
+- `years($years)`
 
 ```php
 use function Workflow\minutes;
