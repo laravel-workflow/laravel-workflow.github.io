@@ -14,7 +14,7 @@ Laravel Workflow has introduced an exciting new feature called “Child Workflow
 What are Child Workflows?
 =========================
 
-In Laravel Workflow, child workflows are a way to manage complex processes by breaking them down into smaller, more manageable units. They enable developers to create hierarchical and modular structures for their workflows, making them more organized and easier to maintain. A child workflow is essentially a separate workflow that is invoked within a parent workflow using the `ChildWorkflowStub::make()` method.
+In Laravel Workflow, child workflows are a way to manage complex processes by breaking them down into smaller, more manageable units. They enable developers to create hierarchical and modular structures for their workflows, making them more organized and easier to maintain. A child workflow is essentially a separate workflow that is invoked within a parent workflow using the `child()` helper function.
 
 Benefits of Using Child Workflows
 =================================

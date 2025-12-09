@@ -49,9 +49,9 @@ use Finite\StatefulInterface;
 use Finite\StateMachine\StateMachine;  
 use Finite\State\State;  
 use Finite\State\StateInterface;  
+use function Workflow\await;
 use Workflow\Models\StoredWorkflow;  
 use Workflow\SignalMethod;  
-use Workflow\WorkflowStub;  
 use Workflow\Workflow;  
   
 class LoanApplicationWorkflow extends Workflow implements StatefulInterface  
@@ -127,11 +127,11 @@ class LoanApplicationWorkflow extends Workflow implements StatefulInterface
     {  
         // loan created  
   
-        yield WorkflowStub::await(fn () => $this->isSubmitted());  
+        yield await(fn () => $this->isSubmitted());  
   
         // loan submitted  
   
-        yield WorkflowStub::await(fn () => $this->isApproved() || $this->isDenied());  
+        yield await(fn () => $this->isApproved() || $this->isDenied());  
   
         // loan approved/denied  
   

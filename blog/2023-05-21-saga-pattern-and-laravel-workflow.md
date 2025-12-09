@@ -61,14 +61,17 @@ class BookingSagaWorkflow extends Workflow
 Next, we’ll imbue our saga with logic, by adding booking steps:
 
 ```php
+use function Workflow\activity;
+use Workflow\Workflow;
+
 class BookingSagaWorkflow extends Workflow  
 {  
     public function execute()  
     {  
         try {  
-            $flightId = yield ActivityStub::make(BookFlightActivity::class);  
-            $hotelId = yield ActivityStub::make(BookHotelActivity::class);  
-            $carId = yield ActivityStub::make(BookRentalCarActivity::class);  
+            $flightId = yield activity(BookFlightActivity::class);  
+            $hotelId = yield activity(BookHotelActivity::class);  
+            $carId = yield activity(BookRentalCarActivity::class);  
         } catch (Throwable $th) {  
         }  
     }  
@@ -81,19 +84,22 @@ Adding Compensations
 --------------------
 
 ```php
+use function Workflow\activity;
+use Workflow\Workflow;
+
 class BookingSagaWorkflow extends Workflow  
 {  
     public function execute()  
     {  
         try {  
-            $flightId = yield ActivityStub::make(BookFlightActivity::class);  
-            $this->addCompensation(fn () => ActivityStub::make(CancelFlightActivity::class, $flightId));  
+            $flightId = yield activity(BookFlightActivity::class);  
+            $this->addCompensation(fn () => activity(CancelFlightActivity::class, $flightId));  
   
-            $hotelId = yield ActivityStub::make(BookHotelActivity::class);  
-            $this->addCompensation(fn () => ActivityStub::make(CancelHotelActivity::class, $hotelId));  
+            $hotelId = yield activity(BookHotelActivity::class);  
+            $this->addCompensation(fn () => activity(CancelHotelActivity::class, $hotelId));  
   
-            $carId = yield ActivityStub::make(BookRentalCarActivity::class);  
-            $this->addCompensation(fn () => ActivityStub::make(CancelRentalCarActivity::class, $carId));  
+            $carId = yield activity(BookRentalCarActivity::class);  
+            $this->addCompensation(fn () => activity(CancelRentalCarActivity::class, $carId));  
         } catch (Throwable $th) {  
         }  
     }  
@@ -113,14 +119,14 @@ class BookingSagaWorkflow extends Workflow
     public function execute()  
     {  
         try {  
-            $flightId = yield ActivityStub::make(BookFlightActivity::class);  
-            $this->addCompensation(fn () => ActivityStub::make(CancelFlightActivity::class, $flightId));  
+            $flightId = yield activity(BookFlightActivity::class);  
+            $this->addCompensation(fn () => activity(CancelFlightActivity::class, $flightId));  
   
-            $hotelId = yield ActivityStub::make(BookHotelActivity::class);  
-            $this->addCompensation(fn () => ActivityStub::make(CancelHotelActivity::class, $hotelId));  
+            $hotelId = yield activity(BookHotelActivity::class);  
+            $this->addCompensation(fn () => activity(CancelHotelActivity::class, $hotelId));  
   
-            $carId = yield ActivityStub::make(BookRentalCarActivity::class);  
-            $this->addCompensation(fn () => ActivityStub::make(CancelRentalCarActivity::class, $carId));  
+            $carId = yield activity(BookRentalCarActivity::class);  
+            $this->addCompensation(fn () => activity(CancelRentalCarActivity::class, $carId));  
         } catch (Throwable $th) {  
             yield from $this->compensate();  
             throw $th;  

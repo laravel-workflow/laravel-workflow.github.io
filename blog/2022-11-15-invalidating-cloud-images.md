@@ -69,23 +69,22 @@ The workflow looks as follows and is the same process as outlined before.
 ```php
 namespace App\Workflows\InvalidateCache;
 
-use Workflow\ActivityStub;
 use Workflow\Workflow;
-use Workflow\WorkflowStub;
+use function Workflow\{activity, timer};
 
 class InvalidateCacheWorkflow extends Workflow
 {
     public function execute($url)
     {
-        $oldDate = yield ActivityStub::make(CheckImageDateActivity::class, $url);
+        $oldDate = yield activity(CheckImageDateActivity::class, $url);
 
         while (true) {
-            yield ActivityStub::make(InvalidateCacheActivity::class, $url);
+            yield activity(InvalidateCacheActivity::class, $url);
 
             for ($i = 0; $i < 3; ++$i) { 
-                yield WorkflowStub::timer(30);
+                yield timer(30);
 
-                $newDate = yield ActivityStub::make(CheckImageDateActivity::class, $url);
+                $newDate = yield activity(CheckImageDateActivity::class, $url);
 
                 if ($oldDate !== $newDate) return;    
             }

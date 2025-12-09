@@ -61,10 +61,9 @@ The `verify-email` route receives a workflow id, loads it and then calls the `ve
 Now let’s take a look at the actual workflow.
 
 ```php
-use Workflow\ActivityStub;
 use Workflow\SignalMethod;
 use Workflow\Workflow;
-use Workflow\WorkflowStub;
+use function Workflow\{activity, await};
 
 class VerifyEmailWorkflow extends Workflow
 {
@@ -78,11 +77,11 @@ class VerifyEmailWorkflow extends Workflow
 
     public function execute($email = '', $password = '')
     {
-        yield ActivityStub::make(SendEmailVerificationEmailActivity::class, $email);
+        yield activity(SendEmailVerificationEmailActivity::class, $email);
 
-        yield WorkflowStub::await(fn () => $this->verified);
+        yield await(fn () => $this->verified);
 
-        yield ActivityStub::make(VerifyEmailActivity::class, $email, $password);
+        yield activity(VerifyEmailActivity::class, $email, $password);
     }
 }
 ```
@@ -100,9 +99,9 @@ Step By Step
 
 The first time the workflow executes, it will reach the call to `SendEmailVerificationEmailActivity` , start that activity, and then exit. Workflows suspend execution while an activity is running. After the `SendEmailVerificationEmailActivity` finishes, it will resume execution of the workflow. This brings us to…
 
-The second time the workflow is executed, it will reach the call to `SendEmailVerificationEmailActivity` and skip it because it will already have the result of that activity. Then it will reach the call to `WorkflowStub::await()` which allows the workflow to wait for an external signal. In this case, it will come from the user clicking on the verification link they receive in their email. Once the workflow is signaled then it will execute for…
+The second time the workflow is executed, it will reach the call to `SendEmailVerificationEmailActivity` and skip it because it will already have the result of that activity. Then it will reach the call to `await()` which allows the workflow to wait for an external signal. In this case, it will come from the user clicking on the verification link they receive in their email. Once the workflow is signaled then it will execute for…
 
-The third time, both the calls to `SendEmailVerificationEmailActivity` and `WorkflowStub::await()` are skipped. This means that the `VerifyEmailActivity` will be started. After the final activity has executed we still have…
+The third time, both the calls to `SendEmailVerificationEmailActivity` and `await()` are skipped. This means that the `VerifyEmailActivity` will be started. After the final activity has executed we still have…
 
 The final time the workflow is called, there is nothing left to do so the workflow completes.
 
