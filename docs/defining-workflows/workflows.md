@@ -15,14 +15,14 @@ php artisan make:workflow MyWorkflow
 It is defined by extending the `Workflow` class and implementing the `execute()` method.
 
 ```php
-use Workflow\ActivityStub;
+use function Workflow\activity;
 use Workflow\Workflow;
 
 class MyWorkflow extends Workflow
 {
     public function execute()
     {
-        $result = yield ActivityStub::make(MyActivity::class);
+        $result = yield activity(MyActivity::class);
 
         return $result;
     }
