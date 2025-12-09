@@ -33,19 +33,19 @@ Promises are used to represent the result of an asynchronous operation, such as 
 ## Example
 
 ```php
-use Workflow\ActivityStub;
 use Workflow\Workflow;
+use function Workflow\{activity, all};
 
 class MyWorkflow extends Workflow
 {
     public function execute()
     {
         return [
-            yield ActivityStub::make(TestActivity::class),
-            yield ActivityStub::make(TestOtherActivity::class),
-            yield ActivityStub::all([
-                ActivityStub::make(TestParallelActivity::class),
-                ActivityStub::make(TestParallelOtherActivity::class),
+            yield activity(TestActivity::class),
+            yield activity(TestOtherActivity::class),
+            yield all([
+                activity(TestParallelActivity::class),
+                activity(TestParallelOtherActivity::class),
             ]),
         ];
     }
