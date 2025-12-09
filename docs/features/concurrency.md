@@ -84,7 +84,7 @@ Activity 1 will execute and complete before any other activities start. Activiti
 
 ## Child Workflows in Parallel
 
-You can pass child workflows to `all()` along with with other activities. Both of these are just thin wrappers for React Promise's `all()`. It works the same way as parallel activity execution, but for child workflows. It allows you to fan out multiple child workflows and wait for all of them to complete together.
+You can pass child workflows to `all()` along with other activities. It works the same way as parallel activity execution, but for child workflows. It allows you to fan out multiple child workflows and wait for all of them to complete together.
 
 ```php
 use function Workflow\{all, child};
