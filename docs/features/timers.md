@@ -18,16 +18,14 @@ class MyWorkflow extends Workflow
 {
     public function execute()
     {
-        // Wait for 5 seconds before continuing
-        yield timer(5);
+        yield timer('5 seconds');
 
-        // Do something after the timer has finished
-        return 'Hello world';
+        return 'The workflow waited 5 seconds.';
     }
 }
 ```
 
-You may also specify the time to wait as a string e.g. '5 seconds', '30 minutes' or even '3 days'. Laravel Workflow can handle any duration.
+You can specify the `$duration` as an integer number of seconds or as a string e.g. '5 seconds', '30 minutes' or even '3 days'. Laravel Workflow can handle any duration.
 
 **Important:** Inside of a workflow, never use `Carbon::now()` or Laravel's `now()` to get the current time. Instead, use `Workflow\now()`, which returns the current time as seen by the workflow system. This is crucial because the actual time may not match your application's system clock.
 
