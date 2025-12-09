@@ -14,7 +14,7 @@ use Workflow\Workflow;
 
 class MyWorkflow extends Workflow
 {
-    protected $ready = false;
+    private $ready = false;
 
     #[SignalMethod]
     public function setReady($ready)
@@ -43,7 +43,7 @@ use Workflow\Workflow;
 
 class MyWorkflow extends Workflow
 {
-    protected $ready = false;
+    private $ready = false;
 
     #[SignalMethod]
     public function setReady($ready)
