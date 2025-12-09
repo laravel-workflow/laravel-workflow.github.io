@@ -31,10 +31,6 @@ You may also specify the time to wait as a string e.g. '5 seconds', '30 minutes'
 
 **Important:** Inside of a workflow, never use `Carbon::now()` or Laravel's `now()` to get the current time. Instead, use `Workflow\now()`, which returns the current time as seen by the workflow system. This is crucial because the actual time may not match your application's system clock.
 
-```php
-use function Workflow\now;
-```
-
 Additionally, when measuring elapsed time in workflows (e.g., tracking how long an activity takes), always get your start and end times with:
 
 ```php
