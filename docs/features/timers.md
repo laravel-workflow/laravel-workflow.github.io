@@ -29,14 +29,18 @@ class MyWorkflow extends Workflow
 
 You may also specify the time to wait as a string e.g. '5 seconds', '30 minutes' or even '3 days'. Laravel Workflow can handle any duration.
 
-**Important:** When using timers, do not use `Carbon::now()` to get the current time. Instead, use `WorkflowStub::now()`, which returns the current time as seen by the workflow system. This is crucial because the actual time may not match your application's system clock.
+**Important:** Inside of a workflow, never use `Carbon::now()` or Laravel's `now()` to get the current time. Instead, use `Workflow\now()`, which returns the current time as seen by the workflow system. This is crucial because the actual time may not match your application's system clock.
+
+```php
+use function Workflow\now;
+```
 
 Additionally, when measuring elapsed time in workflows (e.g., tracking how long an activity takes), always get your start and end times with:
 
 ```php
-use function Workflow\sideEffect;
+use function Workflow\{now, sideEffect};
 
-$start = yield sideEffect(fn () => WorkflowStub::now());
+$start = yield sideEffect(fn () => now());
 ```
 
 This ensures an event log is created, preventing replay-related inconsistencies and guaranteeing accurate time calculations.
