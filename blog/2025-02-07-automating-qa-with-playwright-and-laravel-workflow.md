@@ -110,16 +110,16 @@ class Playwright extends Command
 ```php
 namespace App\Workflows\Playwright;
 
-use Workflow\ActivityStub;
+use function Workflow\activity;
 use Workflow\Workflow;
 
 class CheckConsoleErrorsWorkflow extends Workflow
 {
     public function execute(string $url)
     {
-        $result = yield ActivityStub::make(CheckConsoleErrorsActivity::class, $url);
+        $result = yield activity(CheckConsoleErrorsActivity::class, $url);
 
-        $mp4 = yield ActivityStub::make(ConvertVideoActivity::class, $result['video']);
+        $mp4 = yield activity(ConvertVideoActivity::class, $result['video']);
 
         return [
             'errors' => $result['errors'],

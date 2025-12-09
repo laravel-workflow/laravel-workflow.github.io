@@ -22,29 +22,32 @@ Recently, Laravel Workflow added support for [side effects](https://laravel-work
 Here is an example workflow that demonstrates side effects.
 
 ```php
+use Workflow\Workflow;
+use function Workflow\{activity, sideEffect};
+
 class SideEffectWorkflow extends Workflow  
 {  
     public function execute()  
     {  
-        $sideEffect = yield WorkflowStub::sideEffect(  
+        $sideEffect = yield sideEffect(  
           fn () => random\_int(PHP\_INT\_MIN, PHP\_INT\_MAX)  
         );  
   
         $badSideEffect = random\_int(PHP\_INT\_MIN, PHP\_INT\_MAX);  
   
-        $result1 = yield ActivityStub::make(SimpleActivity::class, $sideEffect);  
+        $result1 = yield activity(SimpleActivity::class, $sideEffect);  
   
-        $result2 = yield ActivityStub::make(SimpleActivity::class, $badSideEffect);  
+        $result2 = yield activity(SimpleActivity::class, $badSideEffect);  
   
         if ($sideEffect !== $result1) {  
             throw new Exception(  
-                'These side effects should match because it was properly wrapped in WorkflowStub::sideEffect().'  
+                'These side effects should match because it was properly wrapped in sideEffect().'  
             );  
         }  
   
         if ($badSideEffect === $result2) {  
             throw new Exception(  
-                'These side effects should not match because it was not wrapped in WorkflowStub::sideEffect().'  
+                'These side effects should not match because it was not wrapped in sideEffect().'  
             );  
         }  
     }  

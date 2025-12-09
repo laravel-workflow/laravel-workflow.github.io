@@ -30,14 +30,14 @@ For simplicity, the workflow we are making today will only contain the most inte
 ```php
 namespace App\Workflows\ConvertVideo;
 
-use Workflow\ActivityStub;
+use function Workflow\activity;
 use Workflow\Workflow;
 
 class ConvertVideoWorkflow extends Workflow
 {
     public function execute()
     {
-        yield ActivityStub::make(
+        yield activity(
             ConvertVideoWebmActivity::class,
             storage_path('app/oceans.mp4'),
             storage_path('app/oceans.webm'),

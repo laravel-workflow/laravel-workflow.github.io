@@ -86,10 +86,9 @@ class ClarifAI
 ```php
 namespace App\Workflows;
 
-use Workflow\ActivityStub;
 use Workflow\SignalMethod;
-use Workflow\WorkflowStub;
 use Workflow\Workflow;
+use function Workflow\{activity, all, awaitWithTimeout};
 
 class ImageModerationWorkflow extends Workflow
 {
@@ -124,23 +123,23 @@ class ImageModerationWorkflow extends Workflow
 
     private function check($imagePath)
     {
-        return yield ActivityStub::make(AutomatedImageCheckActivity::class, $imagePath);
+        return yield activity(AutomatedImageCheckActivity::class, $imagePath);
     }
 
     private function unsafe($imagePath)
     {
-        yield ActivityStub::all([
-            ActivityStub::make(LogUnsafeImageActivity::class, $imagePath),
-            ActivityStub::make(DeleteImageActivity::class, $imagePath),
+        yield all([
+            activity(LogUnsafeImageActivity::class, $imagePath),
+            activity(DeleteImageActivity::class, $imagePath),
         ]);
     }
 
     private function moderate($imagePath)
     {
         while (true) {
-            yield ActivityStub::make(NotifyImageModeratorActivity::class, $imagePath);
+            yield activity(NotifyImageModeratorActivity::class, $imagePath);
 
-            $signaled = yield WorkflowStub::awaitWithTimeout('24 hours', fn () => $this->approved || $this->rejected);
+            $signaled = yield awaitWithTimeout('24 hours', fn () => $this->approved || $this->rejected);
 
             if ($signaled) break;
         }
