@@ -6,12 +6,12 @@ sidebar_position: 3
 
 Laravel Workflow provides the ability to suspend the execution of a workflow and resume at a later time. These are durable timers, meaning they survive restarts and failures while remaining consistent with workflow replay semantics. This can be useful for implementing delays, retry logic, or timeouts.
 
-To use timers, you can use the `WorkflowStub::timer($seconds)` method within your workflow. This method returns a `Promise` that will be resolved after the specified number of seconds have passed.
+To use timers, you can use the `timer($duration)` helper function within your workflow. This method returns a `Promise` that will be resolved after the specified duration has passed.
 
 Here is an example of using a timer:
 
 ```php
-use Workflow\WorkflowStub;
+use function Workflow\timer;
 use Workflow\Workflow;
 
 class MyWorkflow extends Workflow
@@ -19,7 +19,7 @@ class MyWorkflow extends Workflow
     public function execute()
     {
         // Wait for 5 seconds before continuing
-        yield WorkflowStub::timer(5);
+        yield timer(5);
 
         // Do something after the timer has finished
         return 'Hello world';
@@ -34,7 +34,9 @@ You may also specify the time to wait as a string e.g. '5 seconds', '30 minutes'
 Additionally, when measuring elapsed time in workflows (e.g., tracking how long an activity takes), always get your start and end times with:
 
 ```php
-$start = yield WorkflowStub::sideEffect(fn () => WorkflowStub::now());
+use function Workflow\sideEffect;
+
+$start = yield sideEffect(fn () => WorkflowStub::now());
 ```
 
 This ensures an event log is created, preventing replay-related inconsistencies and guaranteeing accurate time calculations.

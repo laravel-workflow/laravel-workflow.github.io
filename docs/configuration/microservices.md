@@ -92,7 +92,7 @@ Update your workflow and activity classes to use the shared queue connection. As
 ```php
 // App: workflow microservice
 
-use Workflow\ActivityStub;
+use function Workflow\activity;
 use Workflow\Workflow;
 
 class MyWorkflow extends Workflow
@@ -102,7 +102,7 @@ class MyWorkflow extends Workflow
 
     public function execute($name)
     {
-        $result = yield ActivityStub::make(MyActivity::class, $name);
+        $result = yield activity(MyActivity::class, $name);
         return $result;
     }
 }

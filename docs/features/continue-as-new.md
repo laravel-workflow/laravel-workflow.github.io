@@ -13,24 +13,23 @@ This is useful when you need to:
 
 ## Using `continueAsNew`
 
-To restart a workflow as new, call the static method `WorkflowStub::continueAsNew(...)` from within the workflow’s `execute()` method.
+To restart a workflow as new, call the helper function `continueAsNew(...)` from within the workflow’s `execute()` method.
 
 ```php
-use Workflow\ActivityStub;
+use function Workflow\{activity, continueAsNew};
 use Workflow\Workflow;
-use Workflow\WorkflowStub;
 
 class CounterWorkflow extends Workflow
 {
     public function execute(int $count = 0, int $max = 3)
     {
-        $result = yield ActivityStub::make(CountActivity::class, $count);
+        $result = yield activity(CountActivity::class, $count);
 
         if ($count >= $max) {
             return 'workflow_' . $result;
         }
 
-        return yield WorkflowStub::continueAsNew($count + 1, $max);
+        return yield continueAsNew($count + 1, $max);
     }
 }
 ```

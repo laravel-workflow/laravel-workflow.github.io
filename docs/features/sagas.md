@@ -12,7 +12,7 @@ Sagas are an established design pattern for managing complex, long-running opera
 - The saga pattern assures that all operations are either completed successfully or the corresponding compensation activities are run to undo any completed work.
 
 ```php
-use Workflow\ActivityStub;
+use function Workflow\activity;
 use Workflow\Workflow;
 
 class BookingSagaWorkflow extends Workflow
@@ -20,14 +20,14 @@ class BookingSagaWorkflow extends Workflow
     public function execute()
     {
         try {
-            $flightId = yield ActivityStub::make(BookFlightActivity::class);
-            $this->addCompensation(fn () => ActivityStub::make(CancelFlightActivity::class, $flightId));
+            $flightId = yield activity(BookFlightActivity::class);
+            $this->addCompensation(fn () => activity(CancelFlightActivity::class, $flightId));
 
-            $hotelId = yield ActivityStub::make(BookHotelActivity::class);
-            $this->addCompensation(fn () => ActivityStub::make(CancelHotelActivity::class, $hotelId));
+            $hotelId = yield activity(BookHotelActivity::class);
+            $this->addCompensation(fn () => activity(CancelHotelActivity::class, $hotelId));
 
-            $carId = yield ActivityStub::make(BookRentalCarActivity::class);
-            $this->addCompensation(fn () => ActivityStub::make(CancelRentalCarActivity::class, $carId));
+            $carId = yield activity(BookRentalCarActivity::class);
+            $this->addCompensation(fn () => activity(CancelRentalCarActivity::class, $carId));
         } catch (Throwable $th) {
             yield from $this->compensate();
             throw $th;

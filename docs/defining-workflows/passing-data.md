@@ -18,17 +18,17 @@ $workflow->output();
 
 It will be passed as arguments to the workflow's `execute()` method.
 
-Similarly, you can pass data into an activity via the `ActivityStub::make()` method.
+Similarly, you can pass data into an activity via the `activity()` helper function.
 
 ```php
-use Workflow\ActivityStub;
+use function Workflow\activity;
 use Workflow\Workflow;
 
 class MyWorkflow extends Workflow
 {
     public function execute($name)
     {
-        return yield ActivityStub::make(MyActivity::class, $name);
+        return yield activity(MyActivity::class, $name);
     }
 }
 ```
@@ -55,14 +55,14 @@ Passing in models works similarly to `SerializesModels`.
 
 ```php
 use App\Models\User;
-use Workflow\ActivityStub;
+use function Workflow\activity;
 use Workflow\Workflow;
 
 class MyWorkflow extends Workflow
 {
     public function execute(User $user)
     {
-        return yield ActivityStub::make(MyActivity::class, $user->name);
+        return yield activity(MyActivity::class, $user->name);
     }
 }
 ```

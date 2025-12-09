@@ -9,14 +9,14 @@ sidebar_position: 8
 You can execute workflows synchronously in your test environment and mock activities and child workflows to define expected behaviors and outputs without running the actual implementations.
 
 ```
-use Workflow\ActivityStub;
+use function Workflow\activity;
 use Workflow\Workflow;
 
 class MyWorkflow extends Workflow
 {
     public function execute()
     {
-        $result = yield ActivityStub::make(MyActivity::class);
+        $result = yield activity(MyActivity::class);
 
         return $result;
     }
@@ -85,17 +85,16 @@ WorkflowStub::assertDispatched(TestOtherActivity::class, function ($string) {
 By manipulating the system time with `$this->travel()` or `$this->travelTo()`, you can simulate time-dependent workflows. This strategy allows you to test timeouts, delays, and other time-sensitive logic within your workflows.
 
 ```
-use Workflow\ActivityStub;
+use function Workflow\{activity, timer};
 use Workflow\Workflow;
-use Workflow\WorkflowStub;
 
 class MyTimerWorkflow extends Workflow
 {
     public function execute()
     {
-        yield WorkflowStub::timer(60);
+        yield timer(60);
 
-        $result = yield ActivityStub::make(MyActivity::class);
+        $result = yield activity(MyActivity::class);
 
         return $result;
     }

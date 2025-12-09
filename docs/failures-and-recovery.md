@@ -25,7 +25,7 @@ class MyActivity extends Activity
 
 ```php
 use Exception;
-use Workflow\ActivityStub;
+use function Workflow\activity;
 use Workflow\Workflow;
 
 class MyWorkflow extends Workflow
@@ -33,7 +33,7 @@ class MyWorkflow extends Workflow
     public function execute()
     {
         try {
-            $result = yield ActivityStub::make(MyActivity::class);
+            $result = yield activity(MyActivity::class);
         } catch (Exception) {
             // handle the exception here
         }

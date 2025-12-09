@@ -4,12 +4,12 @@ sidebar_position: 4
 
 # Signal + Timer
 
-In some cases, you may want to wait for a signal or for a timer to expire, whichever comes first. This can be achieved by using `WorkflowStub::awaitWithTimeout($seconds, $callback)`.
+In some cases, you may want to wait for a signal or for a timer to expire, whichever comes first. This can be achieved by using `awaitWithTimeout($timeout, $condition)`.
 
 ```php
+use function Workflow\awaitWithTimeout;
 use Workflow\SignalMethod;
 use Workflow\Workflow;
-use Workflow\WorkflowStub;
 
 class MyWorkflow extends Workflow
 {
@@ -24,12 +24,12 @@ class MyWorkflow extends Workflow
     public function execute()
     {
         // Wait for 5 minutes or $ready = true, whichever comes first
-        $result = yield WorkflowStub::awaitWithTimeout(300, fn () => $this->ready);
+        $result = yield awaitWithTimeout(300, fn () => $this->ready);
     }
 }
 ```
 
-The workflow will reach the call to `WorkflowStub::awaitWithTimeout()` and then hibernate until either some external code signals the workflow like this.
+The workflow will reach the call to `awaitWithTimeout()` and then hibernate until either some external code signals the workflow like this.
 
 ```php
 $workflow->setReady();
