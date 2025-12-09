@@ -21,11 +21,6 @@ class MyWorkflow extends Workflow
     {
         $this->ready = $ready;
     }
-
-    public function execute()
-    {
-        // ...
-    }
 }
 ```
 
