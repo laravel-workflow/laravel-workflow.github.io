@@ -21,6 +21,11 @@ class MyWorkflow extends Workflow
     {
         $this->ready = $ready;
     }
+
+    public function execute()
+    {
+        // ...
+    }
 }
 ```
 
@@ -34,15 +39,22 @@ $workflow = WorkflowStub::load($workflowId);
 $workflow->setReady(true);
 ```
 
-The `await()` helper function can be used in a workflow to pause execution until a specified condition is met. For example, to pause the workflow until a signal is received, the following code can be used:
+The `await()` function can be used in a workflow to pause execution until a specified condition is met. For example, to pause the workflow until a signal is received, the following code can be used:
 
-```
+```php
 use function Workflow\await;
+use Workflow\SignalMethod;
 use Workflow\Workflow;
 
 class MyWorkflow extends Workflow
 {
-    private bool $ready = false;
+    protected $ready = false;
+
+    #[SignalMethod]
+    public function setReady($ready)
+    {
+        $this->ready = $ready;
+    }
 
     public function execute()
     {
@@ -51,4 +63,4 @@ class MyWorkflow extends Workflow
 }
 ```
 
-**Important:** The `await()` method should only be used in a workflow, and not in an activity.
+**Important:** The `await()` function should only be used in a workflow, not an activity.
