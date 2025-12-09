@@ -26,7 +26,6 @@ class MyActivity extends Activity
     {
         $workflowId = $this->workflowId();
 
-        // Use the workflow id to store data in a cache or database
         Cache::put("workflow:{$workflowId}:data", 'some data');
     }
 }
