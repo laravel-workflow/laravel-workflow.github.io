@@ -20,8 +20,8 @@ class MyWorkflow extends Workflow
     {
         return [
             yield activity(MyActivity1::class),
-            yield activity(MyActivity1::class),
-            yield activity(MyActivity1::class),
+            yield activity(MyActivity2::class),
+            yield activity(MyActivity3::class),
         ];
     }
 }
@@ -90,9 +90,9 @@ You can pass child workflows to `all()` along with other activities. It works th
 use function Workflow\{all, child};
 
 $results = yield all([
-    child(ChildA::class),
-    child(ChildB::class),
-    child(ChildC::class),
+    child(MyChild1::class),
+    child(MyChild2::class),
+    child(MyChild3::class),
 ]);
 ```
 
