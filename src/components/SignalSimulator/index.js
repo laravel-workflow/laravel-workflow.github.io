@@ -210,20 +210,6 @@ class MyWorkflow extends Workflow
             </div>
           )}
 
-          {executionState === ExecutionState.RUNNING && getCurrentStep() && (
-            <div className={styles.progressSection}>
-              <div className={styles.progressLabel}>
-                Executing: <code>{getCurrentStep().label}</code>
-              </div>
-              <div className={styles.progressBarContainer}>
-                <div
-                  className={styles.progressBar}
-                  style={{ width: `${progress}%` }}
-                />
-              </div>
-            </div>
-          )}
-
           <div className={styles.statusBar}>
             <span className={`${styles.statusIndicator} ${styles[executionState]}`}>
               {executionState === ExecutionState.IDLE && '⏸️ Ready'}
