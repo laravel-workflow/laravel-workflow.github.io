@@ -153,8 +153,8 @@ export default function WorkflowSimulator({
     let currentGroupIndex = 0;
     let groupStartTime = performance.now();
     
-    // Track progress for activities with subgroups (series within parallel)
-    const subgroupProgress = {};
+    // Track cumulative time spent on completed activities in each subgroup
+    const subgroupCompletedTime = {};
 
     const animate = (timestamp) => {
       if (currentGroupIndex >= groupKeys.length) {
@@ -207,34 +207,40 @@ export default function WorkflowSimulator({
           const subgroupActivities = withSubgroups[subgroupKey];
           const trackKey = `${currentGroupIndex}-${subgroupKey}`;
           
-          if (!subgroupProgress[trackKey]) {
-            subgroupProgress[trackKey] = { currentIndex: 0, startTime: groupStartTime };
+          // Initialize cumulative completed time for this subgroup
+          if (subgroupCompletedTime[trackKey] === undefined) {
+            subgroupCompletedTime[trackKey] = 0;
           }
           
-          const track = subgroupProgress[trackKey];
-          let subgroupElapsed = timestamp - track.startTime;
+          // Calculate which activity is currently running based on elapsed time
+          let remainingTime = elapsed;
+          let currentActivityIndex = 0;
           
-          // Process activities in this subgroup sequentially
+          // Find which activity should be running
+          for (let i = 0; i < subgroupActivities.length; i++) {
+            if (remainingTime >= subgroupActivities[i].duration) {
+              remainingTime -= subgroupActivities[i].duration;
+              currentActivityIndex = i + 1;
+            } else {
+              break;
+            }
+          }
+          
+          // Update states for all activities in this subgroup
           for (let i = 0; i < subgroupActivities.length; i++) {
             const activity = subgroupActivities[i];
             
-            if (i < track.currentIndex) {
+            if (i < currentActivityIndex) {
               // Already completed
               newStates[activity.originalIndex] = { status: ActivityStatus.COMPLETED, progress: 100 };
-            } else if (i === track.currentIndex) {
+            } else if (i === currentActivityIndex) {
               // Currently running
-              const progress = Math.min((subgroupElapsed / activity.duration) * 100, 100);
+              const progress = Math.min((remainingTime / activity.duration) * 100, 100);
               newStates[activity.originalIndex] = {
                 status: progress >= 100 ? ActivityStatus.COMPLETED : ActivityStatus.RUNNING,
                 progress: progress,
               };
-              
-              if (progress >= 100) {
-                track.currentIndex++;
-                track.startTime = timestamp;
-              } else {
-                groupComplete = false;
-              }
+              if (progress < 100) groupComplete = false;
             } else {
               // Not started yet
               newStates[activity.originalIndex] = { status: ActivityStatus.PENDING, progress: 0 };
