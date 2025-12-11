@@ -1,0 +1,218 @@
+.simulatorWrapper {
+  margin: 1rem 0 2rem 0;
+}
+
+.expandButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: linear-gradient(135deg, var(--ifm-color-primary), var(--ifm-color-primary-dark));
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.expandButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, var(--ifm-color-primary-light), var(--ifm-color-primary));
+}
+
+.expandButton.expanded {
+  border-radius: 6px 6px 0 0;
+}
+
+.expandIcon {
+  font-size: 0.7rem;
+  transition: transform 0.2s ease;
+}
+
+.simulatorContainer {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  padding: 1.25rem;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.simulatorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.simulatorTitle {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--ifm-color-primary);
+}
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.playButton,
+.resetButton {
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.playButton {
+  background: #22c55e;
+  color: white;
+}
+
+.playButton:hover:not(:disabled) {
+  background: #16a34a;
+}
+
+.playButton:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+.resetButton {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-800);
+}
+
+.resetButton:hover:not(:disabled) {
+  background: var(--ifm-color-emphasis-300);
+}
+
+.resetButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.activitiesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.activityContainer {
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+
+.activityHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.activityName {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.activityStatus {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.activityStatus.pending {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-700);
+}
+
+.activityStatus.running {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.activityStatus.completed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+[data-theme='dark'] .activityStatus.running {
+  background: #78350f;
+  color: #fef3c7;
+}
+
+[data-theme='dark'] .activityStatus.completed {
+  background: #14532d;
+  color: #dcfce7;
+}
+
+.progressBarContainer {
+  height: 8px;
+  background: var(--ifm-color-emphasis-200);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.05s linear;
+}
+
+.progressBar.pending {
+  background: var(--ifm-color-emphasis-300);
+  width: 0;
+}
+
+.progressBar.running {
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+
+.progressBar.completed {
+  background: linear-gradient(90deg, #22c55e, #4ade80);
+}
+
+.activityDuration {
+  font-size: 0.7rem;
+  color: var(--ifm-color-emphasis-600);
+  text-align: right;
+  margin-top: 0.25rem;
+  min-height: 1em;
+}
+
+.modeIndicator {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.modeIndicator strong {
+  color: var(--ifm-color-primary);
+}

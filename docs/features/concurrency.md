@@ -2,6 +2,8 @@
 sidebar_position: 8
 ---
 
+import ConcurrencySimulator from '@site/src/components/ConcurrencySimulator';
+
 # Concurrency
 
 Activities can be executed in series or in parallel. In either case, you start by using `activity()` to create a new instance of an activity and return a promise that represents the execution of that activity. The activity will immediately begin executing in the background. You can then `yield` this promise to pause the execution of the workflow and wait for the result of the activity, or pass the promise into the `all()` method to wait for a group of activities to complete in parallel.
@@ -27,6 +29,16 @@ class MyWorkflow extends Workflow
 }
 ```
 
+<ConcurrencySimulator 
+  activities={[
+    { name: 'MyActivity1', duration: 1500 },
+    { name: 'MyActivity2', duration: 2000 },
+    { name: 'MyActivity3', duration: 1200 },
+  ]}
+  mode="series"
+  title="Series Execution Simulator"
+/>
+
 ## Parallel
 
 This example will execute 3 activities in parallel, waiting for the completion of all activities and collecting the results.
@@ -47,6 +59,16 @@ class MyWorkflow extends Workflow
     }
 }
 ```
+
+<ConcurrencySimulator 
+  activities={[
+    { name: 'MyActivity1', duration: 2000 },
+    { name: 'MyActivity2', duration: 1500 },
+    { name: 'MyActivity3', duration: 2500 },
+  ]}
+  mode="parallel"
+  title="Parallel Execution Simulator"
+/>
 
 The main difference between the serial example and the parallel execution example is the number of `yield` statements. In the serial example, there are 3 `yield` statements, one for each activity. This means that the workflow will pause and wait for each activity to complete before continuing to the next one. In the parallel example, there is only 1 `yield` statement, which wraps all of the activities in a call to `all()`. This means that all of the activities will be executed in parallel, and the workflow will pause and wait for all of them to complete as a group before continuing.
 
@@ -82,6 +104,19 @@ class MyWorkflow extends Workflow
 
 Activity 1 will execute and complete before any other activities start. Activities 2 and 3 will execute in series, waiting for each to complete one after another before continuing. At the same time, activities 4 and 5 will execute together in parallel and only when they all complete will execution continue. Finally, activity 6 executes last after all others have completed.
 
+<ConcurrencySimulator 
+  activities={[
+    { name: 'MyActivity1', duration: 1200, group: 0 },
+    { name: 'MyActivity2', duration: 1000, group: 1, subgroup: 'a' },
+    { name: 'MyActivity3', duration: 1200, group: 1, subgroup: 'a' },
+    { name: 'MyActivity4', duration: 1800, group: 1 },
+    { name: 'MyActivity5', duration: 1400, group: 1 },
+    { name: 'MyActivity6', duration: 1000, group: 2 },
+  ]}
+  mode="mix"
+  title="Mix and Match Simulator"
+/>
+
 ## Child Workflows in Parallel
 
 You can pass child workflows to `all()` along with other activities. It works the same way as parallel activity execution, but for child workflows. It allows you to fan out multiple child workflows and wait for all of them to complete together.
@@ -95,5 +130,15 @@ $results = yield all([
     child(MyChild3::class),
 ]);
 ```
+
+<ConcurrencySimulator 
+  activities={[
+    { name: 'MyChild1', duration: 2200 },
+    { name: 'MyChild2', duration: 1800 },
+    { name: 'MyChild3', duration: 2500 },
+  ]}
+  mode="parallel"
+  title="Child Workflows in Parallel Simulator"
+/>
 
 This makes it easy to build hierarchical parallelism into your workflows.

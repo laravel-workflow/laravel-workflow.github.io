@@ -1,0 +1,340 @@
+import React, { useState, useEffect, useRef } from 'react';
+import styles from './styles.module.css';
+
+const ActivityStatus = {
+  PENDING: 'pending',
+  RUNNING: 'running',
+  COMPLETED: 'completed',
+};
+
+function ActivityBar({ name, status, progress, duration }) {
+  return (
+    <div className={styles.activityContainer}>
+      <div className={styles.activityHeader}>
+        <span className={styles.activityName}>{name}</span>
+        <span className={`${styles.activityStatus} ${styles[status]}`}>
+          {status === ActivityStatus.PENDING && '⏳ Pending'}
+          {status === ActivityStatus.RUNNING && '▶️ Running'}
+          {status === ActivityStatus.COMPLETED && '✅ Completed'}
+        </span>
+      </div>
+      <div className={styles.progressBarContainer}>
+        <div
+          className={`${styles.progressBar} ${styles[status]}`}
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+      <div className={styles.activityDuration}>
+        {status === ActivityStatus.COMPLETED ? `${duration}ms` : status === ActivityStatus.RUNNING ? `${Math.round(progress)}%` : ''}
+      </div>
+    </div>
+  );
+}
+
+export default function WorkflowSimulator({ 
+  activities = [
+    { name: 'MyActivity1', duration: 1500 },
+    { name: 'MyActivity2', duration: 2000 },
+    { name: 'MyActivity3', duration: 1200 },
+  ],
+  mode = 'series',
+  title = 'Series Execution',
+}) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isRunning, setIsRunning] = useState(false);
+  const [activityStates, setActivityStates] = useState(
+    activities.map(() => ({ status: ActivityStatus.PENDING, progress: 0 }))
+  );
+  const animationRef = useRef(null);
+  const startTimeRef = useRef(null);
+
+  const resetSimulation = () => {
+    setActivityStates(activities.map(() => ({ status: ActivityStatus.PENDING, progress: 0 })));
+    setIsRunning(false);
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+    }
+  };
+
+  const runSeriesSimulation = () => {
+    resetSimulation();
+    setIsRunning(true);
+    startTimeRef.current = performance.now();
+
+    let currentActivityIndex = 0;
+    let activityStartTime = startTimeRef.current;
+
+    const animate = (timestamp) => {
+      if (currentActivityIndex >= activities.length) {
+        setIsRunning(false);
+        return;
+      }
+
+      const activity = activities[currentActivityIndex];
+      const elapsed = timestamp - activityStartTime;
+      const progress = Math.min((elapsed / activity.duration) * 100, 100);
+
+      setActivityStates(prev => {
+        const newStates = [...prev];
+        // Mark previous activities as completed
+        for (let i = 0; i < currentActivityIndex; i++) {
+          newStates[i] = { status: ActivityStatus.COMPLETED, progress: 100 };
+        }
+        // Update current activity
+        newStates[currentActivityIndex] = {
+          status: progress >= 100 ? ActivityStatus.COMPLETED : ActivityStatus.RUNNING,
+          progress: progress,
+        };
+        return newStates;
+      });
+
+      if (progress >= 100) {
+        currentActivityIndex++;
+        activityStartTime = timestamp;
+      }
+
+      if (currentActivityIndex < activities.length) {
+        animationRef.current = requestAnimationFrame(animate);
+      } else {
+        setIsRunning(false);
+      }
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+  };
+
+  const runParallelSimulation = () => {
+    resetSimulation();
+    setIsRunning(true);
+    startTimeRef.current = performance.now();
+
+    const animate = (timestamp) => {
+      const elapsed = timestamp - startTimeRef.current;
+      let allCompleted = true;
+
+      setActivityStates(prev => {
+        return activities.map((activity, index) => {
+          const progress = Math.min((elapsed / activity.duration) * 100, 100);
+          if (progress < 100) allCompleted = false;
+          return {
+            status: progress >= 100 ? ActivityStatus.COMPLETED : ActivityStatus.RUNNING,
+            progress: progress,
+          };
+        });
+      });
+
+      if (!allCompleted) {
+        animationRef.current = requestAnimationFrame(animate);
+      } else {
+        setIsRunning(false);
+      }
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+  };
+
+  // Mix mode: runs activities based on their 'group' and 'subgroup' properties
+  // Activities in the same group run together, subgroups within a group run in series
+  // group: which phase (0, 1, 2 = sequential phases)
+  // subgroup: within a group, activities with same subgroup run in parallel, different subgroups run in series
+  const runMixSimulation = () => {
+    resetSimulation();
+    setIsRunning(true);
+    
+    // Group activities by their group number
+    const groups = {};
+    activities.forEach((activity, index) => {
+      const group = activity.group ?? index;
+      if (!groups[group]) groups[group] = [];
+      groups[group].push({ ...activity, originalIndex: index });
+    });
+    
+    const groupKeys = Object.keys(groups).sort((a, b) => a - b);
+    let currentGroupIndex = 0;
+    let groupStartTime = performance.now();
+    
+    // Track progress for activities with subgroups (series within parallel)
+    const subgroupProgress = {};
+
+    const animate = (timestamp) => {
+      if (currentGroupIndex >= groupKeys.length) {
+        setIsRunning(false);
+        return;
+      }
+
+      const currentGroup = groups[groupKeys[currentGroupIndex]];
+      const elapsed = timestamp - groupStartTime;
+      
+      // Check if all activities in current group are complete
+      let groupComplete = true;
+      
+      setActivityStates(prev => {
+        const newStates = [...prev];
+        
+        // Mark all previous groups as completed
+        for (let i = 0; i < currentGroupIndex; i++) {
+          const prevGroup = groups[groupKeys[i]];
+          prevGroup.forEach(activity => {
+            newStates[activity.originalIndex] = { status: ActivityStatus.COMPLETED, progress: 100 };
+          });
+        }
+        
+        // Separate activities with subgroups from those without
+        const withSubgroups = {};
+        const withoutSubgroups = [];
+        
+        currentGroup.forEach(activity => {
+          if (activity.subgroup !== undefined) {
+            if (!withSubgroups[activity.subgroup]) withSubgroups[activity.subgroup] = [];
+            withSubgroups[activity.subgroup].push(activity);
+          } else {
+            withoutSubgroups.push(activity);
+          }
+        });
+        
+        // Handle activities without subgroups (parallel)
+        withoutSubgroups.forEach(activity => {
+          const progress = Math.min((elapsed / activity.duration) * 100, 100);
+          if (progress < 100) groupComplete = false;
+          newStates[activity.originalIndex] = {
+            status: progress >= 100 ? ActivityStatus.COMPLETED : ActivityStatus.RUNNING,
+            progress: progress,
+          };
+        });
+        
+        // Handle subgroups (series within the group)
+        Object.keys(withSubgroups).forEach(subgroupKey => {
+          const subgroupActivities = withSubgroups[subgroupKey];
+          const trackKey = `${currentGroupIndex}-${subgroupKey}`;
+          
+          if (!subgroupProgress[trackKey]) {
+            subgroupProgress[trackKey] = { currentIndex: 0, startTime: groupStartTime };
+          }
+          
+          const track = subgroupProgress[trackKey];
+          let subgroupElapsed = timestamp - track.startTime;
+          
+          // Process activities in this subgroup sequentially
+          for (let i = 0; i < subgroupActivities.length; i++) {
+            const activity = subgroupActivities[i];
+            
+            if (i < track.currentIndex) {
+              // Already completed
+              newStates[activity.originalIndex] = { status: ActivityStatus.COMPLETED, progress: 100 };
+            } else if (i === track.currentIndex) {
+              // Currently running
+              const progress = Math.min((subgroupElapsed / activity.duration) * 100, 100);
+              newStates[activity.originalIndex] = {
+                status: progress >= 100 ? ActivityStatus.COMPLETED : ActivityStatus.RUNNING,
+                progress: progress,
+              };
+              
+              if (progress >= 100) {
+                track.currentIndex++;
+                track.startTime = timestamp;
+              } else {
+                groupComplete = false;
+              }
+            } else {
+              // Not started yet
+              newStates[activity.originalIndex] = { status: ActivityStatus.PENDING, progress: 0 };
+              groupComplete = false;
+            }
+          }
+        });
+        
+        return newStates;
+      });
+
+      if (groupComplete) {
+        currentGroupIndex++;
+        groupStartTime = timestamp;
+      }
+
+      if (currentGroupIndex < groupKeys.length) {
+        animationRef.current = requestAnimationFrame(animate);
+      } else {
+        // Final update to mark everything complete
+        setActivityStates(prev => prev.map(() => ({ status: ActivityStatus.COMPLETED, progress: 100 })));
+        setIsRunning(false);
+      }
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+  };
+
+  const handlePlay = () => {
+    if (mode === 'series') {
+      runSeriesSimulation();
+    } else if (mode === 'mix') {
+      runMixSimulation();
+    } else {
+      runParallelSimulation();
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    // Reset states when activities prop changes
+    setActivityStates(activities.map(() => ({ status: ActivityStatus.PENDING, progress: 0 })));
+  }, [activities]);
+
+  return (
+    <div className={styles.simulatorWrapper}>
+      <button
+        className={`${styles.expandButton} ${isExpanded ? styles.expanded : ''}`}
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        <span className={styles.expandIcon}>{isExpanded ? '▼' : '▶'}</span>
+        <span>Try it out!</span>
+      </button>
+      
+      {isExpanded && (
+        <div className={styles.simulatorContainer}>
+          <div className={styles.simulatorHeader}>
+            <h4 className={styles.simulatorTitle}>{title}</h4>
+            <div className={styles.controls}>
+              <button
+                className={styles.playButton}
+                onClick={handlePlay}
+                disabled={isRunning}
+              >
+                {isRunning ? '⏳ Running...' : '▶ Play'}
+              </button>
+              <button
+                className={styles.resetButton}
+                onClick={resetSimulation}
+                disabled={isRunning}
+              >
+                🔄 Reset
+              </button>
+            </div>
+          </div>
+          
+          <div className={styles.activitiesContainer}>
+            {activities.map((activity, index) => (
+              <ActivityBar
+                key={index}
+                name={activity.name}
+                status={activityStates[index]?.status || ActivityStatus.PENDING}
+                progress={activityStates[index]?.progress || 0}
+                duration={activity.duration}
+              />
+            ))}
+          </div>
+          
+          <div className={styles.modeIndicator}>
+            Mode: <strong>{mode === 'series' ? 'Series (Sequential)' : mode === 'mix' ? 'Mix (Series + Parallel)' : 'Parallel (Concurrent)'}</strong>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
