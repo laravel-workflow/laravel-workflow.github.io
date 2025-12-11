@@ -2,6 +2,8 @@
 sidebar_position: 1
 ---
 
+import SignalSimulator from '@site/src/components/SignalSimulator';
+
 # Signals
 
 Signals allow you to trigger events in a workflow from outside the workflow. This can be useful for reacting to external events, enabling *human-in-the-loop* interventions, or for signaling the completion of an external task.
@@ -57,5 +59,7 @@ class MyWorkflow extends Workflow
     }
 }
 ```
+
+<SignalSimulator />
 
 **Important:** The `await()` function should only be used in a workflow, not an activity.

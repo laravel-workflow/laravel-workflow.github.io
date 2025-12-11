@@ -18,7 +18,7 @@ class MyWorkflow extends Workflow
     #[SignalMethod]
     public function setReady($ready)
     {
-        $this->ready = $ready
+        $this->ready = $ready;
     }
 
     public function execute()
@@ -27,6 +27,10 @@ class MyWorkflow extends Workflow
     }
 }
 ```
+
+import SignalTimerSimulator from '@site/src/components/SignalTimerSimulator';
+
+<SignalTimerSimulator />
 
 The workflow will reach the call to `awaitWithTimeout()` and then hibernate until either some external code signals the workflow like this.
 

@@ -2,6 +2,8 @@
 sidebar_position: 2
 ---
 
+import QuerySimulator from '@site/src/components/QuerySimulator';
+
 # Queries
 
 Queries allow you to retrieve information about the current state of a workflow without affecting its execution. This is useful for monitoring and debugging purposes.
@@ -33,5 +35,7 @@ $workflow = WorkflowStub::load($workflowId);
 
 $ready = $workflow->getReady();
 ```
+
+<QuerySimulator />
 
 **Note:** Querying a workflow does not advance its execution, unlike signals.

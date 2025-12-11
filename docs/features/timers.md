@@ -2,6 +2,8 @@
 sidebar_position: 3
 ---
 
+import TimerSimulator from '@site/src/components/TimerSimulator';
+
 # Timers
 
 Laravel Workflow provides the ability to suspend the execution of a workflow and resume at a later time. These are durable timers, meaning they survive restarts and failures while remaining consistent with workflow replay semantics. This can be useful for implementing delays, retry logic, or timeouts.
@@ -24,6 +26,8 @@ class MyWorkflow extends Workflow
     }
 }
 ```
+
+<TimerSimulator />
 
 You can specify the `$duration` as an integer number of seconds or as a string e.g. '5 seconds', '30 minutes' or even '3 days'. Laravel Workflow can handle any duration.
 

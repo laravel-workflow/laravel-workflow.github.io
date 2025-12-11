@@ -1,0 +1,346 @@
+.simulatorWrapper {
+  margin: 1rem 0 2rem 0;
+}
+
+.expandButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: linear-gradient(135deg, var(--ifm-color-primary), var(--ifm-color-primary-dark));
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.expandButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, var(--ifm-color-primary-light), var(--ifm-color-primary));
+}
+
+.expandButton.expanded {
+  border-radius: 6px 6px 0 0;
+}
+
+.expandIcon {
+  font-size: 0.7rem;
+  transition: transform 0.2s ease;
+}
+
+.simulatorContainer {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  padding: 1.25rem;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.simulatorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.simulatorTitle {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--ifm-color-primary);
+}
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.playButton,
+.resetButton {
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.playButton {
+  background: #22c55e;
+  color: white;
+}
+
+.playButton:hover:not(:disabled) {
+  background: #16a34a;
+}
+
+.playButton:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+.resetButton {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-800);
+}
+
+.resetButton:hover:not(:disabled) {
+  background: var(--ifm-color-emphasis-300);
+}
+
+.resetButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Code display styles */
+.codeContainer {
+  background: #1e1e1e;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.codeBlock {
+  margin: 0;
+  padding: 0;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.codeLine {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.codeLine.highlighted {
+  background: rgba(250, 204, 21, 0.25);
+  box-shadow: inset 3px 0 0 #facc15;
+}
+
+.codeLine.waiting {
+  background: rgba(250, 204, 21, 0.25);
+  box-shadow: inset 3px 0 0 #facc15;
+}
+
+.lineNumber {
+  width: 2.5rem;
+  color: #6b7280;
+  text-align: right;
+  padding-right: 1rem;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.lineContent {
+  color: #e5e7eb;
+  white-space: pre;
+  flex: 1;
+}
+
+.countdown {
+  position: absolute;
+  right: 1rem;
+  background: #facc15;
+  color: #1e1e1e;
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Waiting section */
+.waitingSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.timerProgress {
+  background: linear-gradient(135deg, rgba(250, 204, 21, 0.1), rgba(251, 191, 36, 0.1));
+  border: 1px solid rgba(250, 204, 21, 0.3);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+}
+
+.timerLabel {
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 0.5rem;
+}
+
+.timerLabel strong {
+  color: #ca8a04;
+}
+
+.timerBarContainer {
+  height: 6px;
+  background: var(--ifm-color-emphasis-200);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.timerBar {
+  height: 100%;
+  background: linear-gradient(90deg, #facc15, #fbbf24);
+  border-radius: 3px;
+  transition: width 0.1s linear;
+}
+
+/* Signal section */
+.signalSection {
+  display: flex;
+  align-items: center;
+}
+
+.signalButton {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.25rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.signalButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.signalButton code {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  margin-left: 0.25rem;
+}
+
+/* Status bar */
+.statusBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.statusIndicator {
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+}
+
+.statusIndicator.idle {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-700);
+}
+
+.statusIndicator.running {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.statusIndicator.waiting {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.statusIndicator.completed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+[data-theme='dark'] .statusIndicator.running {
+  background: #78350f;
+  color: #fef3c7;
+}
+
+[data-theme='dark'] .statusIndicator.waiting {
+  background: #78350f;
+  color: #fef3c7;
+}
+
+[data-theme='dark'] .statusIndicator.completed {
+  background: #14532d;
+  color: #dcfce7;
+}
+
+.resultDisplay {
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-600);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.resultDisplay code {
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.resultTrue {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.resultFalse {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+[data-theme='dark'] .resultTrue {
+  background: #14532d;
+  color: #dcfce7;
+}
+
+[data-theme='dark'] .resultFalse {
+  background: #7f1d1d;
+  color: #fee2e2;
+}
+
+.resultExplanation {
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-500);
+  font-style: italic;
+}

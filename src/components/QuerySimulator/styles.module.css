@@ -1,0 +1,352 @@
+.simulatorWrapper {
+  margin: 1rem 0 2rem 0;
+}
+
+.expandButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: linear-gradient(135deg, var(--ifm-color-primary), var(--ifm-color-primary-dark));
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.expandButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, var(--ifm-color-primary-light), var(--ifm-color-primary));
+}
+
+.expandButton.expanded {
+  border-radius: 6px 6px 0 0;
+}
+
+.expandIcon {
+  font-size: 0.7rem;
+  transition: transform 0.2s ease;
+}
+
+.simulatorContainer {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  padding: 1.25rem;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.simulatorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.simulatorTitle {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--ifm-color-primary);
+}
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.playButton,
+.resetButton {
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.playButton {
+  background: #22c55e;
+  color: white;
+}
+
+.playButton:hover:not(:disabled) {
+  background: #16a34a;
+}
+
+.playButton:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+.resetButton {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-800);
+}
+
+.resetButton:hover:not(:disabled) {
+  background: var(--ifm-color-emphasis-300);
+}
+
+.resetButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Code display styles */
+.codeContainer {
+  background: #1e1e1e;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.codeBlock {
+  margin: 0;
+  padding: 0;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.codeLine {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.codeLine.highlighted {
+  background: rgba(250, 204, 21, 0.25);
+  box-shadow: inset 3px 0 0 #facc15;
+}
+
+.codeLine.waiting {
+  background: rgba(59, 130, 246, 0.25);
+  box-shadow: inset 3px 0 0 #3b82f6;
+  animation: waitingPulse 2s ease-in-out infinite;
+}
+
+.codeLine.queryHighlight {
+  background: rgba(168, 85, 247, 0.3);
+  box-shadow: inset 3px 0 0 #a855f7;
+}
+
+@keyframes waitingPulse {
+  0%, 100% {
+    background: rgba(59, 130, 246, 0.25);
+  }
+  50% {
+    background: rgba(59, 130, 246, 0.4);
+  }
+}
+
+.lineNumber {
+  width: 2.5rem;
+  color: #6b7280;
+  text-align: right;
+  padding-right: 1rem;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.lineContent {
+  color: #e5e7eb;
+  white-space: pre;
+  flex: 1;
+}
+
+.waitingBadge {
+  position: absolute;
+  right: 1rem;
+  background: #3b82f6;
+  color: white;
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Actions row */
+.actionsRow {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Query section */
+.querySection {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.queryButton {
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.25rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(168, 85, 247, 0.3);
+}
+
+.queryButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4);
+}
+
+.queryButton code {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  margin-left: 0.25rem;
+}
+
+.queryResultInline {
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.queryResultInline code {
+  background: #dcfce7;
+  color: #166534;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+[data-theme='dark'] .queryResultInline code {
+  background: #14532d;
+  color: #dcfce7;
+}
+
+/* Signal section */
+.signalSection {
+  display: flex;
+  align-items: center;
+}
+
+.signalButton {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.25rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.signalButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.signalButton code {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  margin-left: 0.25rem;
+}
+
+/* Status bar */
+.statusBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.statusIndicator {
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+}
+
+.statusIndicator.idle {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-700);
+}
+
+.statusIndicator.running {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.statusIndicator.waiting {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.statusIndicator.completed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+[data-theme='dark'] .statusIndicator.running {
+  background: #78350f;
+  color: #fef3c7;
+}
+
+[data-theme='dark'] .statusIndicator.waiting {
+  background: #1e3a8a;
+  color: #dbeafe;
+}
+
+[data-theme='dark'] .statusIndicator.completed {
+  background: #14532d;
+  color: #dcfce7;
+}
+
+.stateDisplay {
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.stateDisplay code {
+  background: var(--ifm-color-emphasis-200);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  font-weight: 600;
+}
