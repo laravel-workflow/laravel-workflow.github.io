@@ -11,9 +11,6 @@ use Workflow\WorkflowStub;
 
 $workflow = WorkflowStub::make(MyWorkflow::class);
 $workflow->start('world');
-while ($workflow->running());
-$workflow->output();
-=> 'Hello, world!'
 ```
 
 It will be passed as arguments to the workflow's `execute()` method.
@@ -52,6 +49,15 @@ import PassingDataSimulator from '@site/src/components/PassingDataSimulator';
 <PassingDataSimulator />
 
 In general, you should only pass small amounts of data in this manner. Rather than passing large amounts of data, you should write the data to the database, cache or file system. Then pass the key or file path to the workflow and activities. The activities can then use the key or file path to read the data.
+
+## Output
+
+Once the workflow has completed, you can retrieve the output using the `output()` method.
+
+```php
+$workflow->output();
+=> 'Hello, world!'
+```
 
 ## Models
 
