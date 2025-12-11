@@ -165,7 +165,7 @@ class MyWorkflow extends Workflow
             </pre>
           </div>
 
-          {executionState === ExecutionState.RUNNING && getCurrentStep() && (
+          {executionState === ExecutionState.RUNNING && getCurrentStep() && getCurrentStep().showCountdown && (
             <div className={styles.progressSection}>
               <div className={styles.progressLabel}>
                 Executing: <code>{getCurrentStep().label}</code>

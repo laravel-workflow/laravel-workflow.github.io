@@ -191,7 +191,7 @@ class MyWorkflow extends Workflow
                     <span className={styles.lineNumber}>{lineNumber}</span>
                     <span className={styles.lineContent}>{line || ' '}</span>
                     {isWaitingLine && (
-                      <span className={styles.waitingBadge}>⏳ {waitingTime}s</span>
+                      <span className={styles.waitingBadge}>{waitingTime}s</span>
                     )}
                   </div>
                 );
