@@ -183,7 +183,7 @@ class MyWorkflow extends Workflow
             <span className={`${styles.statusIndicator} ${styles[executionState]}`}>
               {executionState === ExecutionState.IDLE && '⏸️ Ready'}
               {executionState === ExecutionState.RUNNING && '▶️ Running'}
-              {executionState === ExecutionState.COMPLETED && '✅ Workflow Completed'}
+              {executionState === ExecutionState.COMPLETED && '✅ Completed'}
             </span>
           </div>
         </div>

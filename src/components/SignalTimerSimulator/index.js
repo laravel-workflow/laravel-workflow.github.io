@@ -219,7 +219,7 @@ class MyWorkflow extends Workflow
               {executionState === ExecutionState.IDLE && '⏸️ Ready'}
               {executionState === ExecutionState.RUNNING && '▶️ Running'}
               {executionState === ExecutionState.WAITING && '⏳ Waiting for Signal or Timeout'}
-              {executionState === ExecutionState.COMPLETED && '✅ Workflow Completed'}
+              {executionState === ExecutionState.COMPLETED && '✅ Completed'}
             </span>
             {result !== null && (
               <span className={styles.resultDisplay}>

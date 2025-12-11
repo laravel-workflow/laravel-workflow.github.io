@@ -74,6 +74,7 @@
 }
 
 .playButton,
+.stopButton,
 .resetButton {
   padding: 0.4rem 0.8rem;
   border-radius: 4px;
@@ -98,6 +99,15 @@
   cursor: not-allowed;
 }
 
+.stopButton {
+  background: #ef4444;
+  color: white;
+}
+
+.stopButton:hover {
+  background: #dc2626;
+}
+
 .resetButton {
   background: var(--ifm-color-emphasis-200);
   color: var(--ifm-color-emphasis-800);
@@ -112,97 +122,144 @@
   cursor: not-allowed;
 }
 
-.activitiesContainer {
+/* Mode selector */
+.modeSelector {
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-.activityContainer {
+.modeButton {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--ifm-color-emphasis-300);
   background: var(--ifm-background-color);
-  border: 1px solid var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-700);
   border-radius: 6px;
-  padding: 0.75rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
-.activityHeader {
+.modeButton:hover:not(:disabled) {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+}
+
+.modeButton.active {
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: white;
+}
+
+.modeButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Code display styles */
+.codeContainer {
+  background: #1e1e1e;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.codeBlock {
+  margin: 0;
+  padding: 0;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.codeLine {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.codeLine.highlighted {
+  background: rgba(250, 204, 21, 0.25);
+  box-shadow: inset 3px 0 0 #facc15;
+}
+
+.lineNumber {
+  width: 2.5rem;
+  color: #6b7280;
+  text-align: right;
+  padding-right: 1rem;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.lineContent {
+  color: #e5e7eb;
+  white-space: pre;
+  flex: 1;
+}
+
+/* Stats section */
+.statsSection {
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.statRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
 }
 
-.activityName {
-  font-family: var(--ifm-font-family-monospace);
+.statLabel {
   font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--ifm-color-emphasis-800);
-}
-
-.activityStatus {
-  font-size: 0.75rem;
-  padding: 0.15rem 0.5rem;
-  border-radius: 12px;
-  font-weight: 500;
-}
-
-.activityStatus.pending {
-  background: var(--ifm-color-emphasis-200);
   color: var(--ifm-color-emphasis-700);
 }
 
-.activityStatus.running {
-  background: #fef3c7;
-  color: #92400e;
+.statValue {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-900);
 }
 
-.activityStatus.completed {
-  background: #dcfce7;
-  color: #166534;
+.timeoutSection {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
 }
 
-[data-theme='dark'] .activityStatus.running {
-  background: #78350f;
-  color: #fef3c7;
+.timeoutLabel {
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 0.5rem;
 }
 
-[data-theme='dark'] .activityStatus.completed {
-  background: #14532d;
-  color: #dcfce7;
+.timeoutLabel strong {
+  color: var(--ifm-color-emphasis-900);
 }
 
-.progressBarContainer {
+.timeoutBarContainer {
   height: 8px;
   background: var(--ifm-color-emphasis-200);
   border-radius: 4px;
   overflow: hidden;
 }
 
-.progressBar {
+.timeoutBar {
   height: 100%;
+  background: linear-gradient(90deg, #22c55e, #84cc16);
   border-radius: 4px;
-  transition: width 0.05s linear;
+  transition: width 0.1s linear, background 0.3s ease;
 }
 
-.progressBar.pending {
-  background: var(--ifm-color-emphasis-300);
-  width: 0;
-}
-
-.progressBar.running {
-  background: linear-gradient(90deg, #f59e0b, #fbbf24);
-}
-
-.progressBar.completed {
-  background: linear-gradient(90deg, #22c55e, #4ade80);
-}
-
-.activityDuration {
-  font-size: 0.7rem;
-  color: var(--ifm-color-emphasis-600);
-  text-align: right;
-  margin-top: 0.25rem;
-  min-height: 1em;
+.timeoutBar.danger {
+  background: linear-gradient(90deg, #f97316, #ef4444);
 }
 
 /* Status bar */
@@ -210,9 +267,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1rem;
   padding-top: 0.75rem;
   border-top: 1px solid var(--ifm-color-emphasis-200);
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .statusIndicator {
@@ -237,6 +295,11 @@
   color: #166534;
 }
 
+.statusIndicator.failed {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
 [data-theme='dark'] .statusIndicator.running {
   background: #78350f;
   color: #fef3c7;
@@ -247,11 +310,23 @@
   color: #dcfce7;
 }
 
-.modeIndicator {
-  font-size: 0.85rem;
-  color: var(--ifm-color-emphasis-600);
+[data-theme='dark'] .statusIndicator.failed {
+  background: #7f1d1d;
+  color: #fee2e2;
 }
 
-.modeIndicator strong {
-  color: var(--ifm-color-primary);
+.heartbeatIndicator {
+  font-size: 0.85rem;
+  color: #22c55e;
+  font-weight: 500;
+  animation: heartbeat 1s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }

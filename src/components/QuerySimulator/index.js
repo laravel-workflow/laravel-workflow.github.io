@@ -210,7 +210,7 @@ class MyWorkflow extends Workflow
               {executionState === ExecutionState.IDLE && '⏸️ Ready'}
               {executionState === ExecutionState.RUNNING && '▶️ Running'}
               {executionState === ExecutionState.WAITING && '⏳ Waiting for Signal'}
-              {executionState === ExecutionState.COMPLETED && '✅ Workflow Completed'}
+              {executionState === ExecutionState.COMPLETED && '✅ Completed'}
             </span>
             <span className={styles.stateDisplay}>
               $ready = <code>{readyValue ? 'true' : 'false'}</code>

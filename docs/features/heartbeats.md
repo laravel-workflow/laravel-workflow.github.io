@@ -24,4 +24,8 @@ class MyActivity extends Activity
 }
 ```
 
+import HeartbeatSimulator from '@site/src/components/HeartbeatSimulator';
+
+<HeartbeatSimulator />
+
 In the above example, even though the activity would normally be terminated after running for 5 seconds, the periodic heartbeat allows it to keep running. If the activity does freeze or crash then the heartbeat will stop and the timeout will be triggered.

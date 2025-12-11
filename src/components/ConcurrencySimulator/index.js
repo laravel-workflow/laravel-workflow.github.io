@@ -42,6 +42,7 @@ export default function WorkflowSimulator({
 }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
+  const [allCompleted, setAllCompleted] = useState(false);
   const [activityStates, setActivityStates] = useState(
     activities.map(() => ({ status: ActivityStatus.PENDING, progress: 0 }))
   );
@@ -97,6 +98,7 @@ export default function WorkflowSimulator({
         animationRef.current = requestAnimationFrame(animate);
       } else {
         setIsRunning(false);
+        setAllCompleted(true);
       }
     };
 
@@ -110,12 +112,12 @@ export default function WorkflowSimulator({
 
     const animate = (timestamp) => {
       const elapsed = timestamp - startTimeRef.current;
-      let allCompleted = true;
+      let allDone = true;
 
       setActivityStates(prev => {
         return activities.map((activity, index) => {
           const progress = Math.min((elapsed / activity.duration) * 100, 100);
-          if (progress < 100) allCompleted = false;
+          if (progress < 100) allDone = false;
           return {
             status: progress >= 100 ? ActivityStatus.COMPLETED : ActivityStatus.RUNNING,
             progress: progress,
@@ -123,10 +125,11 @@ export default function WorkflowSimulator({
         });
       });
 
-      if (!allCompleted) {
+      if (!allDone) {
         animationRef.current = requestAnimationFrame(animate);
       } else {
         setIsRunning(false);
+        setAllCompleted(true);
       }
     };
 
@@ -263,6 +266,7 @@ export default function WorkflowSimulator({
         // Final update to mark everything complete
         setActivityStates(prev => prev.map(() => ({ status: ActivityStatus.COMPLETED, progress: 100 })));
         setIsRunning(false);
+        setAllCompleted(true);
       }
     };
 
@@ -336,8 +340,13 @@ export default function WorkflowSimulator({
             ))}
           </div>
           
-          <div className={styles.modeIndicator}>
-            Mode: <strong>{mode === 'series' ? 'Series (Sequential)' : mode === 'mix' ? 'Mix (Series + Parallel)' : 'Parallel (Concurrent)'}</strong>
+          <div className={styles.statusBar}>
+            <span className={`${styles.statusIndicator} ${isRunning ? styles.running : allCompleted ? styles.completed : styles.idle}`}>
+              {isRunning ? '▶️ Running' : allCompleted ? '✅ Completed' : '⏸️ Ready'}
+            </span>
+            <span className={styles.modeIndicator}>
+              Mode: <strong>{mode === 'series' ? 'Series' : mode === 'mix' ? 'Mix' : 'Parallel'}</strong>
+            </span>
           </div>
         </div>
       )}
