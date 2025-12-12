@@ -1,0 +1,21 @@
+.themedImageWrapper {
+  display: inline-block;
+}
+
+/* Light mode: show light image, hide dark image */
+.lightImage {
+  display: inline-block;
+}
+
+.darkImage {
+  display: none;
+}
+
+/* Dark mode: show dark image, hide light image */
+[data-theme='dark'] .lightImage {
+  display: none;
+}
+
+[data-theme='dark'] .darkImage {
+  display: inline-block;
+}
