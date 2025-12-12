@@ -9,8 +9,6 @@ authors:
 tags: [ai, image-moderation, workflow, automation]
 ---
 
-## Introduction
-
 Before we begin, let’s understand the scenario. We are building an image moderation system where:
 
 1. Every image undergoes an initial AI check to determine if it’s safe.
