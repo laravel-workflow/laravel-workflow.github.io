@@ -9,8 +9,6 @@ authors:
 tags: [ai, image-moderation, workflow, automation]
 ---
 
-![captionless image](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Sz-f9McEdB5UIlr55GOjyw.png)
-
 ## Introduction
 
 Before we begin, let’s understand the scenario. We are building an image moderation system where:
@@ -28,7 +26,7 @@ Laravel Workflow is designed to streamline and organize complex processes in app
 
 ClarifAI provides AI-powered moderation tools for analyzing visual content. They offer a [free plan](https://www.clarifai.com/pricing) with up to 1,000 actions per month.
 
-### 1. Store your credentials in `.env`.
+#### 1. Store your credentials in `.env`.
 ```ini
 CLARIFAI_API_KEY=key
 CLARIFAI_APP=my-application
@@ -36,7 +34,7 @@ CLARIFAI_WORKFLOW=my-workflow
 CLARIFAI_USER=username
 ```
 
-### 2. Add the service to `config/services.php`.
+#### 2. Add the service to `config/services.php`.
 ```php
 'clarifai' => [
     'api_key' => env('CLARIFAI_API_KEY'),
@@ -46,7 +44,7 @@ CLARIFAI_USER=username
 ],
 ```
 
-### 3. Create a service at `app/Services/ClarifAI.php`.
+#### 3. Create a service at `app/Services/ClarifAI.php`.
 ```php
 namespace App\Services;
 
