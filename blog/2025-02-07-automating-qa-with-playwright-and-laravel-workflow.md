@@ -9,7 +9,11 @@ authors:
 tags: [playwright, workflow, automation, qa, testing]
 ---
 
-![playwright](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*b6eXVs5J3aRNzYAiqnS9Vw.png)
+<img
+  src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*b6eXVs5J3aRNzYAiqnS9Vw.png"
+  alt="Playwright"
+  style="min-width: 100px; max-width: 600px; width: 30%;"
+/>
 
 Have you ever spent hours tracking down a frontend bug that only happens in production? When working with web applications, debugging frontend issues can be challenging. Console errors and unexpected UI behaviors often require careful inspection and reproducible test cases. Wouldn’t it be great if you could automate this process, capture errors, and even record a video of the session for later analysis?
 
@@ -20,8 +24,7 @@ With **Playwright** and **Laravel Workflow**, you can achieve just that! In this
 *   Converts the video to an MP4 format for easy sharing.
 *   Runs seamlessly in a **GitHub Codespace**.
 
-The Stack
-=========
+# The Stack
 
 *   **Playwright**: A powerful browser automation tool for testing web applications.
 *   **Laravel Workflow**: A durable workflow engine for handling long-running, distributed processes.
@@ -29,7 +32,7 @@ The Stack
 
 [![](https://mermaid.ink/img/pako:eNpNkl1P2zAUhv-KdS52FbrWNMGNEBOkDSDRDVEE2pJemOaQWiR25NoF1va_z3Zg252Pn_c9Xzo7WKkKIYXnRr2u1lwbcj8tJSHnxcL46FHpF8-W5OjojFwUd1aS24a_v2pRrw1ZrLTozLKU3nPhNfuMd8ZqJJmSG9UgmWmt9GZPsl3_Irmysvp28I4sOH6iw9PiRtUf4uU_9l3tyaxwuYyQFgOYhlby4rM1V6ntGjQ9nfX0_47ucKV0RR5EhS7bZbHgWySP-DQnuWh612VwXflCW_Rje2oUmd-OyVbw0yf99SzP2w7rIL8K8mu3I-Um_UJ-WNNZ49UBX_c9QAS1FhWkRluMoEXdch_CzotKMGtssYTUPSuuX0oo5cF5Oi5_KdV-2rSy9RrSZ95sXGS7ihucCl5r3v791Sgr1JlbrIGUxiEHpDt4g3SUxIPkhMUnI0bj4YQNkwjenYglg2QcJ2wypkMW0_j4EMHvUHY4iMfHE8omdEQpTVjCIsBKuFHn_a2Ekzn8AZMbsr4?type=png)](https://mermaid.live/edit#pako:eNpNkl1P2zAUhv-KdS52FbrWNMGNEBOkDSDRDVEE2pJemOaQWiR25NoF1va_z3Zg252Pn_c9Xzo7WKkKIYXnRr2u1lwbcj8tJSHnxcL46FHpF8-W5OjojFwUd1aS24a_v2pRrw1ZrLTozLKU3nPhNfuMd8ZqJJmSG9UgmWmt9GZPsl3_Irmysvp28I4sOH6iw9PiRtUf4uU_9l3tyaxwuYyQFgOYhlby4rM1V6ntGjQ9nfX0_47ucKV0RR5EhS7bZbHgWySP-DQnuWh612VwXflCW_Rje2oUmd-OyVbw0yf99SzP2w7rIL8K8mu3I-Um_UJ-WNNZ49UBX_c9QAS1FhWkRluMoEXdch_CzotKMGtssYTUPSuuX0oo5cF5Oi5_KdV-2rSy9RrSZ95sXGS7ihucCl5r3v791Sgr1JlbrIGUxiEHpDt4g3SUxIPkhMUnI0bj4YQNkwjenYglg2QcJ2wypkMW0_j4EMHvUHY4iMfHE8omdEQpTVjCIsBKuFHn_a2Ekzn8AZMbsr4)
 
-# 1. Capturing Errors and Video with Playwright
+## 1. Capturing Errors and Video with Playwright
 
 The Playwright script automates a browser session, navigates to a given URL, and logs any console errors. It also records a video of the entire session.
 
@@ -74,7 +77,7 @@ import fs from 'fs';
 })();
 ```
 
-# 2. Running the Workflow
+## 2. Running the Workflow
 
 A Laravel console command (`php artisan app:playwright`) starts the workflow which:
 
@@ -105,7 +108,7 @@ class Playwright extends Command
 }
 ```
 
-# 3. The Workflow
+## 3. The Workflow
 
 ```php
 namespace App\Workflows\Playwright;
@@ -129,7 +132,7 @@ class CheckConsoleErrorsWorkflow extends Workflow
 }
 ```
 
-# 4. Running Playwright
+## 4. Running Playwright
 
 ```php
 namespace App\Workflows\Playwright;
@@ -150,7 +153,7 @@ class CheckConsoleErrorsActivity extends Activity
 }
 ```
 
-# 5. Video Conversion with FFmpeg
+## 5. Video Conversion with FFmpeg
 
 The Playwright recording is stored in WebM format, but we need an MP4 for wider compatibility. Laravel Workflow runs this process asynchronously.
 
@@ -177,7 +180,7 @@ class ConvertVideoActivity extends Activity
 }
 ```
 
-## Try It Now in Your Browser
+# Try It Now in Your Browser
 
 You don’t need to set up anything on your local machine. Everything is already configured in the Laravel Workflow [Sample App](https://github.com/laravel-workflow/sample-app).
 
@@ -198,14 +201,6 @@ php artisan app:playwright
 
 That’s it! The workflow will execute, capture console errors, record a video, and convert it to MP4. You can find the video in the videos folder. Take a look at the sample app’s README.md for more information on other workflows and how to view the Waterline UI.
 
-# Conclusion
+## Conclusion
 
 By integrating Playwright with Laravel Workflow, we’ve automated frontend error detection and debugging. This setup allows teams to quickly identify and resolve issues, all while leveraging Laravel’s queue system to run tasks asynchronously.
-
-## 🔗 **Next Steps**
-
-*   Check out the [Laravel Workflow repo](https://github.com/laravel-workflow/laravel-workflow) on GitHub.
-*   Explore more workflows in the [sample app](https://github.com/laravel-workflow/sample-app).
-*   Join the community and share your workflows!
-
-Happy automating! 🚀
