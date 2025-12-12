@@ -177,26 +177,21 @@ class ConvertVideoActivity extends Activity
 }
 ```
 
-## 🚀 Try It Out in a GitHub Codespace
+## Try It Now in Your Browser
 
-You don’t need to set up anything on your local machine. Everything is already configured in the **Laravel Workflow Sample App**.
+You don’t need to set up anything on your local machine. Everything is already configured in the Laravel Workflow [Sample App](https://github.com/laravel-workflow/sample-app).
 
-# Steps to Run the Playwright Workflow
+To try it:
 
-*   Open the **Laravel Workflow Sample App** on GitHub: [laravel-workflow/sample-app](https://github.com/laravel-workflow/sample-app)
-*   Click **“Create codespace on main”** to start a pre-configured development environment.
-
-![captionless image](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*063hPvkrvDQP6gU-VYb0Ug.png)
-
-*   Once the Codespace is ready, run the following commands in the terminal:
-
-```bash
-php artisan migrate
-php artisan queue:work
-```
-
-*   Then open a second terminal and run this command:
-
+1. Open the sample-app repo on GitHub
+2. Click **Code** → **Codespaces** → **Create codespace on main**
+3. Wait for the environment to build
+4. Setup the app and start the queue worker:
+   ```bash
+   php artisan app:init
+   php artisan queue:work
+   ```
+5. In a second terminal:
 ```bash
 php artisan app:playwright
 ```
