@@ -9,11 +9,7 @@ authors:
 tags: [playwright, workflow, automation, qa, testing]
 ---
 
-<img
-  src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*b6eXVs5J3aRNzYAiqnS9Vw.png"
-  alt="Playwright"
-  style="min-width: 100px; max-width: 600px; width: 30%;"
-/>
+![playwright](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*b6eXVs5J3aRNzYAiqnS9Vw.png)
 
 Have you ever spent hours tracking down a frontend bug that only happens in production? When working with web applications, debugging frontend issues can be challenging. Console errors and unexpected UI behaviors often require careful inspection and reproducible test cases. Wouldn’t it be great if you could automate this process, capture errors, and even record a video of the session for later analysis?
 
