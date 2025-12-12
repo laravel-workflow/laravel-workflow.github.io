@@ -30,10 +30,10 @@ class SideEffectWorkflow extends Workflow
     public function execute()  
     {  
         $sideEffect = yield sideEffect(  
-          fn () => random\_int(PHP\_INT\_MIN, PHP\_INT\_MAX)  
+          fn () => random_int(PHP_INT_MIN, PHP_INT_MAX)  
         );  
   
-        $badSideEffect = random\_int(PHP\_INT\_MIN, PHP\_INT\_MAX);  
+        $badSideEffect = random_int(PHP_INT_MIN, PHP_INT_MAX);  
   
         $result1 = yield activity(SimpleActivity::class, $sideEffect);  
   
