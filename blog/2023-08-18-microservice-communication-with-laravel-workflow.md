@@ -9,8 +9,6 @@ authors:
 tags: [microservices, workflow, communication, distributed-systems]
 ---
 
-![captionless image](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*nCy08NPtCpERqC09SVBFfg.jpeg)
-
 In the evolving landscape of microservices, communication has always been a focal point. Microservices can interact in various ways, be it through HTTP/REST calls, using messaging protocols like RabbitMQ or Kafka, or even employing more recent technologies like gRPC. Yet, regardless of the communication method, the goal remains the same: seamless, efficient, and robust interactions. Today, we’ll explore how Laravel Workflow can fit into this picture and optimize the communication between microservices in a unique way.
 
 ## The Challenge
@@ -74,10 +72,10 @@ When working with microservices, it’s common for each service to have its dedi
 
 ## Step-By-Step Integration
 
-### 1. Install `laravel-workflow` in all microservices.
+#### 1. Install `laravel-workflow` in all microservices.
 Follow the [installation guide](https://laravel-workflow.com/docs/installation/).
 
-### 2. Create a shared database/redis connection in all microservices.
+#### 2. Create a shared database/redis connection in all microservices.
 ```php
 // config/database.php
 'connections' => [
@@ -91,7 +89,7 @@ Follow the [installation guide](https://laravel-workflow.com/docs/installation/)
 ],
 ```
 
-### 3. Configure a shared queue connection.
+#### 3. Configure a shared queue connection.
 ```php
 // config/queue.php
 'connections' => [
@@ -103,7 +101,7 @@ Follow the [installation guide](https://laravel-workflow.com/docs/installation/)
 ],
 ```
 
-### 4. Ensure only one microservice publishes Laravel Workflow migrations.
+#### 4. Ensure only one microservice publishes Laravel Workflow migrations.
 Update the migration to use the shared database connection.
 ```php
 // database/migrations/..._create_workflows_table.php
@@ -113,7 +111,7 @@ class CreateWorkflowsTable extends Migration
 }
 ```
 
-### 5. Extend workflow models in each microservice to use the shared connection.
+#### 5. Extend workflow models in each microservice to use the shared connection.
 ```php
 // app/Models/StoredWorkflow.php
 namespace App\Models;
@@ -126,12 +124,12 @@ class StoredWorkflow extends BaseStoredWorkflow
 }
 ```
 
-### 6. Publish Laravel Workflow config and update it with shared models.
+#### 6. Publish Laravel Workflow config and update it with shared models.
 ```sh
 php artisan vendor:publish --provider="Workflow\Providers\WorkflowServiceProvider" --tag="config"
 ```
 
-### 7. Set workflows and activities to use the shared queue.
+#### 7. Set workflows and activities to use the shared queue.
 ```php
 // app/Workflows/MyWorkflow.php
 class MyWorkflow extends Workflow
@@ -149,7 +147,7 @@ class MyActivity extends Activity
 }
 ```
 
-### 8. Ensure microservices define empty counterparts for workflow and activity classes.
+#### 8. Ensure microservices define empty counterparts for workflow and activity classes.
 #### In the workflow microservice:
 ```php
 class MyWorkflow extends Workflow
@@ -188,10 +186,10 @@ class MyActivity extends Activity
 }
 ```
 
-### 9. Ensure all microservices have the same `APP_KEY` in their `.env` file.
+#### 9. Ensure all microservices have the same `APP_KEY` in their `.env` file.
 This is crucial for proper job serialization across services.
 
-### 10. Run queue workers in each microservice.
+#### 10. Run queue workers in each microservice.
 ```sh
 php artisan queue:work shared --queue=workflow
 php artisan queue:work shared --queue=activity
