@@ -166,18 +166,19 @@ It’s perfect for AI applications where accuracy, safety, and traceability are 
 
 ### Try It Now in Your Browser
 
-We’ve bundled this workflow into the official Laravel Workflow [Sample App](https://github.com/laravel-workflow/sample-app), which runs in GitHub Codespaces.
+We’ve bundled this workflow into the official Laravel Workflow [Sample App](https://github.com/laravel-workflow/sample-app).
 
-To launch it:
-1. Open the sample-app repo
-2. Click the “Code” button → “Codespaces” → “Create codespace on main”
-3. Wait a few seconds for setup
-4. Set your OPENAI_API_KEY
-5. Run:
-```bash
-php artisan migrate
-php artisan queue:work
-```
+To try it:
+
+1. Open the sample-app repo on GitHub
+2. Click **Code** → **Codespaces** → **Create codespace on main**
+3. Wait for the environment to build
+4. Set your OPENAI_API_KEY in the .env
+5. Setup the app and start the queue worker:
+   ```bash
+   php artisan app:init
+   php artisan queue:work
+   ```
 6. In a second terminal:
 ```bash
 php artisan app:prism
