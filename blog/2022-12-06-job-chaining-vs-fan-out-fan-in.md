@@ -11,11 +11,11 @@ tags: [chaining, fan-out, fan-in, batching]
 
 [Chaining](https://laravel.com/docs/9.x/queues#job-chaining) is a workflow design pattern that involves the sequential execution of a series of activities, with the output of one activity potentially serving as the input to the next activity in the chain. This pattern is often used to create a linear, step-by-step process for completing a task.
 
-![chaining](https://miro.medium.com/max/1400/1*DOzdRnmC8Sq2w509yK1meg.webp)
+[![](https://mermaid.ink/img/pako:eNptkU1ugzAQha-CZtVKhGI75seqsmgRq3bTZUMWDnYANdiRY9QfxEW669V6khpIsklnM_Pm6Zu3mB5KLSQw2O31e1lzY72nl0J5rnK0_v3-ud-au1XeqdI2WnloM3vZA1rfZNzyLT_K29Myx9cAvgD4H4BcA8R553xvsViNUVPP8UnOPSfgQ2UaAcyaTvrQStPyUUI_8gXYWrayAOZGwc1bAYUaHHPg6lXr9owZ3VU1sB3fH53qDoJbmTW8Mry9bI1UQppH3SkLbBmT6QiwHj6AIRIGhBCE6BJjSsPYh09gBCUBjhGJkzCi2PnR4MPXFBsGNKUEpVGSEBwimqY-SNFYbZ7nT0wPGf4AtoR6rg?type=png)](https://mermaid.live/edit#pako:eNptkU1ugzAQha-CZtVKhGI75seqsmgRq3bTZUMWDnYANdiRY9QfxEW669V6khpIsklnM_Pm6Zu3mB5KLSQw2O31e1lzY72nl0J5rnK0_v3-ud-au1XeqdI2WnloM3vZA1rfZNzyLT_K29Myx9cAvgD4H4BcA8R553xvsViNUVPP8UnOPSfgQ2UaAcyaTvrQStPyUUI_8gXYWrayAOZGwc1bAYUaHHPg6lXr9owZ3VU1sB3fH53qDoJbmTW8Mry9bI1UQppH3SkLbBmT6QiwHj6AIRIGhBCE6BJjSsPYh09gBCUBjhGJkzCi2PnR4MPXFBsGNKUEpVGSEBwimqY-SNFYbZ7nT0wPGf4AtoR6rg)
 
 In contrast, the fan-out/fan-in pattern involves dividing a task into smaller sub-tasks and then combining the results of those sub-tasks to produce the final result. This pattern is often used to parallelize a task and improve its performance by leveraging the power of multiple queue workers.
 
-![fan-out/fan-in](https://miro.medium.com/max/1154/1*g-0m-NWockKX_xbWXEjC1A.webp)
+[![](https://mermaid.ink/img/pako:eNptkU1ugzAQRq-CZtVKhGI7mMSqsmhRVu2my4YsHHAANbYjx6g_iIt016v1JDUQErWpV57v6c2MNA1kOhfAYLvTr1nJjfUenlLlubdEq-_Pr9uNuVksa5XZSisPrQeW3KHVVcIt3_CDuHbhUcH20sHrEcr_4dgS_27ZO-RSIedxyJtMFt0yp636wK1xBHioyV8uR54q8KEwVQ7Mmlr4IIWRvCuh6aQUbCmkSIG5b87NSwqpap2z5-pZazlqRtdFCWzLdwdX1fucW5FUvDBcnlIjVC7Mva6VBTYlcd8EWANvwBAJA0IIQtEU4ygKHXwHRtAswDEi8SykEXactj589GPDIJpHBM1pTCl1CvVB5JXV5nG4Z3_W9gchII8n?type=png)](https://mermaid.live/edit#pako:eNptkU1ugzAQRq-CZtVKhGI7mMSqsmhRVu2my4YsHHAANbYjx6g_iIt016v1JDUQErWpV57v6c2MNA1kOhfAYLvTr1nJjfUenlLlubdEq-_Pr9uNuVksa5XZSisPrQeW3KHVVcIt3_CDuHbhUcH20sHrEcr_4dgS_27ZO-RSIedxyJtMFt0yp636wK1xBHioyV8uR54q8KEwVQ7Mmlr4IIWRvCuh6aQUbCmkSIG5b87NSwqpap2z5-pZazlqRtdFCWzLdwdX1fucW5FUvDBcnlIjVC7Mva6VBTYlcd8EWANvwBAJA0IIQtEU4ygKHXwHRtAswDEi8SykEXactj589GPDIJpHBM1pTCl1CvVB5JXV5nG4Z3_W9gchII8n)
 
 There are two phases: fan-out and fan-in.
 
