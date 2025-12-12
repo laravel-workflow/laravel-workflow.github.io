@@ -9,8 +9,6 @@ authors:
 tags: [side-effects, random, determinism]
 ---
 
-![effects](https://miro.medium.com/max/1400/1*2CEWzQKvYNtpviILF-I-0Q.webp)
-
 Workflows provide a more organized and structured approach to managing distributed processes, making it easier for developers to understand and work with complex logic.
 
 Laravel Workflow is a powerful package for the Laravel web framework that provides tools for defining and managing workflows.
@@ -73,8 +71,6 @@ The first activity receives the value of the side effect, which has been saved. 
 The second activity receives the value of the local variable, which is not saved and will be regenerated. This means that the value of the local variable will change between executions of the workflow.
 
 As a result, it is not expected that the value of the local variable will match the value returned from the second activity. The odds of two random integers generated using `random_int(PHP_INT_MIN, PHP_INT_MAX)` being equal are extremely low, since there are a very large number of possible integers in this range.
-
-![dice](https://miro.medium.com/max/1400/1*ElelNBBf4pbE3-nueJcriQ.webp)
 
 It’s important to use side effects appropriately in your workflow to ensure that your workflow is reliable and can recover from failures. Only use side effects for short pieces of code that cannot fail, and make sure to use activities to perform long-running work that may fail and need to be retried, such as API requests or external processes.
 
