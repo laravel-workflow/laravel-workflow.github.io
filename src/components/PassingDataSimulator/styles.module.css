@@ -141,12 +141,30 @@
   color: #e5e7eb;
 }
 
+[data-theme='light'] .fileTab {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-600);
+}
+
+[data-theme='light'] .fileTab:hover {
+  color: var(--ifm-color-emphasis-800);
+}
+
+[data-theme='light'] .fileTab.active {
+  background: var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-emphasis-900);
+}
+
 /* Code display styles */
 .codeContainer {
   background: #2d2d2d;
   border-radius: 0 6px 6px 6px;
   overflow: hidden;
   margin-bottom: 1rem;
+}
+
+[data-theme='light'] .codeContainer {
+  background: var(--ifm-color-emphasis-200);
 }
 
 .codeBlock {
@@ -183,6 +201,14 @@
   color: #e5e7eb;
   white-space: pre;
   flex: 1;
+}
+
+[data-theme='light'] .lineNumber {
+  color: #9ca3af;
+}
+
+[data-theme='light'] .lineContent {
+  color: #1f2937;
 }
 
 /* Data flow indicator */
