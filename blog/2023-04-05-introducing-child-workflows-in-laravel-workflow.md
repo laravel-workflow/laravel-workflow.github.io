@@ -28,7 +28,7 @@ Workflows as Activities
 
 Child workflows are similar to running a workflow as an activity in that they both encapsulate specific functionality within a parent workflow. However, child workflows offer more flexibility and reusability than activities.
 
-![chart](https://miro.medium.com/max/1400/1*pv55DNLlsn7wuNZSL8bXrg.webp)
+[![](https://mermaid.ink/img/pako:eNp1kl1rwjAUhv9KOOBdFRttjLkY-D3dBmMMBmt3kbXRFm0iMdU58b-vxriJZbkIOefhfc85SQ4Qq0QAg_lK7eKUa4Ne-5FE5eqFz1wLadCb0ssT_jjn-2EvNtk2M3vku9QgnMqtWgo0SLNVci1wVqhev0N9uw8uyVoNPYq5QZ-ayzhlTrtzWmdsJcOw4nuCQwtHDlaaGlk8vsXY4bHFk1vccnhi8X04kglS8_8GK2d4yRbp3xDuymIlTSYLsbkeYxpWmphaMAsr5WcWPFzKV18ikuDBQmcJMKML4UEudM5PIRxOFhGYVOQiAlYeE66XEUTyWGrWXL4rlV9kWhWLFNicrzZlVKwTbsQw4wvN899sWTsReqAKaYCRwHoAO8AXMJ8EDdKhQcenOGh2aZN4sAeGKWmQdkBot42bNMBB6-jBty3bbATtVhfTLvYxxoQS6oFIMqP00_kn2g95_AGd-cox?type=png)](https://mermaid.live/edit#pako:eNp1kl1rwjAUhv9KOOBdFRttjLkY-D3dBmMMBmt3kbXRFm0iMdU58b-vxriJZbkIOefhfc85SQ4Qq0QAg_lK7eKUa4Ne-5FE5eqFz1wLadCb0ssT_jjn-2EvNtk2M3vku9QgnMqtWgo0SLNVci1wVqhev0N9uw8uyVoNPYq5QZ-ayzhlTrtzWmdsJcOw4nuCQwtHDlaaGlk8vsXY4bHFk1vccnhi8X04kglS8_8GK2d4yRbp3xDuymIlTSYLsbkeYxpWmphaMAsr5WcWPFzKV18ikuDBQmcJMKML4UEudM5PIRxOFhGYVOQiAlYeE66XEUTyWGrWXL4rlV9kWhWLFNicrzZlVKwTbsQw4wvN899sWTsReqAKaYCRwHoAO8AXMJ8EDdKhQcenOGh2aZN4sAeGKWmQdkBot42bNMBB6-jBty3bbATtVhfTLvYxxoQS6oFIMqP00_kn2g95_AGd-cox)
 
 Activities are single-purpose units that perform a specific action within a workflow, such as sending an email or updating a database record. On the other hand, child workflows are complete workflows in themselves, which can be composed of multiple activities and even other child workflows. This allows developers to create complex, nested structures to manage intricate processes more efficiently.
 
