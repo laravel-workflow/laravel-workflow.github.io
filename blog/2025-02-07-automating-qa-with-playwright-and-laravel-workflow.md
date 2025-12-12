@@ -9,7 +9,7 @@ authors:
 tags: [playwright, workflow, automation, qa, testing]
 ---
 
-![captionless image](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*b6eXVs5J3aRNzYAiqnS9Vw.png)
+![playwright](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*b6eXVs5J3aRNzYAiqnS9Vw.png)
 
 Have you ever spent hours tracking down a frontend bug that only happens in production? When working with web applications, debugging frontend issues can be challenging. Console errors and unexpected UI behaviors often require careful inspection and reproducible test cases. Wouldn’t it be great if you could automate this process, capture errors, and even record a video of the session for later analysis?
 
@@ -27,7 +27,7 @@ The Stack
 *   **Laravel Workflow**: A durable workflow engine for handling long-running, distributed processes.
 *   **FFmpeg**: Used to convert Playwright’s WebM recordings to MP4 format.
 
-![captionless image](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*2AcR_sLHGToBWQx-SCSPHA.png)
+[![](https://mermaid.ink/img/pako:eNpNkl1P2zAUhv-KdS52FbrWNMGNEBOkDSDRDVEE2pJemOaQWiR25NoF1va_z3Zg252Pn_c9Xzo7WKkKIYXnRr2u1lwbcj8tJSHnxcL46FHpF8-W5OjojFwUd1aS24a_v2pRrw1ZrLTozLKU3nPhNfuMd8ZqJJmSG9UgmWmt9GZPsl3_Irmysvp28I4sOH6iw9PiRtUf4uU_9l3tyaxwuYyQFgOYhlby4rM1V6ntGjQ9nfX0_47ucKV0RR5EhS7bZbHgWySP-DQnuWh612VwXflCW_Rje2oUmd-OyVbw0yf99SzP2w7rIL8K8mu3I-Um_UJ-WNNZ49UBX_c9QAS1FhWkRluMoEXdch_CzotKMGtssYTUPSuuX0oo5cF5Oi5_KdV-2rSy9RrSZ95sXGS7ihucCl5r3v791Sgr1JlbrIGUxiEHpDt4g3SUxIPkhMUnI0bj4YQNkwjenYglg2QcJ2wypkMW0_j4EMHvUHY4iMfHE8omdEQpTVjCIsBKuFHn_a2Ekzn8AZMbsr4?type=png)](https://mermaid.live/edit#pako:eNpNkl1P2zAUhv-KdS52FbrWNMGNEBOkDSDRDVEE2pJemOaQWiR25NoF1va_z3Zg252Pn_c9Xzo7WKkKIYXnRr2u1lwbcj8tJSHnxcL46FHpF8-W5OjojFwUd1aS24a_v2pRrw1ZrLTozLKU3nPhNfuMd8ZqJJmSG9UgmWmt9GZPsl3_Irmysvp28I4sOH6iw9PiRtUf4uU_9l3tyaxwuYyQFgOYhlby4rM1V6ntGjQ9nfX0_47ucKV0RR5EhS7bZbHgWySP-DQnuWh612VwXflCW_Rje2oUmd-OyVbw0yf99SzP2w7rIL8K8mu3I-Um_UJ-WNNZ49UBX_c9QAS1FhWkRluMoEXdch_CzotKMGtssYTUPSuuX0oo5cF5Oi5_KdV-2rSy9RrSZ95sXGS7ihucCl5r3v791Sgr1JlbrIGUxiEHpDt4g3SUxIPkhMUnI0bj4YQNkwjenYglg2QcJ2wypkMW0_j4EMHvUHY4iMfHE8omdEQpTVjCIsBKuFHn_a2Ekzn8AZMbsr4)
 
 # 1. Capturing Errors and Video with Playwright
 
