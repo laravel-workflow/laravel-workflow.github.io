@@ -43,7 +43,7 @@ In the `workflows.php` config file you can update the model classes to use your 
 
 ## Changing Serializer
 
-This setting allows you to optionally use the Base64 serializer instead of Y (kind of like yEnc encoding where it only gets rid of null bytes). The tradeoff is between speed and size. Base64 is faster but adds more overhead. Y is slower but a lot smaller. If you change this it will only affect new workflows and old workflows will revert to whatever they were encoded with to ensure compatibility.
+This setting allows you to optionally use the Base64 serializer instead of Y (kind of like yEnc encoding where it only gets rid of null bytes). If you change this it will only affect new workflows and old workflows will revert to whatever they were encoded with to ensure compatibility.
 
 The default serializer setting in `workflows.php` is:
 
