@@ -70,7 +70,9 @@ export default function PassingDataSimulator({
     setCurrentLine(8); // $result = yield activity(...)
     await delay(1000);
     
-    // Step 3: Switch to activity
+    // Step 3: Switch to activity - clear line first to prevent flash
+    setCurrentLine(-1);
+    await delay(50); // Small delay to ensure render completes
     setCurrentFile('activity');
     setCurrentLine(5); // public function execute($name)
     await delay(800);
@@ -79,7 +81,9 @@ export default function PassingDataSimulator({
     setCurrentLine(7); // return "Hello, {$name}!";
     await delay(1000);
     
-    // Step 5: Back to workflow
+    // Step 5: Back to workflow - clear line first to prevent flash
+    setCurrentLine(-1);
+    await delay(50); // Small delay to ensure render completes
     setCurrentFile('workflow');
     setCurrentLine(10); // return $result;
     await delay(800);
