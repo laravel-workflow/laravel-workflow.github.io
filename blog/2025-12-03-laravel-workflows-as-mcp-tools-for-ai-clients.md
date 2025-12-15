@@ -448,7 +448,8 @@ To try it:
    php artisan app:init
    php artisan queue:work
    ```
-5. Ask your AI to list and run workflows!
+5. Enable the Laravel Workflow Server MCP tools
+6. Ask your AI to list and run workflows!
 
 ### Where to Go From Here
 
