@@ -38,4 +38,4 @@ $ready = $workflow->getReady();
 
 <QuerySimulator />
 
-**Note:** Querying a workflow does not advance its execution, unlike signals.
+**Important:** Querying a workflow does not advance its execution, unlike signals.
