@@ -123,7 +123,7 @@ class ParentWorkflow extends Workflow
 
 ### Getting Child Workflow IDs
 
-You can access the underlying stored workflow ID using the `id()` method on the child handle. This allows you to store the ID for external systems to signal the child directly.
+You can access the child workflow ID using the `id()` method on the child handle. This allows you to store the ID for external systems to signal the child directly.
 
 ```php
 use function Workflow\{activity, child};
