@@ -135,4 +135,4 @@ $activity = new MyActivity(0, now()->toDateTimeString(), StoredWorkflow::findOrF
 $result = $activity->handle();
 ```
 
-Note that we call the handle method and not the `execute()` method.
+Notice that we call the `handle()` method and not the `execute()` method.
