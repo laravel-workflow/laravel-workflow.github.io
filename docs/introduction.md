@@ -4,6 +4,16 @@ sidebar_position: 1
 
 # Introduction
 
+## Why use workflows?
+
+You probably need a workflow if:
+
+- The process spans minutes, hours, or days
+- You need to wait for a human approval step
+- You need to wait for a webhook or other external event
+- You need to pause and continue later without keeping a process running
+- You need to be able to restart after a crash without causing bugs or duplicating work
+
 ## What is Laravel Workflow?
 
 Laravel Workflow is a durable workflow engine that allows developers to write long running persistent distributed workflows (orchestrations) in PHP. It provides a simple and intuitive way to define complex asynchronous processes, such as agentic workflows (AI-driven), data pipelines, and microservices, as a sequence of activities that run in parallel or in series.
