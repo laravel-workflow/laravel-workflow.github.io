@@ -9,7 +9,7 @@ authors:
 tags: [ai, workflow, agents, agentic]
 ---
 
-![captionless image](https://cdn.statically.io/img/prismphp.com/assets/prism-logo.webp)
+![captionless image](https://raw.githubusercontent.com/prism-php/prism/main/assets/prism-logo.webp)
 
 Laravel Workflow is a powerful tool for orchestrating long-running, stateful workflows in PHP. Paired with [PrismPHP](https://prismphp.com/), it becomes a compelling foundation for building reliable AI agents that not only generate structured data but verify and retry until results meet strict real-world constraints.
 
