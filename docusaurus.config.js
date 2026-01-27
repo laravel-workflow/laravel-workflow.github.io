@@ -106,8 +106,8 @@ const config = {
                 href: 'https://discord.gg/xu5aDDpqVy',
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/laravelworkflow',
+                label: 'X',
+                href: 'https://x.com/laravelworkflow',
               },
             ],
           },
