@@ -63,3 +63,35 @@ class MyWorkflow extends Workflow
 <SignalSimulator />
 
 **Important:** The `await()` function should only be used in a workflow, not an activity.
+
+## Inbox
+
+Workflows often need to handle multiple incoming signals over time. To solve this, workflows include a built-in replay-safe `$this->inbox`.
+
+The inbox collects incoming signal values and lets you consume them exactly once, even if the workflow is replayed or resumed multiple times.
+
+```php
+use function Workflow\await;
+use Workflow\SignalMethod;
+use Workflow\Workflow;
+
+class MyWorkflow extends Workflow
+{
+    #[SignalMethod]
+    public function receive(string $message): void
+    {
+        $this->inbox->receive($message);
+    }
+
+    public function execute()
+    {
+        while (true) {
+            yield await(fn () => $this->inbox->hasUnread());
+
+            $message = $this->inbox->nextUnread();
+        }
+    }
+}
+```
+
+Each received signal is stored in the inbox. The inbox tracks which messages have already been read. On replay, previously read messages remain read. Only unread messages are returned by `nextUnread()`. This makes the inbox safe to use in `await()` conditions and inside long-running loops.
