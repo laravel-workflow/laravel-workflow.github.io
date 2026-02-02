@@ -3,6 +3,6 @@
   "position": 5,
   "link": {
     "type": "generated-index",
-    "description": "Laravel Workflow allows you to specify various options when defining your workflows and activities."
+    "description": "Workflow allows you to specify various options when defining your workflows and activities."
   }
 }
