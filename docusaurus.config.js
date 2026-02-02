@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Laravel Workflow',
-  tagline: 'Workflows as code.',
+  title: 'Workflow',
+  tagline: 'Laravel-native durable workflows.',
   url: 'https://laravel-workflow.com/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -62,9 +62,9 @@ const config = {
         respectPrefersColorScheme: false,
       },
       navbar: {
-        title: 'Laravel Workflow',
+        title: 'Workflow',
         logo: {
-          alt: 'Laravel Workflow Logo',
+          alt: 'Workflow Logo',
           src: 'img/logo.svg',
         },
         items: [
