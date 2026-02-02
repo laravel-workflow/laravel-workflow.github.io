@@ -107,7 +107,7 @@ const config = {
               },
               {
                 label: 'X',
-                href: 'https://x.com/laravelworkflow',
+                href: 'https://x.com/DurableWorkflow',
               },
             ],
           },
