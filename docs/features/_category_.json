@@ -3,6 +3,6 @@
   "position": 4,
   "link": {
     "type": "generated-index",
-    "description": "Workflow provides methods for executing activities, handling errors and retries, and communicating with the workflow."
+    "description": "The Workflow package provides methods for executing activities, handling errors and retries, and communicating with the workflow."
   }
 }

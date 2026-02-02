@@ -14,7 +14,7 @@ You probably need a workflow if:
 - You need to pause and continue later without keeping a process running
 - You need to be able to restart after a crash without causing bugs or duplicating work
 
-## What is Workflow?
+## What is Workflow (the Laravel-native durable workflow package)?
 
 Workflow is a durable workflow engine that allows developers to write long running persistent distributed workflows (orchestrations) in PHP. It provides a simple and intuitive way to define complex asynchronous processes, such as agentic workflows (AI-driven), data pipelines, and microservices, as a sequence of activities that run in parallel or in series.
 

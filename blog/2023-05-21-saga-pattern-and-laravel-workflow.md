@@ -37,7 +37,7 @@ Sagas are an established design pattern for managing complex, long-running opera
 3.  Each operation in the Saga can be reversed by a compensatory transaction.
 4.  The Saga pattern assures that all operations are either completed successfully or the corresponding compensation transactions are run to reverse any completed work.
 
-Workflow provides inherent support for the Saga pattern, simplifying the process of handling rollbacks and executing compensatory transactions.
+Workflow (the Laravel-native durable workflow package) provides inherent support for the Saga pattern, simplifying the process of handling rollbacks and executing compensatory transactions.
 
 Booking Saga Flow
 =================

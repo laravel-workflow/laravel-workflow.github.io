@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Options
 
-Workflow allows you to specify various options when defining your workflows and activities. These options include the number of times a workflow or activity may be attempted before it fails, the connection and queue, and the maximum number of seconds it is allowed to run.
+The Workflow package allows you to specify various options when defining your workflows and activities. These options include the number of times a workflow or activity may be attempted before it fails, the connection and queue, and the maximum number of seconds it is allowed to run.
 
 ```php
 use Workflow\Activity;

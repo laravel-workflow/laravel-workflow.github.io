@@ -4,7 +4,7 @@ sidebar_position: 12
 
 # Sponsors
 
-Workflow is sustained by the community via sponsors and volunteers. If Workflow has been useful to you, consider supporting its ongoing development.
+The Workflow package is sustained by the community via sponsors and volunteers. If the Workflow package has been useful to you, consider supporting its ongoing development.
 
 ## Current Sponsors
 
@@ -13,4 +13,4 @@ Workflow is sustained by the community via sponsors and volunteers. If Workflow 
 
 ## Becoming a Sponsor
 
-If you would like to support Workflow, you can do so via [GitHub Sponsors](https://github.com/sponsors/laravel-workflow).
+If you would like to support the Workflow package, you can do so via [GitHub Sponsors](https://github.com/sponsors/laravel-workflow).

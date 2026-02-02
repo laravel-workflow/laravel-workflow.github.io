@@ -11,12 +11,12 @@ tags: [child-workflows, nesting]
 
 import ThemedImage from '@site/src/components/ThemedImage';
 
-Workflow has introduced an exciting new feature called “Child Workflows.” This addition aims to enhance the organization and maintainability of complex processes by allowing developers to encapsulate sub-processes within a parent workflow. This article will discuss the benefits of using child workflows, their similarities with running a workflow as an activity, and their compatibility with retry and resume features.
+Workflow (the Laravel-native durable workflow package) has introduced an exciting new feature called “Child Workflows.” This addition aims to enhance the organization and maintainability of complex processes by allowing developers to encapsulate sub-processes within a parent workflow. This article will discuss the benefits of using child workflows, their similarities with running a workflow as an activity, and their compatibility with retry and resume features.
 
 What are Child Workflows?
 =========================
 
-In Workflow, child workflows are a way to manage complex processes by breaking them down into smaller, more manageable units. They enable developers to create hierarchical and modular structures for their workflows, making them more organized and easier to maintain. A child workflow is essentially a separate workflow that is invoked within a parent workflow using the `child()` helper function.
+In the Workflow package, child workflows are a way to manage complex processes by breaking them down into smaller, more manageable units. They enable developers to create hierarchical and modular structures for their workflows, making them more organized and easier to maintain. A child workflow is essentially a separate workflow that is invoked within a parent workflow using the `child()` helper function.
 
 Benefits of Using Child Workflows
 =================================

@@ -24,15 +24,15 @@ Workflow also requires a cache driver that supports [locks](https://laravel.com/
 
 > ✨ SQS Support: `timer()` and `awaitWithTimeout()` work with any duration, even when using the SQS queue driver. Workflow automatically handles SQS's delay limitation transparently.
 
-## Installing Workflow
+## Installing the Workflow package
 
-Workflow is installable via Composer. To install it, run the following command in your Laravel project:
+The Workflow package is installable via Composer. To install it, run the following command in your Laravel project:
 
 ```bash
 composer require laravel-workflow/laravel-workflow
 ```
 
-After installing Workflow, you must also publish the migrations. To publish the migrations, run the following command:
+After installing the Workflow package, you must also publish the migrations. To publish the migrations, run the following command:
 
 ```bash
 php artisan vendor:publish --provider="Workflow\Providers\WorkflowServiceProvider" --tag="migrations"
@@ -46,4 +46,4 @@ php artisan migrate
 
 ## Running Workers
 
-Workflow uses queues to run workflows and activities in the background. You will need to either run the `queue:work` [command](https://laravel.com/docs/12.x/queues#the-queue-work-command) or use [Horizon](https://laravel.com/docs/12.x/horizon) to run your queue workers. Without a queue worker, workflows and activities will not be processed. You cannot use the sync driver with queue workers.
+The Workflow package uses queues to run workflows and activities in the background. You will need to either run the `queue:work` [command](https://laravel.com/docs/12.x/queues#the-queue-work-command) or use [Horizon](https://laravel.com/docs/12.x/horizon) to run your queue workers. Without a queue worker, workflows and activities will not be processed. You cannot use the sync driver with queue workers.

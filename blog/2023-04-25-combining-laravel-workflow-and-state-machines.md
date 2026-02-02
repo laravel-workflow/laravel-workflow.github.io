@@ -9,12 +9,12 @@ authors:
 tags: [side-effects, random, determinism]
 ---
 
-When it comes to building web applications, managing complex processes and activities can be a daunting task. Workflow simplifies this process by providing tools for defining and managing workflows and activities. In addition, integrating a state machine library can offer more explicit control over the transitions between states or activities, resulting in a more structured and visual representation of the workflow. In this blog post, we will explore the benefits of using Workflow along with a state machine and walk through an example of integrating Workflow with Finite, a simple state machine library.
+When it comes to building web applications, managing complex processes and activities can be a daunting task. Workflow (the Laravel-native durable workflow package) simplifies this process by providing tools for defining and managing workflows and activities. In addition, integrating a state machine library can offer more explicit control over the transitions between states or activities, resulting in a more structured and visual representation of the workflow. In this blog post, we will explore the benefits of using Workflow along with a state machine and walk through an example of integrating Workflow with Finite, a simple state machine library.
 
 Benefits of Combining Workflow and State Machines
 =========================================================
 
-Using Workflow and a state machine together provides several advantages:
+Using the Workflow package and a state machine together provides several advantages:
 
 1.  Flexibility and modularity: Workflow allows developers to break down complex processes into smaller, modular units that are easy to maintain and update.
 2.  Explicit control over transitions: State machines provide a clear visualization of workflow states, activities, and transitions, making it easier to understand and maintain.

@@ -21,7 +21,7 @@ A typical registration process goes as follows:
 
 What’s wrong with this? Nothing. But like all things, as soon as real world complexity creeps in, this pattern could become painful. What if you wanted to send an email after the code or link expires? And do you really need a user in your database if they never verify their email address?
 
-Let’s take this trivial example and replace it with a workflow. This is based on the [Workflow](https://github.com/laravel-workflow/laravel-workflow) library.
+Let’s take this trivial example and replace it with a workflow. This is based on the [Workflow library](https://github.com/laravel-workflow/laravel-workflow) (the Laravel-native durable workflow package).
 
 Get Started
 ===========
