@@ -78,7 +78,7 @@ use Workflow\Workflow;
 class MyWorkflow extends Workflow
 {
     #[SignalMethod]
-    public function receive(string $message): void
+    public function send(string $message): void
     {
         $this->inbox->receive($message);
     }
