@@ -1,6 +1,6 @@
 ---
 slug: extending-laravel-workflow-to-support-spatie-laravel-tags
-title: "Extending Laravel Workflow to Support Spatie Laravel Tags"
+title: "Extending Workflow to Support Spatie Laravel Tags"
 authors:
   name: Richard
   title: Core Team
@@ -15,7 +15,7 @@ One of the strengths of the Laravel ecosystem is its flexibility, thanks to a my
 
 Before diving into the code, let’s ensure both libraries are properly installed:
 
-1. Install [Laravel Workflow](https://github.com/laravel-workflow/laravel-workflow) and [Spatie Laravel Tags](https://github.com/spatie/laravel-tags).
+1. Install [Workflow](https://github.com/laravel-workflow/laravel-workflow) and [Spatie Laravel Tags](https://github.com/spatie/laravel-tags).
 ```sh
 composer require laravel-workflow/laravel-workflow spatie/laravel-tags
 ```
@@ -33,7 +33,7 @@ php artisan migrate
 
 ## Publishing Configuration
 
-To extend Laravel Workflow, publish its configuration file:
+To extend Workflow, publish its configuration file:
 ```sh
 php artisan vendor:publish --provider="Workflow\Providers\WorkflowServiceProvider" --tag="config"
 ```
@@ -81,7 +81,7 @@ To:
 ```php
 'stored_workflow_model' => App\Models\StoredWorkflow::class,
 ```
-This ensures Laravel Workflow uses the extended model.
+This ensures Workflow uses the extended model.
 
 ## Running Tagged Workflows
 

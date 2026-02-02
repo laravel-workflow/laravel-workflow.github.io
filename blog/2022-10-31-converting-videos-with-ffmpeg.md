@@ -1,6 +1,6 @@
 ---
 slug: converting-videos-with-ffmpeg
-title: Converting Videos with FFmpeg and Laravel Workflow
+title: Converting Videos with FFmpeg and Workflow
 authors:
   name: Richard
   title: Core Team
@@ -11,7 +11,7 @@ tags: [video, ffmpeg, conversion, transcoding]
 
 [FFmpeg](https://ffmpeg.org/) is a free, open-source software project allowing you to record, convert and stream audio and video.
 
-[Laravel Queues](https://laravel.com/docs/9.x/queues) are great for long running tasks. Converting video takes a long time! With [Laravel Workflow](https://github.com/laravel-workflow/laravel-workflow), you can harness the power of queues to convert videos in the background and easily manage the process.
+[Laravel Queues](https://laravel.com/docs/9.x/queues) are great for long running tasks. Converting video takes a long time! With [Workflow](https://github.com/laravel-workflow/laravel-workflow), you can harness the power of queues to convert videos in the background and easily manage the process.
 
 Requirements
 ============

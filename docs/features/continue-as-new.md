@@ -4,7 +4,7 @@ sidebar_position: 12
 
 # Continue As New
 
-Laravel Workflow supports the **Continue As New** pattern, allowing a running workflow to restart itself with new arguments.
+Workflow supports the **Continue As New** pattern, allowing a running workflow to restart itself with new arguments.
 This is useful when you need to:
 
 * Prevent unbounded workflow history growth.

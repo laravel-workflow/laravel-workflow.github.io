@@ -1,6 +1,6 @@
 ---
 slug: building-reliable-agentic-loops-with-laravel-workflow-and-prismphp
-title: "Building Reliable Agentic Loops with Laravel Workflow and PrismPHP"
+title: "Building Reliable Agentic Loops with Workflow and PrismPHP"
 authors:
   name: Richard
   title: Core Team
@@ -11,15 +11,15 @@ tags: [ai, workflow, agents, agentic]
 
 ![captionless image](https://raw.githubusercontent.com/prism-php/prism/main/assets/prism-logo.webp)
 
-Laravel Workflow is a powerful tool for orchestrating long-running, stateful workflows in PHP. Paired with [PrismPHP](https://prismphp.com/), it becomes a compelling foundation for building reliable AI agents that not only generate structured data but verify and retry until results meet strict real-world constraints.
+Workflow is a powerful tool for orchestrating long-running, stateful workflows in PHP. Paired with [PrismPHP](https://prismphp.com/), it becomes a compelling foundation for building reliable AI agents that not only generate structured data but verify and retry until results meet strict real-world constraints.
 
-In this post, we’ll show how to use Laravel Workflow + Prism to create an agentic loop that:
+In this post, we’ll show how to use Workflow + Prism to create an agentic loop that:
 
 - Generates structured data using an LLM
 - Validates the result against custom rules
 - Retries automatically until the result passes
 
-You can try this exact workflow right now in your browser with no setup or coding required. Just click the button in the Laravel Workflow [Sample App](https://github.com/laravel-workflow/sample-app) and launch a GitHub Codespace to run it.
+You can try this exact workflow right now in your browser with no setup or coding required. Just click the button in the Workflow [Sample App](https://github.com/laravel-workflow/sample-app) and launch a GitHub Codespace to run it.
 
 ### What We’re Building
 
@@ -158,7 +158,7 @@ class ValidateUserActivity extends Activity
 This design pattern is what you’d call a reliable agentic loop:
 
 - LLM generation via Prism
-- Validation & retry via Laravel Workflow
+- Validation & retry via Workflow
 - State persistence for crash recovery or inspection
 - Observability via Waterline
 
@@ -166,7 +166,7 @@ It’s perfect for AI applications where accuracy, safety, and traceability are 
 
 ### Try It Now in Your Browser
 
-We’ve bundled this workflow into the official Laravel Workflow [Sample App](https://github.com/laravel-workflow/sample-app).
+We’ve bundled this workflow into the official Workflow [Sample App](https://github.com/laravel-workflow/sample-app).
 
 To try it:
 
@@ -194,4 +194,4 @@ You can easily adapt this pattern to:
 - Content generation with retry policies
 - Moderation and review queues
 
-Each step remains reliable and traceable thanks to Laravel Workflow’s durable execution model.
+Each step remains reliable and traceable thanks to Workflow’s durable execution model.

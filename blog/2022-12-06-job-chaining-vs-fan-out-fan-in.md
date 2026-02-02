@@ -1,6 +1,6 @@
 ---
 slug: job-chaining-vs-fan-out-fan-in
-title: "Laravel Workflow: Job Chaining vs. Fan-out/Fan-in"
+title: "Workflow: Job Chaining vs. Fan-out/Fan-in"
 authors:
   name: Richard
   title: Core Team

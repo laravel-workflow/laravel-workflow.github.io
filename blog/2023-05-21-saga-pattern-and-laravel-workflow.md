@@ -1,6 +1,6 @@
 ---
 slug: saga-pattern-and-laravel-workflow
-title: "Saga Pattern and Laravel Workflow"
+title: "Saga Pattern and Workflow"
 authors:
   name: Richard
   title: Core Team
@@ -26,8 +26,8 @@ Prerequisites
 
 To follow this tutorial, you should:
 
-1.  Set up a local development environment for Laravel Workflow applications in PHP or use the sample app in a GitHub [codespace](https://github.com/laravel-workflow/sample-app).
-2.  Familiarize yourself with the basics of starting a Laravel Workflow project by reviewing the [documentation](https://laravel-workflow.com/docs/installation).
+1.  Set up a local development environment for Workflow applications in PHP or use the sample app in a GitHub [codespace](https://github.com/laravel-workflow/sample-app).
+2.  Familiarize yourself with the basics of starting a Workflow project by reviewing the [documentation](https://laravel-workflow.com/docs/installation).
 3.  Review the [Saga architecture pattern](https://microservices.io/patterns/data/saga.html).
 
 Sagas are an established design pattern for managing complex, long-running operations:
@@ -37,7 +37,7 @@ Sagas are an established design pattern for managing complex, long-running opera
 3.  Each operation in the Saga can be reversed by a compensatory transaction.
 4.  The Saga pattern assures that all operations are either completed successfully or the corresponding compensation transactions are run to reverse any completed work.
 
-Laravel Workflow provides inherent support for the Saga pattern, simplifying the process of handling rollbacks and executing compensatory transactions.
+Workflow provides inherent support for the Saga pattern, simplifying the process of handling rollbacks and executing compensatory transactions.
 
 Booking Saga Flow
 =================
@@ -171,4 +171,4 @@ Finally, we simulate an error with the rental car booking. The flight and hotel 
 Conclusion
 ----------
 
-In this tutorial, we implemented the Saga architecture pattern for distributed transactions in a microservices-based application using Laravel Workflow. Writing Sagas can be complex, but Laravel Workflow takes care of the difficult parts such as handling errors and retries, and invoking compensatory transactions, allowing us to focus on the details of our application.
+In this tutorial, we implemented the Saga architecture pattern for distributed transactions in a microservices-based application using Workflow. Writing Sagas can be complex, but Workflow takes care of the difficult parts such as handling errors and retries, and invoking compensatory transactions, allowing us to focus on the details of our application.

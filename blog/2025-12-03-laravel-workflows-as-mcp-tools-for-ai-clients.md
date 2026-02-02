@@ -1,6 +1,6 @@
 ---
 slug: laravel-workflows-as-mcp-tools-for-ai-clients
-title: "Laravel Workflows as MCP Tools for AI Clients"
+title: "Workflows as MCP Tools for AI Clients"
 authors:
   name: Richard
   title: Core Team
@@ -9,7 +9,7 @@ authors:
 tags: [ai, workflow, mcp, agents, tools]
 ---
 
-The Model Context Protocol (MCP) is rapidly becoming the standard way for AI assistants like Claude, ChatGPT, and GitHub Copilot to interact with external tools and services. With Laravel MCP, you can expose your Laravel Workflow processes as callable tools that any MCP-compatible AI client can discover, invoke, and monitor.
+The Model Context Protocol (MCP) is rapidly becoming the standard way for AI assistants like Claude, ChatGPT, and GitHub Copilot to interact with external tools and services. With Laravel MCP, you can expose your Workflow processes as callable tools that any MCP-compatible AI client can discover, invoke, and monitor.
 
 In this post, we'll show how to build an MCP server that allows AI clients to:
 
@@ -19,9 +19,9 @@ In this post, we'll show how to build an MCP server that allows AI clients to:
 
 This creates a powerful pattern where AI agents can orchestrate long-running, durable workflows, perfect for complex tasks that can't complete in a single request.
 
-### Why MCP + Laravel Workflow?
+### Why MCP + Workflow?
 
-Laravel Workflow excels at durable, stateful execution. MCP excels at giving AI clients structured access to external capabilities. Together, they enable:
+Workflow excels at durable, stateful execution. MCP excels at giving AI clients structured access to external capabilities. Together, they enable:
 
 - **Async AI operations**: Start a workflow, continue the conversation, check results later
 - **Reliable execution**: Workflows survive crashes, retries, and long wait times
@@ -69,11 +69,11 @@ use Laravel\Mcp\Server;
 
 class WorkflowServer extends Server
 {
-    protected string $name = 'Laravel Workflow Server';
+    protected string $name = 'Workflow Server';
     protected string $version = '1.0.0';
 
     protected string $instructions = <<<'MARKDOWN'
-        This server allows you to start and monitor Laravel Workflows.
+        This server allows you to start and monitor Workflows.
 
         ## Typical Usage Pattern
 
@@ -121,7 +121,7 @@ use Workflow\WorkflowStub;
 class StartWorkflowTool extends Tool
 {
     protected string $description = <<<'MARKDOWN'
-        Start a Laravel Workflow asynchronously and return its workflow ID.
+        Start a Workflow asynchronously and return its workflow ID.
         
         The workflow will execute in the background on the queue. Use the
         `get_workflow_result` tool to poll for status and retrieve results
@@ -216,7 +216,7 @@ use Workflow\WorkflowStub;
 class GetWorkflowResultTool extends Tool
 {
     protected string $description = <<<'MARKDOWN'
-        Fetch the status and, if completed, the output of a Laravel Workflow.
+        Fetch the status and, if completed, the output of a Workflow.
         
         Use the workflow_id returned by `start_workflow` to check progress.
         Once status is `WorkflowCompletedStatus`, the output field contains the result.
@@ -436,7 +436,7 @@ This creates a seamless experience where AI assistants can orchestrate complex, 
 
 ### Try It Now in Your Browser
 
-This MCP integration is included and pre-configured in the Laravel Workflow [Sample App](https://github.com/laravel-workflow/sample-app).
+This MCP integration is included and pre-configured in the Workflow [Sample App](https://github.com/laravel-workflow/sample-app).
 
 To try it:
 
@@ -448,7 +448,7 @@ To try it:
    php artisan app:init
    php artisan queue:work
    ```
-5. Enable the Laravel Workflow Server MCP tools
+5. Enable the Workflow Server MCP tools
 6. Ask your AI to list and run workflows!
 
 ### Where to Go From Here
@@ -461,4 +461,4 @@ You can extend this pattern to:
 - **Progress streaming**: Use SSE to stream workflow progress in real-time
 - **Multi-step agents**: Chain multiple workflows together in a conversation
 
-The combination of Laravel Workflow's durable execution and MCP's tool protocol creates a foundation for truly capable AI agents that can handle real-world complexity.
+The combination of Workflow's durable execution and MCP's tool protocol creates a foundation for truly capable AI agents that can handle real-world complexity.

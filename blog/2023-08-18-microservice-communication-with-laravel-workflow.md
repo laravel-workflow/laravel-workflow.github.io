@@ -1,6 +1,6 @@
 ---
 slug: microservice-communication-with-laravel-workflow
-title: "Microservice Communication with Laravel Workflow"
+title: "Microservice Communication with Workflow"
 authors:
   name: Richard
   title: Core Team
@@ -9,15 +9,15 @@ authors:
 tags: [microservices, workflow, communication, distributed-systems]
 ---
 
-In the evolving landscape of microservices, communication has always been a focal point. Microservices can interact in various ways, be it through HTTP/REST calls, using messaging protocols like RabbitMQ or Kafka, or even employing more recent technologies like gRPC. Yet, regardless of the communication method, the goal remains the same: seamless, efficient, and robust interactions. Today, we’ll explore how Laravel Workflow can fit into this picture and optimize the communication between microservices in a unique way.
+In the evolving landscape of microservices, communication has always been a focal point. Microservices can interact in various ways, be it through HTTP/REST calls, using messaging protocols like RabbitMQ or Kafka, or even employing more recent technologies like gRPC. Yet, regardless of the communication method, the goal remains the same: seamless, efficient, and robust interactions. Today, we’ll explore how Workflow can fit into this picture and optimize the communication between microservices in a unique way.
 
 ## The Challenge
 
 In a microservices architecture, decoupling is the name of the game. You want each service to have a single responsibility, to be maintainable, and to be independently deployable. Yet, in the world of workflows, this becomes challenging. How do you split a workflow from its activity and yet ensure they communicate seamlessly?
 
-## Laravel Workflow to the Rescue!
+## Workflow to the Rescue!
 
-[Laravel Workflow](https://github.com/laravel-workflow/laravel-workflow) handles the discovery and orchestration for you! With a shared database and queue connection, you can have your workflow in one Laravel app and its activity logic in another.
+[Workflow](https://github.com/laravel-workflow/laravel-workflow) handles the discovery and orchestration for you! With a shared database and queue connection, you can have your workflow in one Laravel app and its activity logic in another.
 
 ### Defining Workflows and Activities
 
@@ -101,7 +101,7 @@ Follow the [installation guide](https://laravel-workflow.com/docs/installation/)
 ],
 ```
 
-#### 4. Ensure only one microservice publishes Laravel Workflow migrations.
+#### 4. Ensure only one microservice publishes Workflow migrations.
 Update the migration to use the shared database connection.
 ```php
 // database/migrations/..._create_workflows_table.php
@@ -124,7 +124,7 @@ class StoredWorkflow extends BaseStoredWorkflow
 }
 ```
 
-#### 6. Publish Laravel Workflow config and update it with shared models.
+#### 6. Publish Workflow config and update it with shared models.
 ```sh
 php artisan vendor:publish --provider="Workflow\Providers\WorkflowServiceProvider" --tag="config"
 ```
@@ -196,7 +196,7 @@ php artisan queue:work shared --queue=activity
 ```
 
 ## Conclusion
-By following the steps above, you can ensure seamless interactions between microservices while maintaining modularity and scalability. Laravel Workflow takes care of the discovery and orchestration for you. 🚀
+By following the steps above, you can ensure seamless interactions between microservices while maintaining modularity and scalability. Workflow takes care of the discovery and orchestration for you. 🚀
 
 Thanks for reading!
 

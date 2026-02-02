@@ -4,7 +4,7 @@ sidebar_position: 10
 
 # Events
 
-In Laravel Workflow, events are dispatched at various stages of workflow and activity execution to notify of progress, completion, or failures. These events can be used for logging, metrics collection, or any custom application logic.
+In Workflow, events are dispatched at various stages of workflow and activity execution to notify of progress, completion, or failures. These events can be used for logging, metrics collection, or any custom application logic.
 
 ## Workflow Events
 

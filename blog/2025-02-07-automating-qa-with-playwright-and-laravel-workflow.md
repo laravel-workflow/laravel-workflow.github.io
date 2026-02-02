@@ -1,6 +1,6 @@
 ---
 slug: automating-qa-with-playwright-and-laravel-workflow
-title: "Automating QA with Playwright and Laravel Workflow"
+title: "Automating QA with Playwright and Workflow"
 authors:
   name: Richard
   title: Core Team
@@ -15,7 +15,7 @@ import ThemedImage from '@site/src/components/ThemedImage';
 
 Have you ever spent hours tracking down a frontend bug that only happens in production? When working with web applications, debugging frontend issues can be challenging. Console errors and unexpected UI behaviors often require careful inspection and reproducible test cases. Wouldn’t it be great if you could automate this process, capture errors, and even record a video of the session for later analysis?
 
-With **Playwright** and **Laravel Workflow**, you can achieve just that! In this post, I’ll walk you through an automated workflow that:
+With **Playwright** and **Workflow**, you can achieve just that! In this post, I’ll walk you through an automated workflow that:
 
 *   Loads a webpage and captures console errors.
 *   Records a video of the session.
@@ -25,7 +25,7 @@ With **Playwright** and **Laravel Workflow**, you can achieve just that! In this
 ## The Stack
 
 *   **Playwright**: A powerful browser automation tool for testing web applications.
-*   **Laravel Workflow**: A durable workflow engine for handling long-running, distributed processes.
+*   **Workflow**: A durable workflow engine for handling long-running, distributed processes.
 *   **FFmpeg**: Used to convert Playwright’s WebM recordings to MP4 format.
 
 <ThemedImage
@@ -159,7 +159,7 @@ class CheckConsoleErrorsActivity extends Activity
 
 #### 5. Video Conversion with FFmpeg
 
-The Playwright recording is stored in WebM format, but we need an MP4 for wider compatibility. Laravel Workflow runs this process asynchronously.
+The Playwright recording is stored in WebM format, but we need an MP4 for wider compatibility. Workflow runs this process asynchronously.
 
 ```php
 namespace App\Workflows\Playwright;
@@ -186,7 +186,7 @@ class ConvertVideoActivity extends Activity
 
 ## Try It Now in Your Browser
 
-You don’t need to set up anything on your local machine. Everything is already configured in the Laravel Workflow [Sample App](https://github.com/laravel-workflow/sample-app).
+You don’t need to set up anything on your local machine. Everything is already configured in the Workflow [Sample App](https://github.com/laravel-workflow/sample-app).
 
 To try it:
 
@@ -207,4 +207,4 @@ That’s it! The workflow will execute, capture console errors, record a video, 
 
 ## Conclusion
 
-By integrating Playwright with Laravel Workflow, we’ve automated frontend error detection and debugging. This setup allows teams to quickly identify and resolve issues, all while leveraging Laravel’s queue system to run tasks asynchronously.
+By integrating Playwright with Workflow, we’ve automated frontend error detection and debugging. This setup allows teams to quickly identify and resolve issues, all while leveraging Laravel’s queue system to run tasks asynchronously.

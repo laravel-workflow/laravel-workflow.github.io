@@ -4,7 +4,7 @@ sidebar_position: 10
 
 # How It Works
 
-Laravel Workflow is a library that uses Laravel's queued jobs and event sourced persistence to create durable coroutines.
+Workflow is a library that uses Laravel's queued jobs and event sourced persistence to create durable coroutines.
 
 ## Queues
 
@@ -18,7 +18,7 @@ Event sourcing is a way to build up the current state from a sequence of saved e
 
 Coroutines are functions that allow execution to be suspended and resumed by returning control to the calling function. In PHP, this is done using the yield keyword inside a generator. A generator is typically invoked by calling the [`Generator::current()`](https://www.php.net/manual/en/generator.current.php) method. This will execute the generator up to the first yield and then control will be returned to the caller.
 
-In Laravel Workflow, the execute() method of a workflow class is a [generator](https://www.php.net/manual/en/language.generators.syntax.php). It works by yielding each activity. This allows the workflow to first check if the activity has already successfully completed. If so, the cached result is pulled from the event store and returned instead of running the activity a second time. If the activity hasn't been successfully completed before, it will queue the activity to run. The workflow is then able to suspend execution until the activity completes or fails.
+In Workflow, the execute() method of a workflow class is a [generator](https://www.php.net/manual/en/language.generators.syntax.php). It works by yielding each activity. This allows the workflow to first check if the activity has already successfully completed. If so, the cached result is pulled from the event store and returned instead of running the activity a second time. If the activity hasn't been successfully completed before, it will queue the activity to run. The workflow is then able to suspend execution until the activity completes or fails.
 
 ## Activities
 
@@ -54,7 +54,7 @@ class MyWorkflow extends Workflow
 
 ## Sequence Diagram
 
-This sequence diagram shows how a Laravel Workflow progresses through a series of activities, both serial and parallel.
+This sequence diagram shows how a Workflow progresses through a series of activities, both serial and parallel.
 
 import ThemedImage from '@site/src/components/ThemedImage';
 

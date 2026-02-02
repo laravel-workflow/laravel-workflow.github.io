@@ -4,10 +4,10 @@ sidebar_position: 11
 
 # Webhooks
 
-Laravel Workflow provides webhooks that allow external systems to start workflows and send signals dynamically. This feature enables seamless integration with external services, APIs, and automation tools.
+Workflow provides webhooks that allow external systems to start workflows and send signals dynamically. This feature enables seamless integration with external services, APIs, and automation tools.
 
 ## Enabling Webhooks
-To enable webhooks in Laravel Workflow, register the webhook routes in your application’s routes file (`routes/web.php` or `routes/api.php`):
+To enable webhooks in Workflow, register the webhook routes in your application’s routes file (`routes/web.php` or `routes/api.php`):
 
 ```php
 use Workflow\Webhooks;
@@ -112,7 +112,7 @@ By default, webhooks don't require authentication, but you can configure one of 
 **Important:** If webhook URLs are shared with external parties or exposed publicly, enable authentication (token or HMAC signature) to prevent unauthorized access.
 
 ### Authentication Methods
-Laravel Workflow supports:
+Workflow supports:
 1. No Authentication (none)
 2. Token-based Authentication (token)
 3. HMAC Signature Verification (signature)
@@ -130,7 +130,7 @@ curl -X POST "https://example.com/webhooks/start/order-workflow" \
 ```
 
 ### HMAC Signature Authentication
-For HMAC authentication, Laravel Workflow verifies requests using a secret key. The default header is `X-Signature` but this can also be changed.
+For HMAC authentication, Workflow verifies requests using a secret key. The default header is `X-Signature` but this can also be changed.
 
 #### Example Request
 ```bash

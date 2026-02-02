@@ -1,6 +1,6 @@
 ---
 slug: introducing-child-workflows-in-laravel-workflow
-title: "Introducing Child Workflows in Laravel Workflow"
+title: "Introducing Child Workflows in Workflow"
 authors:
   name: Richard
   title: Core Team
@@ -11,12 +11,12 @@ tags: [child-workflows, nesting]
 
 import ThemedImage from '@site/src/components/ThemedImage';
 
-Laravel Workflow has introduced an exciting new feature called “Child Workflows.” This addition aims to enhance the organization and maintainability of complex processes by allowing developers to encapsulate sub-processes within a parent workflow. This article will discuss the benefits of using child workflows, their similarities with running a workflow as an activity, and their compatibility with retry and resume features.
+Workflow has introduced an exciting new feature called “Child Workflows.” This addition aims to enhance the organization and maintainability of complex processes by allowing developers to encapsulate sub-processes within a parent workflow. This article will discuss the benefits of using child workflows, their similarities with running a workflow as an activity, and their compatibility with retry and resume features.
 
 What are Child Workflows?
 =========================
 
-In Laravel Workflow, child workflows are a way to manage complex processes by breaking them down into smaller, more manageable units. They enable developers to create hierarchical and modular structures for their workflows, making them more organized and easier to maintain. A child workflow is essentially a separate workflow that is invoked within a parent workflow using the `child()` helper function.
+In Workflow, child workflows are a way to manage complex processes by breaking them down into smaller, more manageable units. They enable developers to create hierarchical and modular structures for their workflows, making them more organized and easier to maintain. A child workflow is essentially a separate workflow that is invoked within a parent workflow using the `child()` helper function.
 
 Benefits of Using Child Workflows
 =================================
@@ -43,11 +43,11 @@ Activities are single-purpose units that perform a specific action within a work
 Retries and Resumes in Child Workflows
 ======================================
 
-Child workflows inherit the same retry and resume features as their parent workflows, enabling developers to manage error handling and recovery more effectively. When a child workflow fails, Laravel Workflow will automatically attempt to retry the failed operation, following the configured retry policy. If the child workflow still fails after all retries have been exhausted, the parent workflow can also be configured to handle the failure accordingly.
+Child workflows inherit the same retry and resume features as their parent workflows, enabling developers to manage error handling and recovery more effectively. When a child workflow fails, Workflow will automatically attempt to retry the failed operation, following the configured retry policy. If the child workflow still fails after all retries have been exhausted, the parent workflow can also be configured to handle the failure accordingly.
 
 In addition, child workflows can be resumed if they are interrupted due to a system failure or crash. This ensures that the entire process can continue from the point of interruption without losing progress or requiring manual intervention.
 
 Conclusion
 ==========
 
-Laravel Workflow’s Child Workflows feature offers developers an effective way to manage complex processes by breaking them down into smaller, more manageable units. This enhances organization, maintainability, and reusability, making it easier for developers to build and maintain intricate workflows. With the added benefits of retry and resume features, child workflows provide a robust and efficient solution for managing complex processes in Laravel applications.
+Workflow’s Child Workflows feature offers developers an effective way to manage complex processes by breaking them down into smaller, more manageable units. This enhances organization, maintainability, and reusability, making it easier for developers to build and maintain intricate workflows. With the added benefits of retry and resume features, child workflows provide a robust and efficient solution for managing complex processes in Laravel applications.

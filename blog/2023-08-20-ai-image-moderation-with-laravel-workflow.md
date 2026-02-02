@@ -1,6 +1,6 @@
 ---
 slug: ai-image-moderation-with-laravel-workflow
-title: "AI Image Moderation with Laravel Workflow"
+title: "AI Image Moderation with Workflow"
 authors:
   name: Richard
   title: Core Team
@@ -16,9 +16,9 @@ Before we begin, let’s understand the scenario. We are building an image moder
 3. If it’s potentially safe, a human moderator is alerted to further review the image. They have the option to approve or reject the image.
 4. Approved images are moved to a public location, whereas rejected images are deleted.
 
-## Laravel Workflow
+## Workflow
 
-Laravel Workflow is designed to streamline and organize complex processes in applications. It allows developers to define, manage, and execute workflows seamlessly. You can find installation instructions [here](https://github.com/laravel-workflow/laravel-workflow).
+Workflow is designed to streamline and organize complex processes in applications. It allows developers to define, manage, and execute workflows seamlessly. You can find installation instructions [here](https://github.com/laravel-workflow/laravel-workflow).
 
 ## ClarifAI API
 
@@ -211,5 +211,5 @@ $workflow->reject();
 
 ## Conclusion
 
-[Laravel Workflow](https://github.com/laravel-workflow/laravel-workflow) provides a structured approach to handle complex processes like image moderation. It supports asynchronous processing, external API integrations, and modular design for scalability. Thanks for reading!
+[Workflow](https://github.com/laravel-workflow/laravel-workflow) provides a structured approach to handle complex processes like image moderation. It supports asynchronous processing, external API integrations, and modular design for scalability. Thanks for reading!
 

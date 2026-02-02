@@ -1,6 +1,6 @@
 ---
 slug: new-laravel-workflow-feature-side-effects
-title: "New Laravel Workflow Feature: Side Effects"
+title: "New Workflow Feature: Side Effects"
 authors:
   name: Richard
   title: Core Team
@@ -11,11 +11,11 @@ tags: [side-effects, random, determinism]
 
 Workflows provide a more organized and structured approach to managing distributed processes, making it easier for developers to understand and work with complex logic.
 
-Laravel Workflow is a powerful package for the Laravel web framework that provides tools for defining and managing workflows.
+Workflow is a powerful package for the Laravel web framework that provides tools for defining and managing workflows.
 
 One of the key features of any workflow engine is the ability to track the history of a workflow as it is executed which allows a workflow to be retried if it fails or encounters an error. However, this also means that your workflow code must be deterministic and any non-deterministic code has to be carefully managed.
 
-Recently, Laravel Workflow added support for [side effects](https://laravel-workflow.com/docs/features/side-effects), which are closures containing non-deterministic code that is only executed once and the result saved. Side effects are a useful way to introduce non-deterministic behavior into a workflow, such as generating a random number or UUID.
+Recently, Workflow added support for [side effects](https://laravel-workflow.com/docs/features/side-effects), which are closures containing non-deterministic code that is only executed once and the result saved. Side effects are a useful way to introduce non-deterministic behavior into a workflow, such as generating a random number or UUID.
 
 Here is an example workflow that demonstrates side effects.
 
@@ -76,4 +76,4 @@ It’s important to use side effects appropriately in your workflow to ensure th
 
 Overall, side effects are a powerful tool for introducing non-deterministic behavior into your workflows. When used correctly, they can help you to add more flexibility and complexity to your application’s logic.
 
-Laravel Workflow is a powerful tool for managing workflows in your Laravel applications, and the addition of support for side effects makes it even more powerful!
+Workflow is a powerful tool for managing workflows in your Laravel applications, and the addition of support for side effects makes it even more powerful!
