@@ -88,7 +88,7 @@ class MyWorkflow extends Workflow
         while (true) {
             $count++;
 
-            $this->outbox->send("Message {$count");
+            $this->outbox->send("Message {$count}");
         }
     }
 }
