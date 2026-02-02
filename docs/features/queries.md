@@ -39,3 +39,59 @@ $ready = $workflow->getReady();
 <QuerySimulator />
 
 **Important:** Querying a workflow does not advance its execution, unlike signals.
+
+# Updates
+
+Updates allow you to retrieve information about the current state of a workflow and mutate the workflow state at the same time. They are essentially both a query and a signal combined into one.
+
+To define an update method on a workflow, use the `UpdateMethod` annotation:
+
+```php
+use Workflow\UpdateMethod;
+use Workflow\Workflow;
+
+class MyWorkflow extends Workflow
+{
+    private bool $ready = false;
+
+    #[UpdateMethod]
+    public function updateReady($ready): bool
+    {
+        $this->ready = $ready;
+
+        return $this->ready;
+    }
+}
+```
+
+## Outbox
+
+The outbox collects outgoing query messages and lets you produce them exactly once, even if the workflow is replayed or resumed multiple times.
+
+```php
+use Workflow\UpdateMethod;
+use Workflow\Workflow;
+
+class MyWorkflow extends Workflow
+{
+    #[UpdateMethod]
+    public function receive()
+    {
+        if ($this->outbox->hasUnsent()) {
+            return $this->outbox->nextUnsent();
+        }
+    }
+
+    public function execute()
+    {
+        $count = 0;
+        while (true) {
+            $count++;
+
+            $this->outbox->send("Message {$count");
+        }
+    }
+}
+```
+
+Each sent signal is stored in the outbox. The outbox tracks which messages have already been sent. On replay, previously read messages remain sent. Only unsent messages are returned by `nextUnsent()`. This makes the outbox safe to send multiple messages inside long-running loops.
