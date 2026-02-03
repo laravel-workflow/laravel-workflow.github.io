@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>Workflow Blog</title>
-        <link>https://laravel-workflow.com/blog</link>
+        <link>https://durable-workflow.com/blog</link>
         <description>Workflow Blog</description>
         <lastBuildDate>Wed, 03 Dec 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
@@ -10,7 +10,7 @@
         <language>en</language>
         <item>
             <title><![CDATA[Workflows as MCP Tools for AI Clients]]></title>
-            <link>https://laravel-workflow.com/blog/laravel-workflows-as-mcp-tools-for-ai-clients</link>
+            <link>https://durable-workflow.com/blog/laravel-workflows-as-mcp-tools-for-ai-clients</link>
             <guid>laravel-workflows-as-mcp-tools-for-ai-clients</guid>
             <pubDate>Wed, 03 Dec 2025 00:00:00 GMT</pubDate>
             <description><![CDATA[The Model Context Protocol (MCP) is rapidly becoming the standard way for AI assistants like Claude, ChatGPT, and GitHub Copilot to interact with external tools and services. With Laravel MCP, you can expose your Workflow processes as callable tools that any MCP-compatible AI client can discover, invoke, and monitor.]]></description>
@@ -23,7 +23,7 @@
         </item>
         <item>
             <title><![CDATA[Building Reliable Agentic Loops with Workflow and PrismPHP]]></title>
-            <link>https://laravel-workflow.com/blog/building-reliable-agentic-loops-with-laravel-workflow-and-prismphp</link>
+            <link>https://durable-workflow.com/blog/building-reliable-agentic-loops-with-laravel-workflow-and-prismphp</link>
             <guid>building-reliable-agentic-loops-with-laravel-workflow-and-prismphp</guid>
             <pubDate>Thu, 10 Jul 2025 00:00:00 GMT</pubDate>
             <description><![CDATA[captionless image]]></description>
@@ -35,7 +35,7 @@
         </item>
         <item>
             <title><![CDATA[Automating QA with Playwright and Workflow]]></title>
-            <link>https://laravel-workflow.com/blog/automating-qa-with-playwright-and-laravel-workflow</link>
+            <link>https://durable-workflow.com/blog/automating-qa-with-playwright-and-laravel-workflow</link>
             <guid>automating-qa-with-playwright-and-laravel-workflow</guid>
             <pubDate>Fri, 07 Feb 2025 00:00:00 GMT</pubDate>
             <description><![CDATA[playwright]]></description>
@@ -48,7 +48,7 @@
         </item>
         <item>
             <title><![CDATA[Extending Workflow to Support Spatie Laravel Tags]]></title>
-            <link>https://laravel-workflow.com/blog/extending-laravel-workflow-to-support-spatie-laravel-tags</link>
+            <link>https://durable-workflow.com/blog/extending-laravel-workflow-to-support-spatie-laravel-tags</link>
             <guid>extending-laravel-workflow-to-support-spatie-laravel-tags</guid>
             <pubDate>Mon, 28 Aug 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[One of the strengths of the Laravel ecosystem is its flexibility, thanks to a myriad of community-driven packages that enhance the framework’s capabilities. The laravel-workflow and spatie/laravel-tags packages are two such examples, and in this post, we'll integrate them together to make workflows taggable.]]></description>
@@ -61,7 +61,7 @@
         </item>
         <item>
             <title><![CDATA[AI Image Moderation with Workflow]]></title>
-            <link>https://laravel-workflow.com/blog/ai-image-moderation-with-laravel-workflow</link>
+            <link>https://durable-workflow.com/blog/ai-image-moderation-with-laravel-workflow</link>
             <guid>ai-image-moderation-with-laravel-workflow</guid>
             <pubDate>Sun, 20 Aug 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[Before we begin, let’s understand the scenario. We are building an image moderation system where:]]></description>
@@ -73,7 +73,7 @@
         </item>
         <item>
             <title><![CDATA[Microservice Communication with Workflow]]></title>
-            <link>https://laravel-workflow.com/blog/microservice-communication-with-laravel-workflow</link>
+            <link>https://durable-workflow.com/blog/microservice-communication-with-laravel-workflow</link>
             <guid>microservice-communication-with-laravel-workflow</guid>
             <pubDate>Fri, 18 Aug 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[In the evolving landscape of microservices, communication has always been a focal point. Microservices can interact in various ways, be it through HTTP/REST calls, using messaging protocols like RabbitMQ or Kafka, or even employing more recent technologies like gRPC. Yet, regardless of the communication method, the goal remains the same: seamless, efficient, and robust interactions. Today, we’ll explore how Workflow can fit into this picture and optimize the communication between microservices in a unique way.]]></description>
@@ -85,7 +85,7 @@
         </item>
         <item>
             <title><![CDATA[Saga Pattern and Workflow]]></title>
-            <link>https://laravel-workflow.com/blog/saga-pattern-and-laravel-workflow</link>
+            <link>https://durable-workflow.com/blog/saga-pattern-and-laravel-workflow</link>
             <guid>saga-pattern-and-laravel-workflow</guid>
             <pubDate>Sun, 21 May 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[Suppose we are working on a Laravel application that offers trip booking. A typical trip booking involves several steps such as:]]></description>
@@ -95,7 +95,7 @@
         </item>
         <item>
             <title><![CDATA[Combining Workflow and State Machines]]></title>
-            <link>https://laravel-workflow.com/blog/combining-laravel-workflow-and-state-machines</link>
+            <link>https://durable-workflow.com/blog/combining-laravel-workflow-and-state-machines</link>
             <guid>combining-laravel-workflow-and-state-machines</guid>
             <pubDate>Tue, 25 Apr 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[When it comes to building web applications, managing complex processes and activities can be a daunting task. Workflow (the Laravel-native durable workflow package) simplifies this process by providing tools for defining and managing workflows and activities. In addition, integrating a state machine library can offer more explicit control over the transitions between states or activities, resulting in a more structured and visual representation of the workflow. In this blog post, we will explore the benefits of using Workflow along with a state machine and walk through an example of integrating Workflow with Finite, a simple state machine library.]]></description>
@@ -106,7 +106,7 @@
         </item>
         <item>
             <title><![CDATA[Introducing Child Workflows in Workflow]]></title>
-            <link>https://laravel-workflow.com/blog/introducing-child-workflows-in-laravel-workflow</link>
+            <link>https://durable-workflow.com/blog/introducing-child-workflows-in-laravel-workflow</link>
             <guid>introducing-child-workflows-in-laravel-workflow</guid>
             <pubDate>Wed, 05 Apr 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[Workflow (the Laravel-native durable workflow package) has introduced an exciting new feature called “Child Workflows.” This addition aims to enhance the organization and maintainability of complex processes by allowing developers to encapsulate sub-processes within a parent workflow. This article will discuss the benefits of using child workflows, their similarities with running a workflow as an activity, and their compatibility with retry and resume features.]]></description>
@@ -116,7 +116,7 @@
         </item>
         <item>
             <title><![CDATA[New Workflow Feature: Side Effects]]></title>
-            <link>https://laravel-workflow.com/blog/new-laravel-workflow-feature-side-effects</link>
+            <link>https://durable-workflow.com/blog/new-laravel-workflow-feature-side-effects</link>
             <guid>new-laravel-workflow-feature-side-effects</guid>
             <pubDate>Thu, 22 Dec 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[Workflows provide a more organized and structured approach to managing distributed processes, making it easier for developers to understand and work with complex logic.]]></description>
@@ -127,7 +127,7 @@
         </item>
         <item>
             <title><![CDATA[Workflow: Job Chaining vs. Fan-out/Fan-in]]></title>
-            <link>https://laravel-workflow.com/blog/job-chaining-vs-fan-out-fan-in</link>
+            <link>https://durable-workflow.com/blog/job-chaining-vs-fan-out-fan-in</link>
             <guid>job-chaining-vs-fan-out-fan-in</guid>
             <pubDate>Tue, 06 Dec 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[Chaining is a workflow design pattern that involves the sequential execution of a series of activities, with the output of one activity potentially serving as the input to the next activity in the chain. This pattern is often used to create a linear, step-by-step process for completing a task.]]></description>
@@ -139,7 +139,7 @@
         </item>
         <item>
             <title><![CDATA[Waterline: Elegant UI for Workflows]]></title>
-            <link>https://laravel-workflow.com/blog/waterline-ui</link>
+            <link>https://durable-workflow.com/blog/waterline-ui</link>
             <guid>waterline-ui</guid>
             <pubDate>Sat, 19 Nov 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[One of the pros to using workflows is that it makes monitoring easy. Using Waterline makes it even easier!]]></description>
@@ -151,7 +151,7 @@
         </item>
         <item>
             <title><![CDATA[Invalidating Cloud Images in Laravel with Workflows]]></title>
-            <link>https://laravel-workflow.com/blog/invalidating-cloud-images</link>
+            <link>https://durable-workflow.com/blog/invalidating-cloud-images</link>
             <guid>invalidating-cloud-images</guid>
             <pubDate>Tue, 15 Nov 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[Many services like Cloud Image offer a way to invalidate cached images so that they are pulled from your server again. This is useful if you have updated the source image on your server and want future requests to use the latest copy.]]></description>
@@ -163,7 +163,7 @@
         </item>
         <item>
             <title><![CDATA[Converting Videos with FFmpeg and Workflow]]></title>
-            <link>https://laravel-workflow.com/blog/converting-videos-with-ffmpeg</link>
+            <link>https://durable-workflow.com/blog/converting-videos-with-ffmpeg</link>
             <guid>converting-videos-with-ffmpeg</guid>
             <pubDate>Mon, 31 Oct 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[FFmpeg is a free, open-source software project allowing you to record, convert and stream audio and video.]]></description>
@@ -175,7 +175,7 @@
         </item>
         <item>
             <title><![CDATA[Email Verifications Using Workflow]]></title>
-            <link>https://laravel-workflow.com/blog/email-verifications</link>
+            <link>https://durable-workflow.com/blog/email-verifications</link>
             <guid>email-verifications</guid>
             <pubDate>Sat, 29 Oct 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[A typical registration process goes as follows:]]></description>
