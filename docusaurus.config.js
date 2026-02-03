@@ -125,7 +125,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} <a href="https://durable-workflow.com">Workflow</a>.`,
+        copyright: `Copyright © ${new Date().getFullYear()} <a href="https://durable-workflow.com">Durable Workflow</a>.`,
       },
       prism: {
         theme: lightCodeTheme,
