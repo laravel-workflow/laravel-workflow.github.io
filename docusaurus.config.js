@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Workflow',
   tagline: 'Laravel-native durable workflows.',
-  url: 'https://laravel-workflow.com/',
+  url: 'https://durable-workflow.com/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -125,7 +125,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} <a href="https://laravel-workflow.com">Workflow</a>.`,
+        copyright: `Copyright © ${new Date().getFullYear()} <a href="https://durable-workflow.com">Workflow</a>.`,
       },
       prism: {
         theme: lightCodeTheme,
