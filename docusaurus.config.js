@@ -66,7 +66,7 @@ const config = {
         respectPrefersColorScheme: false,
       },
       navbar: {
-        title: 'Workflow',
+        title: 'Durable Workflow',
         logo: {
           alt: 'Workflow Logo',
           src: 'img/logo.svg',
