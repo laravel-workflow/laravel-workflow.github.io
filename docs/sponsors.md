@@ -13,4 +13,4 @@ Durable Workflow is sustained by the community via sponsors and volunteers. If t
 
 ## Becoming a Sponsor
 
-If you would like to support the Workflow package, you can do so via [GitHub Sponsors](https://github.com/sponsors/durable-workflow).
+If you would like to support ongoing development, you can do so via [GitHub Sponsors](https://github.com/sponsors/durable-workflow).
