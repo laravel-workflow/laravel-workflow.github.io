@@ -63,7 +63,7 @@ Below is a guide on configuring a shared MySQL database and Redis connection:
 ],
 ```
 
-For consistency in the workflow database schema across services, designate only one microservice to publish and run the Workflow migrations.
+For consistency in the workflow database schema across services, designate only one microservice to publish and run the workflow migrations.
 
 Modify the workflow migrations to use the shared database connection:
 
@@ -85,7 +85,7 @@ class StoredWorkflow extends BaseStoredWorkflow
     protected $connection = 'shared';
 ```
 
-Publish the Workflow config file and update it to use your custom models.
+Publish the workflow config file and update it to use your custom models.
 
 Update your workflow and activity classes to use the shared queue connection. Assign unique queue names to each microservice for differentiation:
 
