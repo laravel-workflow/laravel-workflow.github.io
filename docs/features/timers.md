@@ -6,7 +6,7 @@ import TimerSimulator from '@site/src/components/TimerSimulator';
 
 # Timers
 
-Workflow provides the ability to suspend the execution of a workflow and resume at a later time. These are durable timers, meaning they survive restarts and failures while remaining consistent with workflow replay semantics. This can be useful for implementing delays, retry logic, or timeouts.
+The framework provides the ability to suspend the execution of a workflow and resume at a later time. These are durable timers, meaning they survive restarts and failures while remaining consistent with workflow replay semantics. This can be useful for implementing delays, retry logic, or timeouts.
 
 To use timers, you can use the `timer($duration)` helper function within your workflow. This method returns a `Promise` that will be resolved after the specified duration has passed.
 
@@ -29,7 +29,7 @@ class MyWorkflow extends Workflow
 
 <TimerSimulator />
 
-You can specify the `$duration` as an integer number of seconds or as a string e.g. '5 seconds', '30 minutes' or even '3 days'. Workflow can handle any duration.
+You can specify the `$duration` as an integer number of seconds or as a string e.g. '5 seconds', '30 minutes' or even '3 days'. It can handle any duration.
 
 **Important:** Inside of a workflow, never use `Carbon::now()` or Laravel's `now()` to get the current time. Instead, use `Workflow\now()`, which returns the current time as seen by the workflow system. This is crucial because the actual time may not match your application's system clock.
 
