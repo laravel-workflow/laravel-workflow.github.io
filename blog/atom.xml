@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://durable-workflow.com/blog</id>
-    <title>Workflow Blog</title>
+    <title>Durable Workflow Blog</title>
     <updated>2025-12-03T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://durable-workflow.com/blog"/>
-    <subtitle>Workflow Blog</subtitle>
+    <subtitle>Durable Workflow Blog</subtitle>
     <icon>https://durable-workflow.com/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[Workflows as MCP Tools for AI Clients]]></title>
