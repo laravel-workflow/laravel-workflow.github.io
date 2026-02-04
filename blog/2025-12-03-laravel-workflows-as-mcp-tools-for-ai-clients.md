@@ -19,9 +19,9 @@ In this post, we'll show how to build an MCP server that allows AI clients to:
 
 This creates a powerful pattern where AI agents can orchestrate long-running, durable workflows, perfect for complex tasks that can't complete in a single request.
 
-### Why MCP + Workflow?
+### Why MCP + Durable Workflow?
 
-Workflow excels at durable, stateful execution. MCP excels at giving AI clients structured access to external capabilities. Together, they enable:
+Durable Workflow (formerly Laravel Workflow) excels at durable, stateful execution. MCP excels at giving AI clients structured access to external capabilities. Together, they enable:
 
 - **Async AI operations**: Start a workflow, continue the conversation, check results later
 - **Reliable execution**: Workflows survive crashes, retries, and long wait times
@@ -436,7 +436,7 @@ This creates a seamless experience where AI assistants can orchestrate complex, 
 
 ### Try It Now in Your Browser
 
-This MCP integration is included and pre-configured in the Workflow [Sample App](https://github.com/laravel-workflow/sample-app).
+This MCP integration is included and pre-configured in the Durable Workflow [Sample App](https://github.com/durable-workflow/sample-app).
 
 To try it:
 
@@ -448,7 +448,7 @@ To try it:
    php artisan app:init
    php artisan queue:work
    ```
-5. Enable the Workflow Server MCP tools
+5. Enable the Durable Workflow Server MCP tools
 6. Ask your AI to list and run workflows!
 
 ### Where to Go From Here
@@ -461,4 +461,4 @@ You can extend this pattern to:
 - **Progress streaming**: Use SSE to stream workflow progress in real-time
 - **Multi-step agents**: Chain multiple workflows together in a conversation
 
-The combination of Workflow's durable execution and MCP's tool protocol creates a foundation for truly capable AI agents that can handle real-world complexity.
+The combination of Durable Workflow's durable execution and MCP's tool protocol creates a foundation for truly capable AI agents that can handle real-world complexity.
