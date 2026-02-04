@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Workflow',
+  title: 'Durable Workflow',
   tagline: 'Laravel-native durable workflows.',
   url: 'https://durable-workflow.com/',
   baseUrl: '/',
