@@ -10,7 +10,7 @@ The determinism and idempotency constraints for workflows and activities are imp
 
 - Idempotency means that running a workflow or activity multiple times has the same effect as running it once. This is important because it allows the system to retry failed workflows or activities without causing unintended side-effects.
 
-- Event sourcing is a way to persist the state of a system by storing a sequence of events rather than the current state directly. In the context of a Workflow, this means that each activity in the workflow is represented as an event in the event stream. When the workflow is started, the engine reads the event stream and replays the events in order to rebuild the current state of the workflow.
+- Event sourcing is a way to persist the state of a system by storing a sequence of events rather than the current state directly. In the context of a workflow, this means that each activity is represented as an event in the event stream. When the workflow is started, the engine reads the event stream and replays the events in order to rebuild the current state of the workflow.
 
 The determinism and idempotency constraints are necessary because the workflow engine may need to replay the same event multiple times. If the code that is executed during the replay is not deterministic, it may produce different results each time it is run. This would cause the workflow engine to lose track of the current state of the workflow, leading to incorrect results.
 
