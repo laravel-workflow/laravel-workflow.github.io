@@ -6,12 +6,12 @@ sidebar_position: 2
 
 ## Requirements
 
-Workflow requires the following to run:
+Durable Workflow requires the following to run:
 
 - PHP 8.1 or later
 - Laravel 9 or later
 
-Workflow can be used with any queue driver that Laravel supports (except the `sync` driver), including:
+Durable Workflow can be used with any queue driver that Laravel supports (except the `sync` driver), including:
 
 - Amazon SQS
 - Beanstalkd
@@ -20,19 +20,19 @@ Workflow can be used with any queue driver that Laravel supports (except the `sy
 
 Each queue driver has its own [prerequisites](https://laravel.com/docs/12.x/queues#driver-prerequisites).
 
-Workflow also requires a cache driver that supports [locks](https://laravel.com/docs/12.x/cache#atomic-locks).
+Durable Workflow also requires a cache driver that supports [locks](https://laravel.com/docs/12.x/cache#atomic-locks).
 
-> ✨ SQS Support: `timer()` and `awaitWithTimeout()` work with any duration, even when using the SQS queue driver. Workflow automatically handles SQS's delay limitation transparently.
+> ✨ SQS Support: `timer()` and `awaitWithTimeout()` work with any duration, even when using the SQS queue driver. Durable Workflow automatically handles SQS's delay limitation transparently.
 
-## Installing the Workflow package
+## Installing Durable Workflow
 
-The Workflow package is installable via Composer. To install it, run the following command in your Laravel project:
+Durable Workflow is installable via Composer. To install it, run the following command in your Laravel project:
 
 ```bash
 composer require laravel-workflow/laravel-workflow
 ```
 
-After installing the Workflow package, you must also publish the migrations. To publish the migrations, run the following command:
+After installing, you must also publish the migrations. To publish the migrations, run the following command:
 
 ```bash
 php artisan vendor:publish --provider="Workflow\Providers\WorkflowServiceProvider" --tag="migrations"
@@ -46,4 +46,4 @@ php artisan migrate
 
 ## Running Workers
 
-The Workflow package uses queues to run workflows and activities in the background. You will need to either run the `queue:work` [command](https://laravel.com/docs/12.x/queues#the-queue-work-command) or use [Horizon](https://laravel.com/docs/12.x/horizon) to run your queue workers. Without a queue worker, workflows and activities will not be processed. You cannot use the sync driver with queue workers.
+Durable Workflow uses queues to run workflows and activities in the background. You will need to either run the `queue:work` [command](https://laravel.com/docs/12.x/queues#the-queue-work-command) or use [Horizon](https://laravel.com/docs/12.x/horizon) to run your queue workers. Without a queue worker, workflows and activities will not be processed. You cannot use the sync driver with queue workers.
