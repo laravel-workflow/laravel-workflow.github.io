@@ -8,7 +8,7 @@ Here is an overview of the steps needed to customize the database connection use
 
 1. Create classes in your app models directory that extend the base workflow model classes
 2. Set the desired `$connection` option in each class
-3. Publish the Workflow config file
+3. Publish the workflow config file
 4. Update the config file to use your custom classes
 
 ## Extending Workflow Models
