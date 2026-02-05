@@ -10,10 +10,10 @@ sidebar_position: 11
 
 ### Dashboard View
 
-![waterline_dashboard](https://user-images.githubusercontent.com/1130888/202866614-4adad485-60d1-403c-976f-d3063e928287.png)
+![waterline_dashboard](https://github.com/user-attachments/assets/5688a234-4c02-4d5e-84d4-5f40b5fa27c5)
 
 ### Workflow View
 
-![workflow](https://user-images.githubusercontent.com/1130888/202866616-98a214d3-a916-4ae1-952e-ca8267ddf4a7.png)
+![workflow](https://github.com/user-attachments/assets/da685466-7747-4c2f-ae10-300041381d51)
 
 Refer to https://github.com/durable-workflow/waterline for installation and configuration instructions.
