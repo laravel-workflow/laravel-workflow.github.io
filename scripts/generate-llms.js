@@ -1,58 +1,81 @@
 const fs = require('fs');
 const path = require('path');
 
+const DOC_EXTS = new Set(['.md', '.mdx']);
+
+function ensureDir(dir) {
+  fs.mkdirSync(dir, { recursive: true });
+}
+
+function isDocFile(p) {
+  return DOC_EXTS.has(path.extname(p));
+}
+
+function extractFrontmatterAndContent(filePath) {
+  const raw = fs.readFileSync(filePath, 'utf8').replace(/^\uFEFF/, ''); // strip BOM
+  // more tolerant: frontmatter is optional; allow \r\n
+  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
+  if (!match) return { frontmatter: '', content: raw };
+  return { frontmatter: match[1], content: match[2] };
+}
+
+function getSidebarPosition(frontmatter) {
+  const m = frontmatter.match(/sidebar_position:\s*(\d+)/);
+  return m ? parseInt(m[1], 10) : Infinity;
+}
+
+function getCategoryPosition(dirPath) {
+  const categoryFile = path.join(dirPath, '_category_.json');
+  if (!fs.existsSync(categoryFile)) return Infinity;
+  try {
+    const category = JSON.parse(fs.readFileSync(categoryFile, 'utf8'));
+    return Number.isFinite(category.position) ? category.position : Infinity;
+  } catch {
+    return Infinity;
+  }
+}
+
 function getPositionForItem(itemPath) {
   const stat = fs.statSync(itemPath);
-  if (stat.isDirectory()) {
-    const categoryFile = path.join(itemPath, '_category_.json');
-    if (fs.existsSync(categoryFile)) {
-      const category = JSON.parse(fs.readFileSync(categoryFile, 'utf8'));
-      return category.position || Infinity;
-    }
-    return Infinity;
-  } else if (itemPath.endsWith('.md')) {
+  if (stat.isDirectory()) return getCategoryPosition(itemPath);
+  if (isDocFile(itemPath)) {
     const { frontmatter } = extractFrontmatterAndContent(itemPath);
     return getSidebarPosition(frontmatter);
   }
   return Infinity;
 }
 
-function extractFrontmatterAndContent(filePath) {
-  const content = fs.readFileSync(filePath, 'utf8');
-  const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-  if (!frontmatterMatch) {
-    return { frontmatter: '', content: content };
-  }
-  const frontmatter = frontmatterMatch[1];
-  const body = frontmatterMatch[2];
-  return { frontmatter, content: body };
-}
+function collectContent(rootDir, dirPath = rootDir) {
+  const items = fs.readdirSync(dirPath).map(name => path.join(dirPath, name));
 
-function getSidebarPosition(frontmatter) {
-  const match = frontmatter.match(/sidebar_position:\s*(\d+)/);
-  return match ? parseInt(match[1], 10) : Infinity;
-}
-
-function collectContent(dirPath) {
-  const items = fs.readdirSync(dirPath).map(item => path.join(dirPath, item));
-
-  // Filter to directories and .md files
-  const validItems = items.filter(item => {
-    const stat = fs.statSync(item);
-    return stat.isDirectory() || item.endsWith('.md');
+  const validItems = items.filter(p => {
+    const stat = fs.statSync(p);
+    return stat.isDirectory() || isDocFile(p);
   });
 
-  // Sort by position
-  validItems.sort((a, b) => getPositionForItem(a) - getPositionForItem(b));
+  validItems.sort((a, b) => {
+    const pa = getPositionForItem(a);
+    const pb = getPositionForItem(b);
+    if (pa !== pb) return pa - pb;
+    // deterministic tie-breaker
+    return a.localeCompare(b);
+  });
 
   let combined = '';
+
   for (const item of validItems) {
     const stat = fs.statSync(item);
+
     if (stat.isDirectory()) {
-      combined += collectContent(item);
-    } else if (item.endsWith('.md')) {
+      combined += collectContent(rootDir, item);
+      continue;
+    }
+
+    if (isDocFile(item)) {
       const { content } = extractFrontmatterAndContent(item);
-      combined += content + '\n\n';
+      const rel = path.relative(rootDir, item).replace(/\\/g, '/');
+      combined += `\n<!-- SOURCE: ${rel} -->\n`;
+      combined += content.trimEnd() + '\n';
     }
   }
 
@@ -64,11 +87,21 @@ function main() {
   const buildDir = path.join(__dirname, '..', 'build');
   const outputFile = path.join(buildDir, 'llms.txt');
 
-  const combinedContent = collectContent(docsDir);
+  ensureDir(buildDir);
 
-  fs.writeFileSync(outputFile, combinedContent, 'utf8');
+  const header = `# Durable Workflow – LLM Documentation Bundle
+# Source: https://durable-workflow.com
+# Generated from /docs
+# Purpose: AI-assisted reasoning, code generation, and Q&A
+# Canonical URL: https://durable-workflow.com/llms.txt
 
-  console.log('llms.txt generated successfully');
+`;
+
+  const combinedContent = collectContent(docsDir).trimStart() + '\n';
+  const fullContent = header + combinedContent;
+  fs.writeFileSync(outputFile, fullContent, 'utf8');
+
+  console.log('llms.txt generated successfully:', outputFile);
 }
 
 main();
