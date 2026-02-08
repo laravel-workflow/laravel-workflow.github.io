@@ -430,8 +430,6 @@ private function bookHotel(array $data, ?string $injectFailure)
 
 After each successful booking, we register a compensation action. `addCompensation` takes a callable that knows *exactly* how to undo what was just done, including the confirmation number, dates, and all the details returned by the booking activity.
 
-The framework remembers the hotel confirmation.
-
 If any subsequent step throws an exception, the `catch` block runs:
 
 ```php
@@ -443,7 +441,7 @@ catch (Throwable $th) {
 }
 ```
 
-`$this->compensate()` executes all registered compensation actions **in reverse order**. If you booked a hotel, then a flight, then a rental car, and the rental car fails, the flight gets cancelled first, then the hotel. To cancel them in parallel instead, we can set `$this->setParallelCompensation(true)`.
+`$this->compensate()` executes all registered compensation actions **in reverse order**. If you booked a hotel, then a flight, then a rental car, and the rental car fails, the flight gets cancelled first, then the hotel. (To cancel them in parallel instead, we can set `$this->setParallelCompensation(true)`.)
 
 And notice: the inactivity timeout and message limit are thrown as exceptions too. If a user walks away mid-booking, the `catch` block fires, compensation runs, and all their reservations get cleaned up. Every exit path goes through the same cleanup logic.
 
@@ -583,4 +581,4 @@ To try it:
 ```bash
 php artisan app:ai
 ```
-Note: You can optionally inject a failure at one of the booking steps by running it with the `--inject-failure` e.g. `php artisan app:ai --inject-failure flight`. Valid options are `hotel`, `flight` or `car`.
+Note: You can optionally inject a failure at one of the booking steps by running it with the `--inject-failure` flag e.g. `php artisan app:ai --inject-failure flight`. Valid options are `hotel`, `flight` or `car`.
