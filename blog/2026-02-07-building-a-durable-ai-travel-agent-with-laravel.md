@@ -1,4 +1,13 @@
-# Building a Durable AI Travel Agent with Laravel
+---
+slug: building-a-durable-ai-travel-agent-with-laravel
+title: "Building a Durable AI Travel Agent with Laravel"
+authors:
+  name: Richard
+  title: Core Team
+  url: https://github.com/rmcdaniel
+  image_url: https://github.com/rmcdaniel.png
+tags: [ai, workflow, agents, tools]
+---
 
 Look at these execution logs:
 
