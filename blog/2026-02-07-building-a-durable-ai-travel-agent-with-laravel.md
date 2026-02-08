@@ -455,7 +455,7 @@ You: book Grand Hotel in Paris for 2 guests, check-in 2026-03-01,
      2026-03-01 returning 2026-03-03.
 ```
 
-**1. Hotel books successfully ✅**
+**1. Hotel books successfully**
 
 ```
 BookHotelActivity ........... RUNNING
@@ -469,7 +469,7 @@ The workflow now has a compensation registered:
 fn () => activity(CancelHotelActivity::class, "Hotel booked: Grand Hotel... Confirmation #902928")
 ```
 
-**2. Flight fails ❌** (injected failure for demo purposes)
+**2. Flight fails** (injected failure for demo purposes)
 
 ```
 BookFlightActivity .......... RUNNING
@@ -478,7 +478,7 @@ BookFlightActivity ......... 8.37ms FAIL
 
 The `NonRetryableException` propagates up to the `catch` block.
 
-**3. Saga compensation kicks in automatically 🔄**
+**3. Saga compensation kicks in automatically**
 
 ```
 CancelHotelActivity ......... RUNNING
@@ -489,7 +489,7 @@ CancelHotelActivity ....... 3.74ms DONE
 
 The framework ran the compensation with the *exact* confirmation details from the original booking.
 
-**4. User gets clean feedback 💬**
+**4. User gets clean feedback**
 
 ```
 Agent: Flight booking failed: New York to Paris.
