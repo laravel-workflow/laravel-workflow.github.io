@@ -4,8 +4,9 @@ sidebar_position: 7
 
 # Sample App
 
-[This](https://github.com/laravel-workflow/sample-app) is a sample Laravel 12 application with example workflows that you can run inside a GitHub codespace.
+https://github.com/durable-workflow/sample-app
 
+This is a sample Laravel 12 application with example workflows that you can run inside a GitHub codespace.
 
 **Step 1**
 
