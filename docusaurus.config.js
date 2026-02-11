@@ -119,8 +119,8 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: 'LLM Docs',
+                to: '/llms.txt',
               },
               {
                 label: 'GitHub',
