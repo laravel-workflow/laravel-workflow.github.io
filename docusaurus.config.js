@@ -119,12 +119,12 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'LLM Docs',
-                to: 'https://durable-workflow.com/llms.txt',
-              },
-              {
                 label: 'GitHub',
                 href: 'https://github.com/durable-workflow/workflow',
+              },
+              {
+                label: 'LLM Docs',
+                to: 'https://durable-workflow.com/llms.txt',
               },
             ],
           },
