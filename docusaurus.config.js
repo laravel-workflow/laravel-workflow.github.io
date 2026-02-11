@@ -120,7 +120,7 @@ const config = {
             items: [
               {
                 label: 'LLM Docs',
-                to: '/llms.txt',
+                to: 'https://durable-workflow.com/llms.txt',
               },
               {
                 label: 'GitHub',
