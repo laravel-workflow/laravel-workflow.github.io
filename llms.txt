@@ -1,11 +1,3 @@
-# Durable Workflow – LLM Documentation Bundle
-# Source: https://durable-workflow.com
-# Generated from /docs
-# Purpose: AI-assisted reasoning, code generation, and Q&A
-# Canonical URL: https://durable-workflow.com/llms.txt
-
-<!-- SOURCE: introduction.md -->
-
 # Introduction
 
 ## Why use workflows?
@@ -37,8 +29,6 @@ There are several reasons why developers might choose to use Durable Workflow fo
 - Durable Workflow is open source and actively maintained, with a growing community of contributors and users. This means that developers can easily get help and support, share their experiences and knowledge, and contribute to the development of the framework.
 
 Compared to the built-in queues, Durable Workflow allows for more complex and dynamic control over the execution of jobs, such as branching and looping, and provides a way to monitor the progress and status of the workflow as a whole. Unlike job chaining and batching, which are designed to execute a fixed set of jobs in a predetermined sequence, Durable Workflow also allows for more flexible and adaptable execution.
-
-<!-- SOURCE: installation.md -->
 
 # Installation
 
@@ -86,8 +76,6 @@ php artisan migrate
 
 Durable Workflow uses queues to run workflows and activities in the background. You will need to either run the `queue:work` [command](https://laravel.com/docs/12.x/queues#the-queue-work-command) or use [Horizon](https://laravel.com/docs/12.x/horizon) to run your queue workers. Without a queue worker, workflows and activities will not be processed. You cannot use the sync driver with queue workers.
 
-<!-- SOURCE: defining-workflows/workflows.md -->
-
 # Workflows
 
 Workflows and activities are defined as classes that extend the base `Workflow` and `Activity` classes provided by the framework. A workflow is a class that defines a sequence of activities that run in parallel, series or a mixture of both. 
@@ -117,8 +105,6 @@ class MyWorkflow extends Workflow
 
 The `yield` keyword is used to pause the execution of the workflow and wait for the completion of an activity.
 
-<!-- SOURCE: defining-workflows/activities.md -->
-
 # Activities
 
 An activity is a unit of work that performs a specific task or operation (e.g. making an API request, processing data, sending an email) and can be executed by a workflow.
@@ -144,8 +130,6 @@ class MyActivity extends Activity
 }
 ```
 
-<!-- SOURCE: defining-workflows/starting-workflows.md -->
-
 # Starting Workflows
 
 To start a workflow, you must first create a workflow instance and then call the `start()` method on it. The workflow instance has several methods that can be used to interact with the workflow, such as `id()` to get the workflow's unique identifier, `status()` or `running()` to get the current status of the workflow, and `output()` to get the output data produced by the workflow.
@@ -166,8 +150,6 @@ use Workflow\WorkflowStub;
 
 $workflow = WorkflowStub::load($id);
 ```
-
-<!-- SOURCE: defining-workflows/passing-data.md -->
 
 # Passing Data
 
@@ -210,10 +192,6 @@ class MyActivity extends Activity
     }
 }
 ```
-
-import PassingDataSimulator from '@site/src/components/PassingDataSimulator';
-
-<PassingDataSimulator />
 
 In general, you should only pass small amounts of data in this manner. Rather than passing large amounts of data, you should write the data to the database, cache or file system. Then pass the key or file path to the workflow and activities. The activities can then use the key or file path to read the data.
 
@@ -276,8 +254,6 @@ class MyWorkflow extends Workflow
 }
 ```
 
-<!-- SOURCE: defining-workflows/workflow-status.md -->
-
 # Workflow Status
 
 You can monitor the status of the workflow by calling the `running()` method, which returns `true` if the workflow is still running and `false` if it has completed or failed. 
@@ -300,18 +276,6 @@ WorkflowWaitingStatus
 
 This is the state machine for a workflow status.
 
-import ThemedImage from '@site/src/components/ThemedImage';
-
-<ThemedImage
-  lightSrc="https://mermaid.ink/img/pako:eNqVk01vhCAQhv-KmWOjG7W6KodetumtSdMeNmnpgRR0SQUMQr-M_72sm37QaLPLieGdZ94MMAM8KcoAQW-IYZecNJqI6CXFMnDr4ewxiKKLYKv0c92q141mLoveuVzbY3lImhU97IZJymUzj10R3p5OeaKH_a53LHNrpVy08kT_OpToWmbm3f7DpOHSnootN7bMbAk3i4154pFWy8yf54IQGs0pIKMtC0EwLcg-hGFfEIPZMcEwILelrCa2NRiwHB3WEXmvlPgitbLNDlBN2t5FtqM___Q7xVkzvVFWGkD5VAHQAG-AsrhaVUmeJHGWp2VVpFkI7-54vSqLrCryMk-T83WRZGMIH5Np7BRXglFulL4-zMY0IuMnPzkbbw?type=png"
-  darkSrc="https://mermaid.ink/img/pako:eNqVkstuwyAQRX_FmmVlR7Zrx4ZFN6m6rtpFpJYuUCEOigELQ1-W_70kVR9EdpWwYubOmasZGOBZMw4Yekstvxa0MVQmLzlRkT-PF09RklxFa212m1a_rgz3Veze17qeqK-iSTHAbrliQjXT2A0V7flUIAbY336nMndOqVmrQAzXoWXXcjvt9h-mrFDuXGx-sHlmTYWdHSwQT7SaZ46eC2JojGCArXE8BsmNpPsQhn1DAnbLJSeA_ZVRsyNA1OiZjqoHreU3ZrRrtoA3tO195Dr2-0l_ssYbc7PSTlnABTr0ADzAm49StEBZmWVpUeY1qvIihnefXi7qqkBVWZd5drmssmKM4eNgm3qlHD8BErAUGg?type=png"
-  lightLink="https://mermaid.live/edit#pako:eNqVk01vhCAQhv-KmWOjG7W6KodetumtSdMeNmnpgRR0SQUMQr-M_72sm37QaLPLieGdZ94MMAM8KcoAQW-IYZecNJqI6CXFMnDr4ewxiKKLYKv0c92q141mLoveuVzbY3lImhU97IZJymUzj10R3p5OeaKH_a53LHNrpVy08kT_OpToWmbm3f7DpOHSnootN7bMbAk3i4154pFWy8yf54IQGs0pIKMtC0EwLcg-hGFfEIPZMcEwILelrCa2NRiwHB3WEXmvlPgitbLNDlBN2t5FtqM___Q7xVkzvVFWGkD5VAHQAG-AsrhaVUmeJHGWp2VVpFkI7-54vSqLrCryMk-T83WRZGMIH5Np7BRXglFulL4-zMY0IuMnPzkbbw"
-  darkLink="https://mermaid.live/edit#pako:eNqVkstuwyAQRX_FmmVlR7Zrx4ZFN6m6rtpFpJYuUCEOigELQ1-W_70kVR9EdpWwYubOmasZGOBZMw4Yekstvxa0MVQmLzlRkT-PF09RklxFa212m1a_rgz3Veze17qeqK-iSTHAbrliQjXT2A0V7flUIAbY336nMndOqVmrQAzXoWXXcjvt9h-mrFDuXGx-sHlmTYWdHSwQT7SaZ46eC2JojGCArXE8BsmNpPsQhn1DAnbLJSeA_ZVRsyNA1OiZjqoHreU3ZrRrtoA3tO195Dr2-0l_ssYbc7PSTlnABTr0ADzAm49StEBZmWVpUeY1qvIihnefXi7qqkBVWZd5drmssmKM4eNgm3qlHD8BErAUGg"
-  alt="Workflow Status State Machine"
-/>
-
-<!-- SOURCE: defining-workflows/workflow-id.md -->
-
 # Workflow ID
 
 When starting a workflow you can obtain the id like this.
@@ -324,7 +288,6 @@ $workflowId = $workflow->id();
 ```
 
 In addition, inside of an activity, `$this->workflowId()` returns the id of the current workflow. This can be useful for activities that need to store data about the workflow that is executing them. For example, an activity may use the workflow id to store information in a database or cache so that it can be accessed by other activities in the same workflow.
-
 
 ```php
 use Illuminate\Support\Facades\Cache;
@@ -342,10 +305,6 @@ class MyActivity extends Activity
 ```
 
 This ID can also be used to signal or query the workflow later. For example, if you want to send a notification email with a link to view the current state of the workflow, you can include the `$workflowId` in the email and use it to generate a signed URL.
-
-<!-- SOURCE: features/signals.md -->
-
-import SignalSimulator from '@site/src/components/SignalSimulator';
 
 # Signals
 
@@ -403,8 +362,6 @@ class MyWorkflow extends Workflow
 }
 ```
 
-<SignalSimulator />
-
 **Important:** The `await()` function should only be used in a workflow, not an activity.
 
 ## Inbox
@@ -439,10 +396,6 @@ class MyWorkflow extends Workflow
 
 Each received signal is stored in the inbox. The inbox tracks which messages have already been read. On replay, previously read messages remain read. Only unread messages are returned by `nextUnread()`. This makes the inbox safe to use in `await()` conditions and inside long-running loops.
 
-<!-- SOURCE: features/queries.md -->
-
-import QuerySimulator from '@site/src/components/QuerySimulator';
-
 # Queries
 
 Queries allow you to retrieve information about the current state of a workflow without affecting its execution. This is useful for monitoring and debugging purposes.
@@ -474,8 +427,6 @@ $workflow = WorkflowStub::load($workflowId);
 
 $ready = $workflow->getReady();
 ```
-
-<QuerySimulator />
 
 **Important:** Querying a workflow does not advance its execution, unlike signals.
 
@@ -533,10 +484,6 @@ class MyWorkflow extends Workflow
 
 Each sent signal is stored in the outbox. The outbox tracks which messages have already been sent. On replay, previously read messages remain sent. Only unsent messages are returned by `nextUnsent()`. This makes the outbox safe to send multiple messages inside long-running loops.
 
-<!-- SOURCE: features/timers.md -->
-
-import TimerSimulator from '@site/src/components/TimerSimulator';
-
 # Timers
 
 The framework provides the ability to suspend the execution of a workflow and resume at a later time. These are durable timers, meaning they survive restarts and failures while remaining consistent with workflow replay semantics. This can be useful for implementing delays, retry logic, or timeouts.
@@ -559,8 +506,6 @@ class MyWorkflow extends Workflow
     }
 }
 ```
-
-<TimerSimulator />
 
 You can specify the `$duration` as an integer number of seconds or as a string e.g. '5 seconds', '30 minutes' or even '3 days'. It can handle any duration.
 
@@ -591,8 +536,6 @@ yield days(3);
 yield hours(2);
 ```
 
-<!-- SOURCE: features/signal+timer.md -->
-
 # Signal + Timer
 
 In some cases, you may want to wait for a signal or for a timer to expire, whichever comes first. This can be achieved by using `awaitWithTimeout($timeout, $condition)`.
@@ -619,10 +562,6 @@ class MyWorkflow extends Workflow
 }
 ```
 
-import SignalTimerSimulator from '@site/src/components/SignalTimerSimulator';
-
-<SignalTimerSimulator />
-
 The workflow will reach the call to `awaitWithTimeout()` and then hibernate until either some external code signals the workflow like this.
 
 ```php
@@ -630,8 +569,6 @@ $workflow->setReady();
 ```
 
 Or, if the specified timeout is reached, the workflow will continue without the signal. The return value is `true` if the signal was received before the timeout, or `false` if the timeout was reached without receiving the signal.
-
-<!-- SOURCE: features/heartbeats.md -->
 
 # Heartbeats
 
@@ -655,13 +592,7 @@ class MyActivity extends Activity
 }
 ```
 
-import HeartbeatSimulator from '@site/src/components/HeartbeatSimulator';
-
-<HeartbeatSimulator />
-
 In the above example, even though the activity would normally be terminated after running for 5 seconds, the periodic heartbeat allows it to keep running. If the activity does freeze or crash then the heartbeat will stop and the timeout will be triggered.
-
-<!-- SOURCE: features/side-effects.md -->
 
 # Side Effects
 
@@ -685,8 +616,6 @@ class MyWorkflow extends Workflow
 The workflow will only call `random_int()` once and save the result, even if the workflow later fails and is retried.
 
 **Important:** The code inside a side effect should never fail because it will not be retried. Code that can possibly fail and therefore need to be retried should be moved to an activity instead.
-
-<!-- SOURCE: features/child-workflows.md -->
 
 # Child Workflows
 
@@ -886,11 +815,6 @@ class AsyncWorkflow extends Workflow
 }
 ```
 
-<!-- SOURCE: features/concurrency.md -->
-
-import ConcurrencySimulator from '@site/src/components/ConcurrencySimulator';
-import ThemedImage from '@site/src/components/ThemedImage';
-
 # Concurrency
 
 Activities can be executed in series or in parallel. In either case, you start by using `activity()` to create a new instance of an activity and return a promise that represents the execution of that activity. The activity will immediately begin executing in the background. You can then `yield` this promise to pause the execution of the workflow and wait for the result of the activity, or pass the promise into the `all()` method to wait for a group of activities to complete in parallel.
@@ -916,16 +840,6 @@ class MyWorkflow extends Workflow
 }
 ```
 
-<ConcurrencySimulator 
-  activities={[
-    { name: 'MyActivity1', duration: 1500 },
-    { name: 'MyActivity2', duration: 2000 },
-    { name: 'MyActivity3', duration: 1200 },
-  ]}
-  mode="series"
-  title="Series Execution Simulator"
-/>
-
 ## Parallel
 
 This example will execute 3 activities in parallel, waiting for the completion of all activities and collecting the results.
@@ -946,16 +860,6 @@ class MyWorkflow extends Workflow
     }
 }
 ```
-
-<ConcurrencySimulator 
-  activities={[
-    { name: 'MyActivity1', duration: 2000 },
-    { name: 'MyActivity2', duration: 1500 },
-    { name: 'MyActivity3', duration: 2500 },
-  ]}
-  mode="parallel"
-  title="Parallel Execution Simulator"
-/>
 
 The main difference between the serial example and the parallel execution example is the number of `yield` statements. In the serial example, there are 3 `yield` statements, one for each activity. This means that the workflow will pause and wait for each activity to complete before continuing to the next one. In the parallel example, there is only 1 `yield` statement, which wraps all of the activities in a call to `all()`. This means that all of the activities will be executed in parallel, and the workflow will pause and wait for all of them to complete as a group before continuing.
 
@@ -987,27 +891,6 @@ class MyWorkflow extends Workflow
 }
 ```
 
-<ConcurrencySimulator 
-  activities={[
-    { name: 'MyActivity1', duration: 1200, group: 0 },
-    { name: 'MyActivity2', duration: 1000, group: 1, subgroup: 'a' },
-    { name: 'MyActivity3', duration: 1200, group: 1, subgroup: 'a' },
-    { name: 'MyActivity4', duration: 1800, group: 1 },
-    { name: 'MyActivity5', duration: 1400, group: 1 },
-    { name: 'MyActivity6', duration: 1000, group: 2 },
-  ]}
-  mode="mix"
-  title="Mix and Match Simulator"
-/>
-
-<ThemedImage
-  lightSrc="https://mermaid.ink/img/pako:eNpVUstuwjAQ_BVrzwHhYBOSQyVa2kOVSIhyKsnBJYZYSmzkOG0p4t_rvFqzJ8_szKzX8hUOKucQwbFUX4eCaYN261SmEtla7ZPL6mDEpzAXnI1s3XycNDsXaPO43zayRkKiDdOsLHmZ9ZK2cqG59SqJ4u1ovbPHzy-7v4A3rgWvHXtbMXYu4GdoMnlAse9wc8fAZe6OSYijI44uoU6DDo3BPKzdD8IuSsgdoqM29jvi1clcDJkJ6VsDoiMCD05a5BAZ3XAPKq4r1kK4tsoUTMErnkJkjzk_sqY0KaTyZm1nJt-VqkanVs2pgOjIytqi5pwzw9eC2df9l9jFuH5SjTQQhV0CRFf4hojMwmmIKcYzQv1lGPjEg4ulF9NlQMKALqmP54sAk5sHP93Qme1QD3gujNJJ_2u6z3P7BSs8q2k?type=png"
-  darkSrc="https://mermaid.ink/img/pako:eNpVUstuwjAQ_JVozwElthMFHyrR0h6qREKUUxsOLjHEamIjx2lLEf9e54XMnjyzM7NeyxfYq4IDhUOlfvYl08bbrnKZS8_W8iM7L_dGfAtzDncT27SfR81Opbd-_Ni0svGE9NZMs6ri1W6QdFUIza1XSS_dTNY7e_r8sr0FvHEteOPYu0pD5wJo581mD16KHA47Bi4Ld0xGHB1xdFnkNKKxMZrHtYdBoYsycoeiSZuinnh1MuMxMyNDa0TRhMCHoxYFUKNb7kPNdc06CJdOmYMpec1zoPZYMP2VQy6v1nNi8l2perJp1R5LoAdWNRa1p4IZvhLMPm19Y7Vdi-sn1UoDNFqQPgToBX6B4jCZLyJbQYiCJMbYhzPQEAfzmJAFIihGBCdXH_76oZZGuKcICTBCSeIDL4RROhv-T_-Nrv-BIKzD?type=png"
-  lightLink="https://mermaid.live/edit#pako:eNpVUstuwjAQ_BVrzwHhYBOSQyVa2kOVSIhyKsnBJYZYSmzkOG0p4t_rvFqzJ8_szKzX8hUOKucQwbFUX4eCaYN261SmEtla7ZPL6mDEpzAXnI1s3XycNDsXaPO43zayRkKiDdOsLHmZ9ZK2cqG59SqJ4u1ovbPHzy-7v4A3rgWvHXtbMXYu4GdoMnlAse9wc8fAZe6OSYijI44uoU6DDo3BPKzdD8IuSsgdoqM29jvi1clcDJkJ6VsDoiMCD05a5BAZ3XAPKq4r1kK4tsoUTMErnkJkjzk_sqY0KaTyZm1nJt-VqkanVs2pgOjIytqi5pwzw9eC2df9l9jFuH5SjTQQhV0CRFf4hojMwmmIKcYzQv1lGPjEg4ulF9NlQMKALqmP54sAk5sHP93Qme1QD3gujNJJ_2u6z3P7BSs8q2k"
-  darkLink="https://mermaid.live/edit#pako:eNpVUstuwjAQ_JVozwElthMFHyrR0h6qREKUUxsOLjHEamIjx2lLEf9e54XMnjyzM7NeyxfYq4IDhUOlfvYl08bbrnKZS8_W8iM7L_dGfAtzDncT27SfR81Opbd-_Ni0svGE9NZMs6ri1W6QdFUIza1XSS_dTNY7e_r8sr0FvHEteOPYu0pD5wJo581mD16KHA47Bi4Ld0xGHB1xdFnkNKKxMZrHtYdBoYsycoeiSZuinnh1MuMxMyNDa0TRhMCHoxYFUKNb7kPNdc06CJdOmYMpec1zoPZYMP2VQy6v1nNi8l2perJp1R5LoAdWNRa1p4IZvhLMPm19Y7Vdi-sn1UoDNFqQPgToBX6B4jCZLyJbQYiCJMbYhzPQEAfzmJAFIihGBCdXH_76oZZGuKcICTBCSeIDL4RROhv-T_-Nrv-BIKzD"
-  alt="Mix and Match Execution Flow"
-/>
-
 Activity 1 will execute and complete before any other activities start. Activities 2 and 3 will execute in series, waiting for each to complete one after another before continuing. At the same time, activities 4 and 5 will execute together in parallel and only when they all complete will execution continue. Finally, activity 6 executes last after all others have completed.
 
 ## Child Workflows in Parallel
@@ -1024,19 +907,7 @@ $results = yield all([
 ]);
 ```
 
-<ConcurrencySimulator 
-  activities={[
-    { name: 'MyChild1', duration: 2200 },
-    { name: 'MyChild2', duration: 1800 },
-    { name: 'MyChild3', duration: 2500 },
-  ]}
-  mode="parallel"
-  title="Child Workflows in Parallel Simulator"
-/>
-
 This makes it easy to build hierarchical parallelism into your workflows.
-
-<!-- SOURCE: features/sagas.md -->
 
 # Sagas
 
@@ -1073,8 +944,6 @@ class BookingSagaWorkflow extends Workflow
 ```
 
 By default, compensations execute sequentially in the reverse order they were added. To run them in parallel, use `$this->setParallelCompensation(true)`. To ignore exceptions that occur inside compensation activities while still running them sequentially, use `$this->setContinueWithError(true)` instead.
-
-<!-- SOURCE: features/events.md -->
 
 # Events
 
@@ -1165,8 +1034,6 @@ Workflow\Events\ActivityStarted
 Workflow\Events\ActivityCompleted
 Workflow\Events\WorkflowCompleted
 ```
-
-<!-- SOURCE: features/webhooks.md -->
 
 # Webhooks
 
@@ -1357,8 +1224,6 @@ POST /workflows/start/order-workflow
 POST /workflows/signal/order-workflow/{workflowId}/mark-as-shipped
 ```
 
-<!-- SOURCE: features/continue-as-new.md -->
-
 # Continue As New
 
 The **Continue As New** pattern allows a running workflow to restart itself with new arguments.
@@ -1396,8 +1261,6 @@ In this example:
 * The workflow executes an activity each iteration.
 * If the maximum count has not been reached, it continues as new with incremented arguments.
 * The final result is returned only when the loop completes.
-
-<!-- SOURCE: features/versioning.md -->
 
 # Versioning
 
@@ -1550,8 +1413,6 @@ class MyWorkflow extends Workflow
 
 **Important:** Each `changeId` should be unique within a workflow. The version is recorded in the workflow logs and will be replayed deterministically.
 
-<!-- SOURCE: configuration/publishing-config.md -->
-
 # Publishing Config
 
 This will create a `workflows.php` configuration file in your `config` folder.
@@ -1607,8 +1468,6 @@ To use Base64 instead, update it to:
 'serializer' => Workflow\Serializers\Base64::class,
 ```
 
-<!-- SOURCE: configuration/options.md -->
-
 # Options
 
 There are various options available when defining your workflows and activities. These options include the number of times a workflow or activity may be attempted before it fails, the connection and queue, and the maximum number of seconds it is allowed to run.
@@ -1651,15 +1510,11 @@ The `$timeout` setting is used to control the maximum number of seconds an activ
 
 The `backoff` method returns an array of integers corresponding to the current attempt. The default `backoff` method decays exponentially to 2 minutes. This can be overridden by implementing the `backoff` method on the activity class.
 
-<!-- SOURCE: configuration/ensuring-same-server.md -->
-
 # Ensuring Same Server
 
 To ensure that your activities run on the same server so that they can share data using the local file system, you can use the `$queue` property on your workflow and activity classes. Set the `$queue` property to the name of a dedicated queue that is only processed by the desired server.
 
 In order to run a queue worker that only processes the `my_dedicated_queue` queue, you can use the `php artisan queue:work --queue=my_dedicated_queue` command. Alternatively, you can use Laravel Horizon to manage your queues. Horizon is a queue manager that provides a dashboard for monitoring the status of your queues and workers.
-
-<!-- SOURCE: configuration/database-connection.md -->
 
 # Database Connection
 
@@ -1687,7 +1542,6 @@ class StoredWorkflow extends BaseStoredWorkflow
 
 In `app\Models\StoredWorkflowException.php` put this.
 
-
 ```php
 namespace App\Models;
 
@@ -1701,7 +1555,6 @@ class StoredWorkflowException extends BaseStoredWorkflowException
 ```
 
 In `app\Models\StoredWorkflowLog.php` put this.
-
 
 ```php
 namespace App\Models;
@@ -1739,8 +1592,6 @@ class StoredWorkflowTimer extends BaseStoredWorkflowTimer
     protected $connection = 'mysql';
 }
 ```
-
-<!-- SOURCE: configuration/microservices.md -->
 
 # Microservices
 Workflows can span across multiple Laravel applications. For instance, a workflow might exist in one microservice while its corresponding activity resides in another.
@@ -1902,8 +1753,6 @@ php artisan queue:work shared --queue=activity
 
 In this setup, the workflow queue worker runs in the workflow microservice, while the activity queue worker runs in the activity microservice.
 
-<!-- SOURCE: configuration/pruning-workflows.md -->
-
 # Pruning Workflows
 Sometimes you may want to periodically delete completed workflows that are no longer needed. To accomplish this, you may use the `model:prune` artisan command.
 
@@ -1942,8 +1791,6 @@ You may test the `model:prune` command with the `--pretend` option. When pretend
 php artisan model:prune --model="Workflow\Models\StoredWorkflow" --pretend
 ```
 
-<!-- SOURCE: constraints/overview.md -->
-
 # Overview
 
 The determinism and idempotency constraints for workflows and activities are important for ensuring the reliability and correctness of the overall system.
@@ -1960,8 +1807,6 @@ Additionally, since the events may be replayed multiple times, it is important t
 
 Overall, the determinism and idempotency constraints help ensure that the workflow engine is able to accurately rebuild the current state of the workflow from the event stream and produce the correct results. They also make it easier to debug and troubleshoot problems, as the system always behaves in a predictable and repeatable way.
 
-<!-- SOURCE: constraints/workflow-constraints.md -->
-
 # Workflow Constraints
 
 The determinism constraints for workflow classes dictate that a workflow class must not depend on external state or services that may change over time. This means that a workflow class should not perform any operations that rely on the current date and time, the current user, external network resources, or any other source of potentially changing state.
@@ -1973,8 +1818,6 @@ Here are some examples of things you shouldn't do inside of a workflow class:
 - Don't make network requests to external resources, as these may be slow or unavailable at different times. Instead, pass the necessary data as inputs to the workflow when it is started or use an activity to retrieve the data.
 - Don't use random number generators (unless using a side effect) or other sources of randomness, as these will produce different results each time they are called. Instead, pass any necessary randomness as an input to the workflow when it is started.
 
-<!-- SOURCE: constraints/activity-constraints.md -->
-
 # Activity Constraints
 
 Activities have none of the prior constraints. However, because activities are retryable they should still be idempotent. If your activity creates a charge for a customer then retrying it should not create a duplicate charge.
@@ -1984,8 +1827,6 @@ Many external APIs support passing an `Idempotency-Key`. See [Stripe](https://st
 Many operations are naturally idempotent. If you encode a video twice, while it may be a waste of time, you still have the same video. If you delete the same file twice, the second deletion does nothing.
 
 Some operations are not idempotent but duplication may be tolerable. If you are unsure if an email was actually sent, sending a duplicate email might be preferable to risking that no email was sent at all. However, it is important to carefully consider the implications of ignoring this constraint before doing so.
-
-<!-- SOURCE: constraints/constraints-summary.md -->
 
 # Constraints Summary
 
@@ -2002,8 +1843,6 @@ Workflows should be deterministic because the workflow engine relies on being ab
 
 Activities should be idempotent because activities may be retried multiple times in the event of a failure. If an activity is not idempotent, it may produce unintended side effects or produce different results each time it is run, which could cause issues with the workflow. Making the activity idempotent ensures that it can be safely retried without any issues.
 
-<!-- SOURCE: sample-app.md -->
-
 # Sample App
 
 https://github.com/durable-workflow/sample-app
@@ -2014,8 +1853,6 @@ This is a sample Laravel 12 application with example workflows that you can run 
 
 Create a codespace from the main branch of this repo.
 
-![image](https://user-images.githubusercontent.com/1130888/233664377-f300ad50-5436-4bb8-b172-c52e12047264.png)
-
 **Step 2**
 
 Once the codespace has been created, wait for the codespace to build. This should take between 5 to 10 minutes.
@@ -2023,8 +1860,6 @@ Once the codespace has been created, wait for the codespace to build. This shoul
 **Step 3**
 
 Once it is done. You will see the editor and the terminal at the bottom.
-
-![image](https://user-images.githubusercontent.com/1130888/233665550-1a4f2098-2919-4108-ac9f-bef1a9f2f47c.png)
 
 **Step 4**
 
@@ -2054,8 +1889,6 @@ php artisan queue:work
 
 Create a new terminal window.
 
-![image](https://user-images.githubusercontent.com/1130888/233666917-029247c7-9e6c-46de-b304-27473fd34517.png)
-
 **Step 8**
 
 Start the example workflow inside the new terminal window.
@@ -2068,8 +1901,6 @@ php artisan app:workflow
 
 You can view the waterline dashboard at https://[your-codespace-name]-80.preview.app.github.dev/waterline/dashboard.
 
-![image](https://user-images.githubusercontent.com/1130888/233669600-3340ada6-5f73-4602-8d82-a81a9d43f883.png)
-
 **Step 10**
 
 Run the workflow and activity tests.
@@ -2079,8 +1910,6 @@ php artisan test
 ```
 
 That's it! You can now create and test workflows.
-
-<!-- SOURCE: testing.md -->
 
 # Testing
 
@@ -2217,8 +2046,6 @@ $result = $activity->handle();
 
 Notice that we call the `handle()` method and not the `execute()` method.
 
-<!-- SOURCE: failures-and-recovery.md -->
-
 # Failures and Recovery
 
 ## Handling Exceptions
@@ -2294,8 +2121,6 @@ The general process to fix a failing activity is:
 
 This allows you to keep the workflow in a running status even while an activity is failing. After you fix the failing activity, the workflow will finish in a completed status. A workflow with a failed status means that all activity `$tries` have been exhausted and the exception wasn't handled.
 
-<!-- SOURCE: how-it-works.md -->
-
 # How It Works
 
 Durable Workflow uses Laravel's queued jobs and event sourced persistence to create durable coroutines.
@@ -2350,16 +2175,6 @@ class MyWorkflow extends Workflow
 
 This sequence diagram shows how a workflow progresses through a series of activities, both serial and parallel.
 
-import ThemedImage from '@site/src/components/ThemedImage';
-
-<ThemedImage
-  lightSrc="https://mermaid.ink/img/pako:eNqdkkFrg0AQhf_KMmcTdGOi7iFg2muph4JQvCw6SaTrrl3XtGnIf--qmFakhXZPO2_e9waGuUCuCgQGDb62KHO8L_lB8yqTxL6aa1PmZc2lISnhDUmVftkL9TZvx137CRsT56Y8leY8t-xGy6M5ov7Zl3ijMeGaC4HiFy-dhM6BAUkX223MSGMsOijxwkopI7mqaoEGv5yDrrEW_EzwhNI032N2k5jdf2MSb5LTS_QmDWLizdJ7mf5tKDhw0GUBzOgWHahQV7wr4dJhGdjFVZgBs98C97wVJoNMXi1mV_ysVDWSWrWHI7A9F42t2rrgZryXmwVlgfpOtdIAo14fAewC78BWkbek_ioMgsgLvE0Yrh04dyYrRxENos3GX0V-GFwd-Oinuks_9N1wTV1KLeJS1yJYlEbph-Fq--O9fgJv_eFJ?type=png"
-  darkSrc="https://mermaid.ink/img/pako:eNqdkkFrg0AQhf-KzNmE7Gp0dw8B015LPRSE4mXRSSJR165r2jTkv3ejmDZICu2edr557w0Mc4JM5QgCWnzrsM7wsZBbLau0duxrpDZFVjSyNk7iyNZJlN5vSvU-bUeX9gu2JspMcSjMcSpZj5Jns0N9XxeTURhLLcsSy1-09CZ0ahgsyWy1ioTTGmsdSDSzKBFOpqqmRIPfyoFrbEp5dPCAtWl_xqxvYtb_jYnJTU6P6BUNMCaT9B7Tvw0FF7a6yEEY3aELFepKXko4XWwp2MVVmIKw31zqfQppfbYeu99XparRplW33YHYyLK1Vdfk0ozHcqUa6xz1g-pqAyLwWB8C4gQfIDxO5tT3WBhyEpKAsaULRxCUWMw5DXkQ-B73WXh24bOfu5j7zF-wJSWLgFPuUxa4gHlhlH4ajra_3fMXT1fgqg?type=png"
-  lightLink="https://mermaid.live/edit#pako:eNqdkkFrg0AQhf_KMmcTdGOi7iFg2muph4JQvCw6SaTrrl3XtGnIf--qmFakhXZPO2_e9waGuUCuCgQGDb62KHO8L_lB8yqTxL6aa1PmZc2lISnhDUmVftkL9TZvx137CRsT56Y8leY8t-xGy6M5ov7Zl3ijMeGaC4HiFy-dhM6BAUkX223MSGMsOijxwkopI7mqaoEGv5yDrrEW_EzwhNI032N2k5jdf2MSb5LTS_QmDWLizdJ7mf5tKDhw0GUBzOgWHahQV7wr4dJhGdjFVZgBs98C97wVJoNMXi1mV_ysVDWSWrWHI7A9F42t2rrgZryXmwVlgfpOtdIAo14fAewC78BWkbek_ioMgsgLvE0Yrh04dyYrRxENos3GX0V-GFwd-Oinuks_9N1wTV1KLeJS1yJYlEbph-Fq--O9fgJv_eFJ"
-  darkLink="https://mermaid.live/edit#pako:eNqdkkFrg0AQhf-KzNmE7Gp0dw8B015LPRSE4mXRSSJR165r2jTkv3ejmDZICu2edr557w0Mc4JM5QgCWnzrsM7wsZBbLau0duxrpDZFVjSyNk7iyNZJlN5vSvU-bUeX9gu2JspMcSjMcSpZj5Jns0N9XxeTURhLLcsSy1-09CZ0ahgsyWy1ioTTGmsdSDSzKBFOpqqmRIPfyoFrbEp5dPCAtWl_xqxvYtb_jYnJTU6P6BUNMCaT9B7Tvw0FF7a6yEEY3aELFepKXko4XWwp2MVVmIKw31zqfQppfbYeu99XparRplW33YHYyLK1Vdfk0ozHcqUa6xz1g-pqAyLwWB8C4gQfIDxO5tT3WBhyEpKAsaULRxCUWMw5DXkQ-B73WXh24bOfu5j7zF-wJSWLgFPuUxa4gHlhlH4ajra_3fMXT1fgqg"
-  alt="Workflow Sequence Diagram"
-/>
-
 1. The workflow starts by getting dispatched as a queued job.
 2. The first activity, TestActivity, is then dispatched as a queued job. The workflow job then exits. Once TestActivity has completed, it saves the result to the database and returns control to the workflow by dispatching it again.
 3. At this point, the workflow enters the event sourcing replay loop. This is where it goes back to the database and looks at the event stream to rebuild the current state. This is necessary because the workflow is not a long running process. The workflow exits while any activities are running and then is dispatched again after completion.
@@ -2375,8 +2190,6 @@ The need for determinism comes into play when the events are replayed. In order 
 
 The need for idempotency comes into play when an API fails to return a response even though it has actually completed successfully. For example, if an activity charges a customer and is not idempotent, rerunning it after a a failed response could result in the customer being charged twice. To avoid this, activities should be designed to be idempotent.
 
-<!-- SOURCE: monitoring.md -->
-
 # Monitoring
 
 ## Waterline
@@ -2385,109 +2198,7 @@ The need for idempotency comes into play when an API fails to return a response 
 
 ### Dashboard View
 
-![waterline_dashboard](https://github.com/user-attachments/assets/5688a234-4c02-4d5e-84d4-5f40b5fa27c5)
-
 ### Workflow View
 
-![workflow](https://github.com/user-attachments/assets/da685466-7747-4c2f-ae10-300041381d51)
-
 Refer to https://github.com/durable-workflow/waterline for installation and configuration instructions.
-
-<!-- SOURCE: sponsors.md -->
-
-# Sponsors
-
-Durable Workflow is sustained by the community via sponsors and volunteers. If this package has been useful to you, consider supporting its ongoing development.
-
-## Current Sponsors
-
-- <a href="https://freispace.com" target="_blank" rel="noopener sponsored">Freispace Resource Scheduling</a>
-- <a href="https://github.com/hnccox" target="_blank" rel="noopener sponsored">Hugo Cox</a>
-
-## Becoming a Sponsor
-
-If you would like to support ongoing development, you can do so via [GitHub Sponsors](https://github.com/sponsors/durable-workflow).
-
-<!-- SOURCE: support.md -->
-
-# Support
-
-Durable Workflow is an open-source project and is free to use under the MIT license.
-
-## Community Support
-
-The primary way to get help with Durable Workflow is through the community.
-
-This is the best place for:
-- usage questions
-- workflow modeling advice
-- help understanding determinism and replay
-- sharing ideas and patterns
-- reporting bugs or unexpected behavior
-
-### GitHub Discussions
-
-GitHub Discussions is the preferred place for longer-form questions, design discussions, and issues that may benefit others.
-
-https://github.com/durable-workflow/workflow/discussions
-
-### Discord
-
-Discord is best for:
-- quick questions
-- informal discussion
-- early feedback
-- community collaboration
-
-https://discord.gg/xu5aDDpqVy
-
-Community support is provided on a best-effort basis and is often sufficient for development, experimentation, and many production use cases.
-
-## Commercial Support (Optional)
-
-For teams that need additional assurance or maintainer-level expertise, commercial support and consultancy are available.
-
-Using Durable Workflow does **not** require a commercial agreement, and all functionality remains fully open source regardless of whether commercial support is used.
-
-Commercial support is intended for teams running Durable Workflow in production systems where correctness, upgrade safety, and long-running execution semantics matter.
-
-## What Commercial Support Covers
-
-Commercial support engagements are led by the project maintainer and typically include:
-
-- **Workflow architecture & design reviews**  
-  Guidance on modeling workflows correctly, including activity boundaries, signals, inbox/outbox usage, and long-running execution patterns.
-
-- **Determinism & replay safety guidance**  
-  Help identifying and avoiding non-deterministic behavior, replay issues, and subtle correctness problems that can surface over time.
-
-- **Upgrade & versioning strategy**  
-  Assistance with safe upgrades, workflow versioning, and determining when patterns like `continue-as-new` are required.
-
-- **Debugging complex workflow behavior**  
-  Support with diagnosing stuck workflows, unexpected loops, signal handling issues, and other hard-to-reason-about runtime behavior.
-
-- **Backports & patches**  
-  Access to fixes and backports for supported versions to help avoid maintaining private forks.
-
-- **Custom integrations (by arrangement)**  
-  Help integrating Durable Workflow with existing systems such as chat platforms, approval systems, internal APIs, or observability tooling.
-
-## Who Commercial Support Is For
-
-Commercial support is typically a good fit if you are:
-
-- Running Durable Workflow in **production**
-- Building **long-running or human-in-the-loop workflows**
-- Operating in an environment where **correctness and upgrade safety matter**
-- Looking for **maintainer-level expertise** rather than generic consulting
-- Wanting to avoid forks and long-term maintenance risk
-
-## Contact
-
-To discuss commercial support or consultancy, please contact:
-
-**support@durable-workflow.com**
-
-We’re happy to start with a short introductory conversation to understand your use case and determine next steps.
 
