@@ -138,9 +138,9 @@ const config = {
       },
       image: 'img/docusaurus.png',
       algolia: {
-        appId: 'GQ5HIWNNB3',
-        apiKey: 'd7a6a0cd26e3867bf71977ed4ebdd782',
-        indexName: 'laravel-workflow',
+        appId: 'IYIBF1DKO0',
+        apiKey: 'bd5089d395bb02b42c90304ead050cdf',
+        indexName: 'docs',
       },
     }),
 };
