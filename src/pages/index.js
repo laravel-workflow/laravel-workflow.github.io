@@ -30,8 +30,8 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`${siteConfig.title}`}
-      description="Durable workflow engine that allows users to track job status and write long running persistent distributed workflows (orchestrations) in PHP powered by Laravel Queues.">
+      title="Durable Orchestration for Laravel"
+      description="Laravel-native durable orchestration engine for long-running, fault-tolerant workflows in PHP without a dedicated cluster.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
